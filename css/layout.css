@@ -66,7 +66,7 @@ header {
 .accessibility-toggle:hover,
 .accessibility-toggle[aria-pressed="true"] {
     background-color: var(--color-primary);
-    color:            #FFFFFF;
+    color:            var(--color-surface);
 }
 
 .nav-toggle {
@@ -123,7 +123,7 @@ section:nth-child(even) {
 
 .hero-content h1 {
     margin-bottom: var(--space-md);
-    color:         #FFFFFF;
+    color:         var(--color-surface);
 }
 
 .hero-subtitle {
@@ -260,45 +260,133 @@ section:nth-child(even) {
     margin:     0;
 }
 
-.timeline-container {
-    max-width: 760px;
+#timeline {
+    background-color: var(--color-bg);
 }
 
-.timeline-list {
-    list-style: none;
-    padding:    0;
-    margin:     0;
-    position:   relative;
+.timeline-scroll-wrapper {
+    overflow-x:                 auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: var(--space-2xl);
 }
 
-.timeline-list::before {
-    content:          "";
+.timeline-label-work,
+.timeline-label-edu {
+    position:    absolute;
+    left:        var(--space-lg);
+    font-size:   var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color:       var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.timeline-label-work {
+    bottom: calc(52% + 20px);
+}
+
+.timeline-label-edu {
+    top: calc(52% + 20px);
+}
+
+.timeline-inner {
+    position: relative;
+    width:    3200px;
+    height:   480px;
+}
+
+.timeline-rail-line {
     position:         absolute;
-    left:             30px;
-    top:              0;
-    bottom:           0;
-    width:            2px;
+    left:             0;
+    right:            0;
+    top:              52%;
+    height:           3px;
+    background-color: var(--color-primary);
+}
+
+.timeline-year-tick {
+    position:         absolute;
+    top:              calc(52% - 24px);
+    width:            1px;
+    height:           24px;
     background-color: var(--color-border);
 }
 
-.timeline-node {
-    position:      relative;
-    padding-left:  var(--space-4xl);
-    margin-bottom: var(--space-sm);
+.timeline-year-tick span {
+    position:    absolute;
+    bottom:      calc(100% + 4px);
+    left:        50%;
+    transform:   translateX(-50%);
+    font-size:   0.75rem;
+    color:       var(--color-text-muted);
+    white-space: nowrap;
 }
 
-.timeline-node::before {
-    content:          "";
+.timeline-patch {
     position:         absolute;
-    left:             22px;
-    top:              calc(var(--space-md) + 10px);
-    width:            16px;
-    height:           16px;
+    bottom:           calc(48% + 8px);
+    padding:          var(--space-md) var(--space-lg);
+    background-color: var(--color-beige);
+    border:           2px solid var(--color-primary);
+    border-radius:    var(--border-radius-sm);
+    box-shadow:       3px 3px 0 var(--color-primary);
+}
+
+.timeline-patch-current {
+    background-color: var(--color-sage);
+}
+
+.timeline-patch-title {
+    font-size:     var(--font-size-sm);
+    font-weight:   var(--font-weight-bold);
+    color:         var(--color-charcoal);
+    margin-bottom: var(--space-xs);
+    max-width:     none;
+}
+
+.timeline-patch-role {
+    font-size:     var(--font-size-sm);
+    color:         var(--color-charcoal);
+    margin-bottom: var(--space-xs);
+    max-width:     none;
+}
+
+.timeline-patch-dates {
+    font-size: var(--font-size-sm);
+    color:     var(--color-text-muted);
+    max-width: none;
+}
+
+.timeline-edu-dot {
+    position:         absolute;
+    top:              calc(52% - 4px);
+    width:            10px;
+    height:           10px;
+    background-color: var(--color-sage);
+    border:           2px solid var(--color-primary);
     border-radius:    50%;
-    background-color: var(--color-primary);
-    border:           3px solid var(--color-surface);
-    outline:          2px solid var(--color-primary);
-    z-index:          1;
+    transform:        translateX(-50%);
+    z-index:          2;
+}
+
+.timeline-edu-entry {
+    position:  absolute;
+    top:       calc(52% + 12px);
+    max-width: 160px;
+    transform: translateX(-50%);
+}
+
+.timeline-edu-title {
+    font-size:     var(--font-size-sm);
+    font-weight:   var(--font-weight-medium);
+    color:         var(--color-charcoal);
+    margin-bottom: var(--space-xs);
+    max-width:     none;
+}
+
+.timeline-edu-dates {
+    font-size: var(--font-size-sm);
+    color:     var(--color-text-muted);
+    max-width: none;
 }
 
 .contact-layout {
