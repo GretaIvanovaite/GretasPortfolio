@@ -7,6 +7,7 @@
     <title>Greta Ivanovaite - Web Developer Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
+    <script src="js/track_yarn.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -38,6 +39,19 @@
     </header>
 
     <main>
+        <div id="yarn-announcer" class="sr-only" aria-live="polite"></div>
+        <svg class="yarn-path-container" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path id="thread-path" 
+            d="M 85,0 
+                C 5,15 5,15 85,30 
+                S 5,45 85,60 
+                S 5,75 85,90 
+                L 85,100" 
+            fill="none" />
+        </svg>
+        <div id="yarn-ball" class="yarn-ball" aria-hidden="true">
+            <img src="images/vecteezy_orange-yarn-ball-in-realistic-design-on-transparent-background_52934440.png" alt="A realistic orange yarn ball that rolls through the page, representing the creative thread of my career.">
+        </div>
         <section id="hero" aria-labelledby="hero-heading">
             <h1 id="hero-heading">Greta Ivanovaite</h1>
             <p>Web Developer</p>
@@ -315,7 +329,6 @@
                 <button type="submit">Send message</button>
             </form>
         </section>
-
     </main>
 
     <footer role="contentinfo">
