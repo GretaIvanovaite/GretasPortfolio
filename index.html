@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Greta Ivanovaite — Web Developer and UX Designer portfolio. Showcasing accessible, user-focused web development projects.">
-    <title>Greta Ivanovaite — Web Developer Portfolio</title>
+    <meta name="description" content="Greta Ivanovaite - Web Developer portfolio. Showcasing accessible, user-focused web development projects.">
+    <title>Greta Ivanovaite - Web Developer Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-
     <a class="skip-link" href="#main">Skip to main content</a>
-
-    <header role="banner">
-        <nav class="nav" aria-label="Main navigation">
-            <a href="#hero" class="nav-logo" aria-label="Greta Ivanovaite — back to top">GI</a>
-
-            <button
-                class="nav-toggle"
-                aria-expanded="false"
-                aria-controls="nav-menu"
-                aria-label="Open navigation menu">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-
-            <ul id="nav-menu" class="nav-menu" role="list">
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="#hero" aria-label="Greta Ivanovaite - back to top">GI</a>
+            <ul role="list">
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#in-progress">In Progress</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#work">Experience</a></li>
                 <li><a href="#timeline">Timeline</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            
+            <button
+                aria-pressed="false"
+                aria-label="Toggle dark mode">
+                Dark Mode
+            </button>
 
             <button
-                class="accessibility-toggle"
                 aria-pressed="false"
                 aria-label="Toggle accessibility mode">
                 Accessibility Mode
@@ -44,489 +37,294 @@
         </nav>
     </header>
 
-    <main id="main">
-
+    <main>
         <section id="hero" aria-labelledby="hero-heading">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <h1 id="hero-heading">Greta Ivanovaite</h1>
-                    <p class="hero-subtitle">Web Developer &amp; UX Designer</p>
-                    <p class="hero-tagline">I came to web development the long way round — through logistics, NHS data, and legal tech. Ten years of working with systems that could be better taught me what good design actually means.</p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn-hero-primary">View my work</a>
-                        <a href="#contact" class="btn btn-hero-secondary">Get in touch</a>
-                    </div>
-                </div>
-            </div>
+            <h1 id="hero-heading">Greta Ivanovaite</h1>
+            <p>Web Developer</p>
+            <p>Seeking graduate and junior web developer roles in Leeds from summer 2026</p>
+            <a href="#projects">View my work</a>
+            <a href="#contact">Get in touch</a>
         </section>
 
         <section id="about" aria-labelledby="about-heading">
-            <div class="section-inner">
-                <h2 id="about-heading">About Me</h2>
-                <div class="about-layout">
-                    <div class="about-text">
-                        <p>I didn't start in tech. I started in a warehouse, progressed into data and operations roles, spent two years in the NHS analysing workforce information, and eventually landed in legal tech — building electronic forms and writing VBA macros at One Advanced Ltd, where I still work today.</p>
-                        <p>Somewhere in that ten years I realised I wanted to build the things, not just use them. So in 2022 I started a BSc in Web Design and Development at Edge Hill University. I graduate in summer 2026 with a focus on accessibility and UX research — because after years of working with software that didn't quite work for the people using it, that part matters most to me.</p>
-                        <p>I'm looking for graduate or junior developer roles in Leeds from summer 2026.</p>
-                    </div>
-                    <div class="about-links">
-                        <a href="mailto:greta.ivanovaite@gmail.com" class="btn btn-secondary" aria-label="Send Greta an email">Email me</a>
-                        <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Greta's GitHub profile (opens in new tab)">GitHub</a>
-                        <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Greta's LinkedIn profile (opens in new tab)">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" aria-labelledby="projects-heading">
-            <div class="section-inner">
-                <h2 id="projects-heading">Projects</h2>
-                <div class="projects-grid">
-
-                    <article class="project-card" aria-labelledby="project-easter-heading">
-                        <div class="project-image">
-                            <div class="image-placeholder" role="img" aria-label="Animated Easter Card Creator — screenshot placeholder"></div>
-                        </div>
-                        <div class="project-card-content">
-                            <h3 id="project-easter-heading">Animated Easter Card Creator</h3>
-                            <p>A multi-step web application for creating and sending personalised animated Easter cards in bulk. Users upload a recipient list, customise the card, preview the animation, and send via email.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>HTML5</li>
-                                <li>CSS3</li>
-                                <li>JavaScript</li>
-                                <li>CSS Animations</li>
-                                <li>CSV / JSON</li>
-                            </ul>
-                            <a href="projects/easter-card.html" class="btn btn-primary">View case study</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card" aria-labelledby="project-gym-heading">
-                        <div class="project-image">
-                            <div class="image-placeholder" role="img" aria-label="Gym Workout Planner — screenshot placeholder"></div>
-                        </div>
-                        <div class="project-card-content">
-                            <h3 id="project-gym-heading">Gym Workout Planner</h3>
-                            <p>A digital workout planner for managing exercises and routines with persistent local storage. Built with accessibility as a priority, featuring skip links, ARIA live regions, and 6 exercise categories.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>HTML5</li>
-                                <li>CSS3</li>
-                                <li>JavaScript</li>
-                                <li>IndexedDB</li>
-                                <li>Accessibility</li>
-                            </ul>
-                            <a href="projects/gym-app.html" class="btn btn-primary">View case study</a>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="in-progress" aria-labelledby="in-progress-heading">
-            <div class="section-inner">
-                <h2 id="in-progress-heading">In Progress</h2>
-                <div class="in-progress-grid">
-
-                    <article class="progress-card" aria-labelledby="fyp-heading">
-                        <div class="project-image">
-                            <div class="image-placeholder" role="img" aria-label="V&A Museum Collections Explorer — screenshot placeholder"></div>
-                        </div>
-                        <div class="progress-card-content">
-                            <span class="progress-badge">In Progress</span>
-                            <h3 id="fyp-heading">V&amp;A Museum Collections Explorer</h3>
-                            <p>Final year undergraduate project: an interactive browser for 2.2 million+ objects from the Victoria and Albert Museum Collections API. Features browse-by-category and material, detailed object views, and an AI-powered museum helper chatbot.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>HTML5</li>
-                                <li>CSS3</li>
-                                <li>JavaScript</li>
-                                <li>REST API</li>
-                                <li>AI / LLM</li>
-                                <li>Netlify</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="progress-card" aria-labelledby="role-heading">
-                        <div class="progress-card-content">
-                            <span class="progress-badge">Ongoing</span>
-                            <h3 id="role-heading">Associate Content Engineer</h3>
-                            <p>Currently working at One Advanced Ltd, creating electronic legal forms for various legal entities, building and maintaining VBA macros, and managing version-controlled content workflows using Git and GitHub.</p>
-                            <ul class="project-tags" aria-label="Technologies used">
-                                <li>Visual Basic / VBA</li>
-                                <li>Git &amp; GitHub</li>
-                                <li>Microsoft 365</li>
-                                <li>Legal Technology</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
+            <h2 id="about-heading">About Me</h2>
+            <p>I didn't start in tech. I started in a warehouse, progressed into data and operations roles, spent two years in the NHS analysing workforce information and eventually landed in legal tech, building electronic forms and writing VBA macros at One Advanced Ltd where I still work today.</p>
+            <p>Somewhere in those ten years I realised I wanted to build the things, not just use them. So in 2022 I started a BSc in Web Design and Development at Edge Hill University. I graduate in summer 2026 with a strong focus on accessibility in development: writing semantic HTML, testing with screen readers and building interfaces that work for everyone without requiring a workaround.</p>
+            <p>Outside of work and study, I crochet. It sounds unrelated, but the more I've thought about it, the more the two feel the same. Learning a pattern language, executing steps in a specific order, looping through the same logic until the shape emerges. A dropped stitch ruins the whole thing, just like a bug. That is the thread running through this site.</p>
+            <a href="mailto:greta.ivanovaite@gmail.com" aria-label="Send Greta an email">Email me</a>
+            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" aria-label="Visit Greta's GitHub profile (opens in new tab)">GitHub</a>
+            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" aria-label="Visit Greta's LinkedIn profile (opens in new tab)">LinkedIn</a>
         </section>
 
         <section id="skills" aria-labelledby="skills-heading">
-            <div class="section-inner">
-                <h2 id="skills-heading">Skills</h2>
+            <h2 id="skills-heading">Skills</h2>
+            <p class="section-intro">Like learning a new pattern, each skill builds on the last. Here is where I am now.</p>
+            <h3>Front-end &amp; Web</h3>
+            <ul>
+                <li>HTML5 and CSS3: Flexbox, Grid and custom properties</li>
+                <li>Intermediate JavaScript with practical project experience</li>
+                <li>Responsive and accessible development from the start</li>
+                <li>Semantic HTML and WCAG compliance built into how I write code</li>
+            </ul>
 
-                <div class="skills-filter" role="group" aria-label="Filter skills by category">
-                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-                    <button class="filter-btn" data-filter="design" aria-pressed="false">UX &amp; Design</button>
-                    <button class="filter-btn" data-filter="technical" aria-pressed="false">Technical</button>
-                    <button class="filter-btn" data-filter="analytical" aria-pressed="false">Data &amp; Analytical</button>
-                    <button class="filter-btn" data-filter="transferable" aria-pressed="false">Transferable</button>
+            <h3>Accessibility</h3>
+            <ul>
+                <li>Skip links, ARIA roles and labels</li>
+                <li>Keyboard navigation and focus management</li>
+                <li>Colour contrast and accessible colour use</li>
+                <li>UX research background that informs development decisions</li>
+            </ul>
+
+            <h3>Data &amp; Back-end</h3>
+            <ul>
+                <li>Intermediate SQL, database design and normalisation</li>
+                <li>XML and JSON data handling</li>
+                <li>Some experience with Python and Laravel</li>
+                <li>Advanced Excel and VBA: macros and automated reporting</li>
+            </ul>
+
+            <h3>Tooling &amp; Process</h3>
+            <ul>
+                <li>Git and GitHub for version control, used daily at work</li>
+                <li>Microsoft Azure: AZ-900 and DP-900 certified</li>
+                <li>Technical documentation and requirements analysis</li>
+                <li>Comfortable with structured development cycles</li>
+            </ul>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projects</h2>
+            <p>Projects built from scratch and documented in full.</p>
+            <article aria-labelledby="project-easter-heading">
+                <h3 id="project-easter-heading">Animated Easter Card Creator</h3>
+                <img alt="Animated Easter Card Creator screenshot">
+                <p>A multi-step web application for creating and sending personalised animated Easter cards in bulk. Users upload a recipient list, customise the card, preview the animation and send via email.</p>
+                <ul aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>CSS Animations</li>
+                    <li>CSV / JSON</li>
+                </ul>
+                <a href="projects/easter-card.html">View case study</a>
+            </article>
+
+            <article aria-labelledby="project-gym-heading">
+                <h3 id="project-gym-heading">Gym Workout Planner</h3>
+                <img alt="Gym Workout Planner screenshot">
+                <p>A digital workout planner for managing exercises and routines with persistent local storage. Built with accessibility as a priority, featuring skip links, ARIA live regions and 6 exercise categories.</p>
+                <ul aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>IndexedDB</li>
+                    <li>Accessibility</li>
+                </ul>
+                <a href="projects/gym-app.html">View case study</a>
+            </article>
+
+            <article aria-labelledby="project-va-heading">
+                <h3 id="project-va-heading">V&amp;A Museum Collections Explorer</h3>
+                <img alt="V&amp;A Museum Collections Explorer screenshot">
+                <p>An interactive browser for 2.2 million+ objects from the Victoria and Albert Museum Collections API. Features category and material browsing, detailed object views and an AI-powered museum helper chatbot. Final year project, deployed on Netlify.</p>
+                <ul aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>REST API</li>
+                    <li>AI / LLM</li>
+                    <li>Netlify</li>
+                </ul>
+                <a href="#">View live site</a>
+            </article>
+        </section>
+
+        <section id="education" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+
+            <article aria-labelledby="edu-bsc">
+                <h3 id="edu-bsc">BSc Web Design &amp; Development</h3>
+                <span>Edge Hill University &middot; 2022–2026 &middot; BCS Accredited &middot; 2:1 expected</span>
+                <p>Modules studied across the four years, each group a different technique building the same finished piece.</p>
+
+                <div>
+                    <section>
+                        <h4>Web Development</h4>
+                        <ul>
+                            <li>Web Design and Development</li>
+                            <li>Fundamentals of Web Coding</li>
+                            <li>Web Systems Development and Security</li>
+                            <li>Advanced Web Portfolio</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Programming &amp; AI</h4>
+                        <ul>
+                            <li>Foundations of Computer Science</li>
+                            <li>Programming: Concepts to Construction 1 &amp; 2</li>
+                            <li>Web Artificial Intelligence</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Data &amp; Databases</h4>
+                        <ul>
+                            <li>Database Systems</li>
+                            <li>Data Analytics</li>
+                            <li>Advanced Databases</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>UX, Systems &amp; Professional</h4>
+                        <ul>
+                            <li>Fundamentals of User Experience Design</li>
+                            <li>Remote Usability Testing and Data Analytics</li>
+                            <li>Digital World: Information Systems and Design</li>
+                            <li>Digital World: Computer Architecture and Networks</li>
+                            <li>Employability</li>
+                        </ul>
+                    </section>
                 </div>
 
-                <div class="skills-grid" aria-live="polite" aria-label="Skills list">
+            </article>
 
-                    <div class="skill-group" data-category="design">
-                        <h3>UX &amp; Design</h3>
-                        <ul class="skill-list" role="list">
-                            <li class="skill-item">
-                                <span class="skill-name">Web Accessibility (WCAG)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">UX Research</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Usability Evaluation &amp; Testing</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Responsive &amp; Mobile-First Design</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Personas &amp; Information Architecture</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Wireframing &amp; Prototyping</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+            <article aria-labelledby="edu-certs">
+                <h3 id="edu-certs">Microsoft Certifications</h3>
+                <span>2024–2025</span>
 
-                    <div class="skill-group" data-category="technical">
-                        <h3>Technical</h3>
-                        <ul class="skill-list" role="list">
-                            <li class="skill-item">
-                                <span class="skill-name">HTML5</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">JSON</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">CSS3 (Flexbox &amp; Grid)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">SQL (DDL/DML)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Schema Design (DTD / JSON Schema)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">XML &amp; XQuery</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Python</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Laravel (MVC)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Version Control (Git / GitHub)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Database Design &amp; Normalisation</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+                <ul>
+                    <li>Azure Data Fundamentals (DP-900) &middot; Jun 2025</li>
+                    <li>Azure Fundamentals (AZ-900) &middot; Jun 2025</li>
+                    <li>Excel Associate MOS (MO-200) &middot; Jun 2024</li>
+                    <li>Security Fundamentals (SC-900) &middot; Jan 2024</li>
+                </ul>
+            </article>
 
-                    <div class="skill-group" data-category="analytical">
-                        <h3>Data &amp; Analytical</h3>
-                        <ul class="skill-list" role="list">
-                            <li class="skill-item">
-                                <span class="skill-name">Usability Evaluation &amp; Testing</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Entity Relationship Diagrams (ERDs)</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Data Visualisation</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Requirements Analysis</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">System Development Life Cycle</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+            <article aria-labelledby="edu-access">
+                <h3 id="edu-access">Access to Higher Education Diploma</h3>
+                <span>2020</span>
+                <p>Completed while working full-time at the NHS. It opened the route into university study.</p>
+            </article>
 
-                    <div class="skill-group" data-category="transferable">
-                        <h3>Transferable</h3>
-                        <ul class="skill-list" role="list">
-                            <li class="skill-item">
-                                <span class="skill-name">Problem Solving</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Academic Writing &amp; Referencing</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 5 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 100%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Project Planning &amp; Risk Management</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Research &amp; Literature Review</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 4 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 80%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Presentation Skills</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Team Collaboration</span>
-                                <span class="skill-bar" role="img" aria-label="Confidence: 3 out of 5">
-                                    <span class="skill-fill" style="--skill-level: 60%"></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+            <article aria-labelledby="edu-klaipeda">
+                <h3 id="edu-klaipeda">A Level Equivalent and Vocational Diploma</h3>
+                <span >Klaip&#0279;da Tourism School, Lithuania &middot; Completed June 2013</span>
+                <p>NVQ2 equivalent vocational qualification. Translated certificates and UK NARIC confirmation available on request.</p>
+            </article>
+        </section>
 
-                </div>
-            </div>
+        <section id="work" aria-labelledby="work-heading">
+            <h2 id="work-heading">Work Experience</h2>
+            <details>
+                <summary>
+                    <span>Associate Content Engineer</span>
+                    <span>One Advanced Ltd</span>
+                    <span>Aug 2021–present</span>
+                </summary>
+                <p>Content engineering for legal software, converting legal forms into structured digital formats and building VBA automation tools.</p>
+                <ul>
+                    <li>Create and format electronic versions of legal forms to compliance standards set by legal entities</li>
+                    <li>Build and maintain VBA macros to automate document workflows and reduce manual errors</li>
+                    <li>Create content control-based Word forms</li>
+                    <li>Manage version-controlled content workflows using Git and GitHub</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>
+                    <span>Assistant Workforce Information Analyst → Workforce Information Analyst</span>
+                    <span>Warrington &amp; Halton Hospitals NHS Foundation Trust</span>
+                    <span>Dec 2019–Aug 2021</span>
+                </summary>
+                <strong>Workforce Information Analyst</strong>
+                <span>Nov 2020–Aug 2021</span>
+                <ul>
+                    <li>Reported on staff absences, mandatory training and other workforce queries</li>
+                    <li>Managed the employee information system (ESR)</li>
+                    <li>Created and implemented SCORM packages using Lectora and Oracle LMS</li>
+                    <li>Extensive use of Microsoft Office including Excel, Outlook and Word</li>
+                </ul>
+                <strong>Assistant Workforce Information Analyst</strong>
+                <span>Dec 2019–Nov 2020</span>
+
+                <ul>
+                    <li>Compiled information from E-Rostering, Patchwork and OLM systems</li>
+                    <li>Checked and error-corrected reports before distribution</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>
+                    <span>Warehouse Operative → Assistant Controller → Controller</span>
+                    <span>Hermes (now Evri)</span>
+                    <span>Mar 2015–Dec 2019</span>
+                </summary>
+                <strong>Controller</strong>
+                <span>Sep 2018–Dec 2019</span>
+                <ul>
+                    <li>Managed staff performance and shift operations</li>
+                    <li>Reported to management within established timescales using internal operating systems</li>
+                    <li>Built and maintained Excel VBA macros and worked with Access databases</li>
+                </ul>
+                <strong>Assistant Controller</strong>
+                <span>Jun 2015–Sep 2018</span>
+                <ul>
+                    <li>Answered internal and external queries</li>
+                    <li>Data input, update and manipulation in Excel</li>
+                    <li>Compiled and reported operational information to management</li>
+                </ul>
+                <strong>Warehouse Operative</strong>
+                <span>Mar 2015–Jun 2015</span>
+                <ul>
+                    <li>Sorting and processing parcels to throughput targets</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>
+                    <span>Warehouse Operative</span>
+                    <span>Grange Packaging Solutions</span>
+                    <span>Aug 2014–Mar 2015</span>
+                </summary>
+                <ul>
+                    <li>Data entry and maintenance of logistics records</li>
+                    <li>Operational reporting using Microsoft Excel</li>
+                </ul>
+            </details>
         </section>
 
         <section id="timeline" aria-labelledby="timeline-heading">
-            <div class="section-inner">
-                <h2 id="timeline-heading">My Journey</h2>
-                <p class="section-intro">Ten years of work and study — work experience above the line, education and certifications below.</p>
-            </div>
-            <div class="timeline-scroll-wrapper" role="region" aria-label="Career timeline, scroll to explore">
-                <div class="timeline-inner" id="timeline-inner">
-
-                    <div class="timeline-rail-line" aria-hidden="true"></div>
-
-                    <div class="timeline-year-tick" style="left: 200px" aria-hidden="true"><span>2013</span></div>
-                    <div class="timeline-year-tick" style="left: 600px" aria-hidden="true"><span>2015</span></div>
-                    <div class="timeline-year-tick" style="left: 1000px" aria-hidden="true"><span>2017</span></div>
-                    <div class="timeline-year-tick" style="left: 1400px" aria-hidden="true"><span>2019</span></div>
-                    <div class="timeline-year-tick" style="left: 1800px" aria-hidden="true"><span>2021</span></div>
-                    <div class="timeline-year-tick" style="left: 2200px" aria-hidden="true"><span>2023</span></div>
-                    <div class="timeline-year-tick" style="left: 2600px" aria-hidden="true"><span>2025</span></div>
-
-                    <div class="timeline-patch" style="left: 400px; width: 180px">
-                        <p class="timeline-patch-title">Grange Packaging Ltd</p>
-                        <p class="timeline-patch-role">Logistics Administrator</p>
-                        <p class="timeline-patch-dates">2014–2015</p>
-                    </div>
-
-                    <div class="timeline-patch" style="left: 600px; width: 780px">
-                        <p class="timeline-patch-title">Hermes (now Evri)</p>
-                        <p class="timeline-patch-role">Warehouse Operative → Controller</p>
-                        <p class="timeline-patch-dates">2015–2019</p>
-                    </div>
-
-                    <div class="timeline-patch" style="left: 1400px; width: 380px">
-                        <p class="timeline-patch-title">NHS Warrington &amp; Halton</p>
-                        <p class="timeline-patch-role">Workforce Information Analyst</p>
-                        <p class="timeline-patch-dates">2019–2021</p>
-                    </div>
-
-                    <div class="timeline-patch timeline-patch-current" style="left: 1800px; width: 960px">
-                        <p class="timeline-patch-title">One Advanced Ltd</p>
-                        <p class="timeline-patch-role">Associate Content Engineer</p>
-                        <p class="timeline-patch-dates">2021–present</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 200px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 200px">
-                        <p class="timeline-edu-title">Klaipėda University College</p>
-                        <p class="timeline-edu-dates">Business Management Diploma, 2010–2013</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 1600px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 1600px">
-                        <p class="timeline-edu-title">Access to HE Diploma</p>
-                        <p class="timeline-edu-dates">Health Professionals, 2020</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2000px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2000px">
-                        <p class="timeline-edu-title">BSc Web Design &amp; Development</p>
-                        <p class="timeline-edu-dates">Edge Hill University, started 2022</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2380px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2380px">
-                        <p class="timeline-edu-title">SC-900</p>
-                        <p class="timeline-edu-dates">Security Fundamentals, Jan 2024</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2460px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2460px">
-                        <p class="timeline-edu-title">MOS Excel Associate</p>
-                        <p class="timeline-edu-dates">Jun 2024</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2580px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2580px">
-                        <p class="timeline-edu-title">AZ-900</p>
-                        <p class="timeline-edu-dates">Azure Fundamentals, Jun 2025</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2660px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2660px">
-                        <p class="timeline-edu-title">DP-900</p>
-                        <p class="timeline-edu-dates">Azure Data Fundamentals, Jun 2025</p>
-                    </div>
-
-                    <div class="timeline-edu-dot" style="left: 2800px" aria-hidden="true"></div>
-                    <div class="timeline-edu-entry" style="left: 2800px">
-                        <p class="timeline-edu-title">BSc Graduation</p>
-                        <p class="timeline-edu-dates">Edge Hill University, 2026</p>
-                    </div>
-
-                    <span class="timeline-label-work" aria-hidden="true">Work Experience</span>
-                    <span class="timeline-label-edu" aria-hidden="true">Education &amp; Certifications</span>
-
-                </div>
-            </div>
+            <h2 id="timeline-heading">My Journey</h2>
+            <p>Ten years of work and study, row by row. Work experience above the line, education and certifications below.</p>
         </section>
 
         <section id="contact" aria-labelledby="contact-heading">
-            <div class="section-inner">
-                <h2 id="contact-heading">Get in Touch</h2>
-                <p class="section-intro">I'm currently open to graduate and junior web developer roles in Leeds from summer 2026. Feel free to reach out.</p>
-
-                <div class="contact-layout">
-
-                    <div class="contact-links">
-                        <a href="mailto:greta.ivanovaite@gmail.com" class="contact-link" aria-label="Send email to Greta">
-                            <span class="contact-link-label">Email</span>
-                            <span class="contact-link-value">greta.ivanovaite@gmail.com</span>
-                        </a>
-                        <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Visit Greta's GitHub profile (opens in new tab)">
-                            <span class="contact-link-label">GitHub</span>
-                            <span class="contact-link-value">github.com/GretaIvanovaite</span>
-                        </a>
-                        <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Visit Greta's LinkedIn profile (opens in new tab)">
-                            <span class="contact-link-label">LinkedIn</span>
-                            <span class="contact-link-value">linkedin.com/in/greta-ivanovaite</span>
-                        </a>
-                    </div>
-
-                    <form class="contact-form" novalidate aria-label="Contact form">
-                        <div class="form-group">
-                            <label for="contact-name">Your name</label>
-                            <input type="text" id="contact-name" name="name" autocomplete="name" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-email">Your email</label>
-                            <input type="email" id="contact-email" name="email" autocomplete="email" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="message" rows="5" required aria-required="true"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send message</button>
-                    </form>
-
-                </div>
-            </div>
+            <h2 id="contact-heading">Contact Me</h2>
+            <p>The pattern is still being written. I am open to graduate and junior web developer roles in Leeds from summer 2026.</p>
+            <address>
+                <a href="mailto:greta.ivanovaite@gmail.com" aria-label="Send email to Greta">greta.ivanovaite@gmail.com</a>
+                <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's GitHub profile (opens in new tab)">github.com/GretaIvanovaite</a>
+                <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's LinkedIn profile (opens in new tab)">linkedin.com/in/greta-ivanovaite</a>
+            </address>
+            <form novalidate aria-label="Contact form">
+                <label for="contact-name">Your name</label>
+                <input type="text" id="contact-name" name="name" autocomplete="name" required aria-required="true">
+                <label for="contact-email">Your email</label>
+                <input type="email" id="contact-email" name="email" autocomplete="email" required aria-required="true">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" required aria-required="true"></textarea>
+                <button type="submit">Send message</button>
+            </form>
         </section>
 
     </main>
 
     <footer role="contentinfo">
-        <div class="footer-inner">
-            <p>&copy; <span id="footer-year"></span> Greta Ivanovaite. Built with HTML, CSS, and vanilla JavaScript.</p>
-            <nav aria-label="Footer navigation">
-                <a href="#hero">Back to top</a>
-                <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </nav>
-        </div>
+        <p>&copy; 2026 Greta Ivanovaite. Built with HTML and CSS.</p>
+        <nav aria-label="Footer navigation">
+            <a href="#hero">Back to top</a>
+            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </nav>
     </footer>
-
-
 </body>
 </html>
