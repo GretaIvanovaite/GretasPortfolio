@@ -60,6 +60,47 @@ header nav button {
     transform: translateY(0);
 }
 
+.yarn-path-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.yarn-path-desktop {display: none;}
+
+.yarn-ball {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.yarn-ball img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 main {
     position: relative;
     overflow-x: hidden;
@@ -73,6 +114,8 @@ h1 {
 }
 
 main > section {
+    position: relative;
+    z-index: 1;
     padding: var(--space-lg) var(--space-md);
 }
 
@@ -126,6 +169,7 @@ footer nav {
 
 #hero > a {
     display: inline-block;
+    align-self: flex-start;
     padding: var(--space-sm) var(--space-lg);
     margin-right: var(--space-sm);
     margin-bottom: var(--space-sm);
@@ -380,25 +424,50 @@ footer nav {
     main {
         padding-right: 0;
         padding-top: 56px;
+        margin-left: 12vw;
+        margin-right: 12vw;
+        overflow-x: visible;
     }
 
     #hero {
         min-height: 85vh;
+        width: 100vw;
+        margin-left: -12vw;
+        padding-left: calc(12vw + var(--space-md));
+        padding-right: calc(12vw + var(--space-md));
     }
 
     #hero > p:last-of-type {
         margin-bottom: var(--space-2xl);
     }
 
+    .yarn-ball {
+        width: 15vw;
+        height: 15vw;
+    }
+
     footer {
         padding-right: var(--space-xl);
         padding-left: var(--space-xl);
     }
+
+    .yarn-path-container {
+        left: -12vw;
+        width: 100vw;
+    }
+
+    .yarn-path-mobile {display: none;}
+    .yarn-path-desktop {display: block;}
 }
 
 @media (min-width: 900px) {
     main > section {
-        padding: var(--space-4xl) var(--space-3xl);
+        padding: var(--space-4xl) 8vw;
+    }
+
+    #hero {
+        padding-left: 20vw;
+        padding-right: 20vw;
     }
 
     main > section > h2 {
@@ -442,7 +511,6 @@ footer nav {
 
     #about > a {
         grid-column: 2;
-        display: block;
         margin-right: 0;
         margin-top: var(--space-sm);
     }
@@ -492,6 +560,8 @@ footer nav {
         flex-direction: column;
     }
 
+    #projects article > a {align-self: flex-start;}
+
     #contact {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -514,45 +584,4 @@ footer nav {
         align-items: center;
     }
 
-    /* --- Yarn Path Structure --- */
-    .yarn-path-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2; /* Keeps it behind the text content */
-        pointer-events: none; /* Allows user to click links 'through' the SVG */
-    }
-
-    /* --- Yarn Ball Structure --- */
-    .yarn-ball {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100px; /* Adjust size to fit your design */
-        height: 100px;
-        z-index: 999;
-        pointer-events: none;
-        will-change: transform; /* Helps the browser animate smoothly */
-    }
-
-    .yarn-ball img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    /* --- Accessibility Utility --- */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
 }

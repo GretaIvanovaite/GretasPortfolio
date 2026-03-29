@@ -40,13 +40,24 @@
 
     <main>
         <div id="yarn-announcer" class="sr-only" aria-live="polite"></div>
-        <svg class="yarn-path-container" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path id="thread-path" 
-            d="M 85,0 
-                C 5,15 5,15 85,30 
-                S 5,45 85,60 
-                S 5,75 85,90 
-                L 85,100" 
+        <svg class="yarn-path-container yarn-path-mobile" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path id="thread-path-mobile"
+            d="M 72,0
+               C 78,8 64,18 70,32
+               C 76,46 65,58 72,72
+               C 78,85 64,92 70,100"
+            fill="none" />
+        </svg>
+        <svg class="yarn-path-container yarn-path-desktop" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path id="thread-path-desktop"
+            d="M 95,5
+               C 100,15 0,5 5,15
+               C 10,25 85,15 90,25
+               C 95,35 0,25 5,45
+               C 10,65 85,45 90,65
+               C 95,85 0,65 5,85
+               C 7,90 7,88 21,90
+               L 90,100"
             fill="none" />
         </svg>
         <div id="yarn-ball" class="yarn-ball" aria-hidden="true">

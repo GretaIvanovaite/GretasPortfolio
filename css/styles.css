@@ -520,6 +520,27 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #contact button[type="submit"]:focus-visible {outline-color: var(--color-surface);}
 
+.yarn-path-container path {
+    stroke: #D35400;
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    opacity: 0.65;
+    vector-effect: non-scaling-stroke;
+}
+
+
+.yarn-ball img {filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));}
+
+.accessibility-on .yarn-path-container path {
+    stroke-width: 2px;
+    opacity: 0.7;
+}
+
+
+.accessibility-on .yarn-ball {filter: grayscale(100%);}
+
 @media (min-width: 768px) {
     header {
         border-left: none;
@@ -565,38 +586,4 @@ footer :focus-visible {outline-color: var(--color-cream);}
         border-bottom: none;
     }
 
-    /* --- Thread Visuals --- */
-    #thread-path {
-        /* Using an orange that matches your yarn ball */
-        stroke: #D35400 !important; 
-        stroke-width: 2px;
-        stroke-dasharray: 8 4; 
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        fill: none;
-        opacity: 0.6;
-        transition: all 0.3s ease;
-        vector-effect: non-scaling-stroke;
-    }
-
-    .yarn-ball img {
-        width: 100%;
-        height: auto;
-        /* Adding a subtle drop shadow so the orange pops against your background */
-        filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
-    }
-
-    /* --- Accessibility Mode Styles --- */
-    /* If you add a class to the body via JS when the button is clicked */
-    .accessibility-on #thread-path {
-        stroke-dasharray: none; 
-        stroke-width: 0.4;
-        opacity: 0.7;
-        stroke: #d35400; /* A darker, high-contrast orange for accessibility */
-    }
-
-    .accessibility-on .yarn-ball {
-        /* Optional: reduce opacity of the ball if it's too distracting */
-        filter: grayscale(100%);
-    }
 }
