@@ -55,6 +55,55 @@
     --focus-offset: 3px;
 }
 
+/* Dark Mode Overrides */
+.dark-mode {
+    /* Swap the main canvas */
+    --color-bg: #121a1a;           /* Deeper than your current charcoal */
+    --color-surface: #1f2a2a;      /* Your current charcoal becomes the card background */
+    
+    /* Text Adjustments */
+    --color-text: #eef2f2;         /* Off-white/cool grey for readability */
+    --color-text-muted: #a0b0b0;   /* Muted teal-grey */
+    
+    /* Border & Primary tweaks */
+    --color-border: #2d3d3d;
+    --color-primary-light: #64a5a5; /* Slightly brighter for contrast against dark */
+    
+    /* The Accents (Keep them, but slightly desaturate) */
+    --color-rose: #c88a8a;
+    --color-sage: #8ba383;
+    --color-beige: #343d33;        /* Darker green-tinted background for tags */
+}
+
+/* Fix the Yarn Path for visibility */
+.dark-mode .yarn-path-container path {
+    stroke: #e67e22; /* A slightly brighter orange so it pops against the dark green */
+    opacity: 0.5;
+}
+
+/* Update the Hero section */
+.dark-mode #hero {
+    background-color: #0e2e2e; /* Darker version of your primary teal */
+}
+
+/* Soften the card shadows */
+.dark-mode .yarn-ball img {
+    filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.5));
+}
+
+/* Tag colors in Projects */
+.dark-mode #projects article li {
+    background-color: var(--color-border);
+    color: var(--color-text);
+}
+
+/* Inputs in Dark Mode */
+.dark-mode input, 
+.dark-mode textarea {
+    background: #162020;
+    color: white;
+}
+
 html {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
@@ -67,6 +116,7 @@ body {
     color: var(--color-text);
     background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
+    transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 input, button, textarea, select {
