@@ -1,0 +1,167 @@
+main {
+    padding-top: 0;
+}
+
+main > article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-md) var(--space-4xl);
+}
+
+main > article > header {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: var(--space-2xl) var(--space-2xl);
+    margin: 0 calc(-1 * var(--space-md));
+    margin-bottom: var(--space-2xl);
+    border-radius: var(--border-radius-lg);
+    position: static;
+    height: auto;
+    width: auto;
+}
+
+main > article > header a {
+    color: rgba(247, 249, 249, 0.75);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: var(--space-md);
+    transition: color var(--transition-fast);
+}
+
+main > article > header a:hover {
+    color: var(--color-surface);
+}
+
+main > article > header h1 {
+    color: var(--color-surface);
+    margin-bottom: var(--space-sm);
+}
+
+main > article > header > p {
+    color: rgba(247, 249, 249, 0.85);
+    max-width: 55ch;
+    margin-bottom: var(--space-lg);
+}
+
+main > article > header ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    list-style: none;
+    padding: 0;
+    width: auto;
+}
+
+main > article > header li {
+    background-color: rgba(247, 249, 249, 0.15);
+    color: var(--color-surface);
+    border-radius: var(--border-radius-pill);
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-sm);
+}
+
+main > article > section {
+    margin-bottom: var(--space-2xl);
+}
+
+main > article > section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-border);
+}
+
+main > article > section p {
+    margin-bottom: var(--space-md);
+    max-width: 65ch;
+}
+
+main > article > section p:last-child {
+    margin-bottom: 0;
+}
+
+figure {
+    margin: var(--space-xl) 0;
+}
+
+.placeholder-img {
+    background-color: var(--color-surface);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figcaption {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+    text-align: center;
+}
+
+main > article > footer {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+    background-color: transparent;
+    color: inherit;
+    position: static;
+    height: auto;
+    width: auto;
+}
+
+main > article > footer a {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast);
+}
+
+main > article > footer a:first-child {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+main > article > footer a:first-child:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+main > article > footer a:last-child {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border: 2px solid var(--color-primary);
+}
+
+main > article > footer a:last-child:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    main > article {
+        padding: var(--space-3xl) var(--space-2xl) var(--space-4xl);
+    }
+
+    main > article > header {
+        margin: 0 calc(-1 * var(--space-2xl));
+        margin-bottom: var(--space-2xl);
+        padding: var(--space-3xl) var(--space-3xl);
+    }
+}
