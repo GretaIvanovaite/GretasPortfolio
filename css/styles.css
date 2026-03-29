@@ -6,6 +6,7 @@
     --color-beige: #E8D8C3;
     --color-rose: #D6A5A5;
     --color-sage: #A8C3A0;
+    --color-accent: #D35400;
 
     --color-bg: var(--color-cream);
     --color-text: var(--color-charcoal);
@@ -55,53 +56,95 @@
     --focus-offset: 3px;
 }
 
-/* Dark Mode Overrides */
 .dark-mode {
-    /* Swap the main canvas */
-    --color-bg: #121a1a;           /* Deeper than your current charcoal */
-    --color-surface: #1f2a2a;      /* Your current charcoal becomes the card background */
-    
-    /* Text Adjustments */
-    --color-text: #eef2f2;         /* Off-white/cool grey for readability */
-    --color-text-muted: #a0b0b0;   /* Muted teal-grey */
-    
-    /* Border & Primary tweaks */
+    --color-primary: #5ba5a5;
+    --color-primary-light: #64a5a5;
+    --color-bg: #121a1a;
+    --color-surface: #1f2a2a;
+    --color-text: #eef2f2;
+    --color-text-muted: #a0b0b0;
     --color-border: #2d3d3d;
-    --color-primary-light: #64a5a5; /* Slightly brighter for contrast against dark */
-    
-    /* The Accents (Keep them, but slightly desaturate) */
     --color-rose: #c88a8a;
     --color-sage: #8ba383;
-    --color-beige: #343d33;        /* Darker green-tinted background for tags */
+    --color-beige: #343d33;
 }
 
-/* Fix the Yarn Path for visibility */
 .dark-mode .yarn-path-container path {
-    stroke: #e67e22; /* A slightly brighter orange so it pops against the dark green */
+    stroke: #e67e22;
     opacity: 0.5;
 }
 
-/* Update the Hero section */
 .dark-mode #hero {
-    background-color: #0e2e2e; /* Darker version of your primary teal */
+    background-color: #0e2e2e;
 }
 
-/* Soften the card shadows */
+.dark-mode #hero h1 {
+    color: var(--color-text);
+}
+
+.dark-mode #hero > a:first-of-type {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+}
+
+.dark-mode #hero > a:first-of-type:hover {
+    background-color: transparent;
+    color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.dark-mode #hero > a:last-of-type {
+    border-color: rgba(238, 242, 242, 0.5);
+    color: var(--color-text);
+}
+
+.dark-mode #hero > a:last-of-type:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+}
+
 .dark-mode .yarn-ball img {
     filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.5));
 }
 
-/* Tag colors in Projects */
 .dark-mode #projects article li {
     background-color: var(--color-border);
     color: var(--color-text);
 }
 
-/* Inputs in Dark Mode */
-.dark-mode input, 
-.dark-mode textarea {
+.dark-mode #contact input,
+.dark-mode #contact textarea {
     background: #162020;
-    color: white;
+    color: var(--color-text);
+    border-color: #4a6060;
+}
+
+.accessibility-on {
+    --font-size-sm: 1.25rem;
+    --font-size-base: 1.5rem;
+    --font-size-lg: 1.75rem;
+    --font-size-xl: 2.125rem;
+    --font-size-2xl: 2.75rem;
+    --font-size-3xl: 3.375rem;
+    --line-height-base: 2;
+    --smaller-letter-spacing: 0.02rem;
+}
+
+.accessibility-on .yarn-path-container path {
+    stroke-width: 2px;
+    opacity: 0.7;
+}
+
+.accessibility-on .yarn-ball {filter: grayscale(100%);}
+
+.accessibility-on p,
+.accessibility-on li,
+.accessibility-on label,
+.accessibility-on span {
+    letter-spacing: 0.03em;
+    word-spacing: 0.1em;
 }
 
 html {
@@ -111,8 +154,8 @@ html {
 
 body {
     font-family: var(--font-family);
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
     color: var(--color-text);
     background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
@@ -174,6 +217,11 @@ nav > a {
     color: var(--color-primary);
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
+    transition: color var(--transition-fast);
+}
+
+nav > a:hover {
+    color: var(--color-accent);
 }
 
 nav > button {
@@ -222,18 +270,36 @@ footer {
 
 footer p {
     font-size: var(--font-size-sm);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 footer nav a {
     font-size: var(--font-size-sm);
-    opacity: 0.8;
+    color: var(--color-cream);
     text-decoration: none;
-    transition: opacity var(--transition-fast);
+    border: 1px solid rgba(247, 249, 249, 0.3);
+    border-radius: var(--border-radius-md);
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast);
 }
 
 footer nav a:hover {
-    opacity: 1;
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    border-color: var(--color-cream);
+}
+
+footer small a {
+    color: var(--color-cream);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    opacity: 0.55;
+    transition: opacity var(--transition-fast);
+}
+
+footer small a:hover {
+    opacity: 0.9;
 }
 
 footer :focus-visible {outline-color: var(--color-cream);}
@@ -260,15 +326,15 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #hero > a:first-of-type {
-    background-color: var(--color-surface);
-    color: var(--color-primary);
-    border: 2px solid var(--color-surface);
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+    border: 2px solid var(--color-accent);
 }
 
 #hero > a:first-of-type:hover {
-    background-color: var(--color-primary);
-    border-color: var(--color-surface);
-    color: var(--color-surface);
+    background-color: var(--color-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 #hero > a:last-of-type {
@@ -305,8 +371,14 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #skills > ul {
-    list-style: disc;
+    list-style: none;
     border-bottom: 1px solid var(--color-border);
+}
+
+#skills > ul li::before {
+    content: "▸  ";
+    color: var(--color-accent);
+    font-size: 0.85em;
 }
 
 #skills > h3:last-of-type + ul {
@@ -358,6 +430,18 @@ footer :focus-visible {outline-color: var(--color-cream);}
 #projects article > a:hover {
     background-color: var(--color-surface);
     color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+#projects article > a + a {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+#projects article > a + a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
     border-color: var(--color-primary);
 }
 
@@ -469,6 +553,19 @@ footer :focus-visible {outline-color: var(--color-cream);}
     border-top: 1px solid var(--color-border);
 }
 
+#work > details:has(> summary:only-child) > summary {
+    cursor: default;
+    pointer-events: none;
+}
+
+#work > details:has(> summary:only-child) > summary:hover {
+    background-color: transparent;
+}
+
+#work > details:has(> summary:only-child) > summary::before {
+    display: none;
+}
+
 #work > details > p {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
@@ -570,6 +667,36 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #contact button[type="submit"]:focus-visible {outline-color: var(--color-surface);}
 
+#contact .form-status {
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+}
+
+#contact .form-status.success {
+    color: #1a5c3a;
+    background-color: #d4edda;
+    border: 1px solid #b8ddc4;
+}
+
+#contact .form-status.error {
+    color: #7c2d12;
+    background-color: #fee2e2;
+    border: 1px solid #fca5a5;
+}
+
+.dark-mode #contact .form-status.success {
+    color: #86efac;
+    background-color: #14532d;
+    border-color: #166534;
+}
+
+.dark-mode #contact .form-status.error {
+    color: #fca5a5;
+    background-color: #450a0a;
+    border-color: #7f1d1d;
+}
+
 .yarn-path-container path {
     stroke: #D35400;
     stroke-width: 8px;
@@ -580,16 +707,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     vector-effect: non-scaling-stroke;
 }
 
-
 .yarn-ball img {filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));}
-
-.accessibility-on .yarn-path-container path {
-    stroke-width: 2px;
-    opacity: 0.7;
-}
-
-
-.accessibility-on .yarn-ball {filter: grayscale(100%);}
 
 @media (min-width: 768px) {
     header {
@@ -597,7 +715,16 @@ footer :focus-visible {outline-color: var(--color-cream);}
         border-bottom: 1px solid var(--color-border);
     }
 
-    header ul li a,
+    header ul li a {
+        display: block;
+        border-radius: var(--border-radius-md);
+        letter-spacing: normal;
+        line-height: var(--line-height-base);
+        text-align: center;
+        transition: background-color var(--transition-fast),
+                    color var(--transition-fast);
+    }
+
     header nav button {
         border-radius: var(--border-radius-md);
         letter-spacing: normal;
@@ -615,7 +742,16 @@ footer :focus-visible {outline-color: var(--color-cream);}
         border-color: var(--color-primary);
     }
 
-    nav > button {border: 1px solid var(--color-primary-light);}
+    nav > button {
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    nav > button:hover {
+        background-color: var(--color-accent);
+        color: var(--color-surface);
+        border-color: var(--color-accent);
+    }
 }
 
 @media (min-width: 900px) {
@@ -626,14 +762,12 @@ footer :focus-visible {outline-color: var(--color-cream);}
     #skills > h3 {
         font-size: var(--font-size-base);
         color: var(--color-primary);
-    }
-
-    #skills > h3 {
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    #skills > h3:last-of-type {
         border-bottom: none;
     }
+}
 
+@media (min-width: 900px) {
+    main > section {
+        background-color: var(--color-surface);
+    }
 }

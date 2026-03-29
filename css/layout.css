@@ -19,7 +19,7 @@ ul {
 }
 
 p {
-    max-width: 65ch;
+    max-width: 75ch;
 }
 
 header {
@@ -148,7 +148,12 @@ footer p {
 
 footer nav {
     display: flex;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+footer nav a {
+    padding: var(--space-xs) var(--space-md);
 }
 
 #hero {
@@ -171,6 +176,8 @@ footer nav {
     display: inline-block;
     align-self: flex-start;
     padding: var(--space-sm) var(--space-lg);
+    min-width: 160px;
+    text-align: center;
     margin-right: var(--space-sm);
     margin-bottom: var(--space-sm);
 }
@@ -199,8 +206,12 @@ footer nav {
     padding-bottom: var(--space-md);
 }
 
+#projects > h2 {
+    margin-bottom: var(--space-sm);
+}
+
 #projects > p {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-sm);
 }
 
 #projects article {
@@ -220,7 +231,7 @@ footer nav {
 }
 
 #projects article > p {
-    padding: var(--space-md) var(--space-md) 0;
+    padding: var(--space-xs) var(--space-md) 0;
     max-width: none;
 }
 
@@ -374,6 +385,15 @@ footer nav {
     padding: var(--space-sm) var(--space-lg);
 }
 
+#contact .form-status {
+    padding: var(--space-sm) var(--space-md);
+    display: none;
+}
+
+#contact .form-status.visible {
+    display: block;
+}
+
 @media (min-width: 768px) {
     header {
         height: auto;
@@ -390,9 +410,7 @@ footer nav {
         flex-direction: row;
         align-items: center;
         gap: var(--space-md);
-        padding: var(--space-sm) var(--space-xl);
-        max-width: var(--max-width);
-        margin: 0 auto;
+        padding: var(--space-sm) var(--space-2xl);
     }
 
     header a {
@@ -409,29 +427,40 @@ footer nav {
         justify-content: center;
     }
 
-    header ul li,
-    header nav button {
+    header ul li {
         transform: none;
-        padding: var(--space-xs) var(--space-sm);
-        padding-bottom: var(--space-xs);
-        padding-top: var(--space-xs);
+        padding: 0;
+    }
+
+    header ul li a {
+        padding: var(--space-sm) var(--space-md);
     }
 
     header nav button {
+        transform: none;
         padding: var(--space-xs) var(--space-md);
     }
 
     main {
         padding-right: 0;
         overflow-x: visible;
+        padding-top: 56px;
+    }
+
+    main > section {
+        padding: var(--space-lg) var(--space-2xl);
     }
 
     #hero {
-        min-height: 85vh;
+        min-height: 60vh;
         width: 100vw;
         margin-left: -12vw;
-        padding-left: calc(12vw + var(--space-md));
-        padding-right: calc(12vw + var(--space-md));
+        padding-left: calc(12vw + var(--space-2xl));
+        padding-right: calc(12vw + var(--space-2xl));
+    }
+
+    #hero > a {
+        width: 200px;
     }
 
     #hero > p:last-of-type {
@@ -458,19 +487,28 @@ footer nav {
 }
 
 @media (min-width: 900px) {
+    header nav {
+        padding-left: calc(15vw + var(--space-2xl));
+        padding-right: calc(15vw + var(--space-2xl));
+    }
+
     main > section {
         margin: var(--space-4xl) 15vw;
         padding: var(--space-xl) var(--space-2xl);
     }
 
     #hero {
-        padding-left: 20vw;
-        padding-right: 20vw;
+        padding-left: calc(15vw + var(--space-2xl));
+        padding-right: calc(15vw + var(--space-2xl));
         margin: 0;
     }
 
     main > section > h2 {
         margin-bottom: var(--space-xl);
+    }
+
+    #projects > h2 {
+        margin-bottom: var(--space-sm);
     }
 
     #education article {
@@ -492,26 +530,8 @@ footer nav {
         margin-bottom: var(--space-2xl);
     }
 
-    #about {
-        display: grid;
-        grid-template-columns: 1fr 180px;
-        grid-auto-flow: dense;
-        column-gap: var(--space-3xl);
-        align-items: start;
-    }
-
-    #about > h2 {
-        grid-column: 1 / -1;
-    }
-
-    #about > p {
-        grid-column: 1;
-    }
-
-    #about > a {
-        grid-column: 2;
-        margin-right: 0;
-        margin-top: var(--space-sm);
+    #about > a:first-of-type {
+        margin-top: var(--space-md);
     }
 
     #skills {
@@ -539,6 +559,13 @@ footer nav {
 
     #skills > h3:first-of-type {
         margin-top: 0;
+    }
+
+    #projects,
+    #work,
+    #contact {
+        padding-left: var(--space-xl);
+        padding-right: var(--space-xl);
     }
 
     #projects {
@@ -581,6 +608,7 @@ footer nav {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
     }
-
 }
