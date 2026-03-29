@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case study: Animated Easter Card Creator — a multi-step web application for personalised animated card sending. Built by Greta Ivanovaite.">
+    <title>Animated Easter Card Creator — Greta Ivanovaite</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/case-study.css">
+    <script src="../js/toggles.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="../index.html" aria-label="Greta Ivanovaite — back to portfolio">GI</a>
+            <ul role="list">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#education">Education</a></li>
+                <li><a href="../index.html#work">Experience</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+
+            <button
+                aria-pressed="false"
+                aria-label="Toggle dark mode"
+                onclick="darkMode()">
+                Dark Mode
+            </button>
+
+            <button
+                aria-pressed="false"
+                aria-label="Toggle accessibility mode"
+                onclick="accessibilityMode()">
+                Accessibility Mode
+            </button>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article aria-labelledby="case-study-heading">
+            <header>
+                <a href="../index.html#projects">← Back to projects</a>
+                <h1 id="case-study-heading">Animated Easter Card Creator</h1>
+                <p>A multi-step web application for creating and sending personalised animated Easter cards in bulk.</p>
+                <ul aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>CSS Animations</li>
+                    <li>CSV / JSON</li>
+                </ul>
+            </header>
+
+            <section aria-labelledby="overview-heading">
+                <h2 id="overview-heading">Overview</h2>
+                <p>The Easter Card Creator is a browser-based tool that lets users build, personalise and send animated Easter cards to multiple recipients in a single workflow. The project began as an exploration of CSS animation combined with a practical sending mechanism, and grew into a multi-step application with file upload, live preview and bulk dispatch via email.</p>
+                <p>Like following a crochet pattern, the application guides users through a fixed sequence of steps: choose a design, upload a recipient list, preview the result and send. Each step builds on the last, and skipping one would unravel the whole thing.</p>
+            </section>
+
+            <section aria-labelledby="problem-heading">
+                <h2 id="problem-heading">The Problem</h2>
+                <p>Sending personalised seasonal cards at scale is time-consuming. Most tools require a paid subscription, a design account or are locked to specific platforms. The goal was to build a self-contained, browser-only solution that any user could run locally without accounts or services.</p>
+            </section>
+
+            <section aria-labelledby="solution-heading">
+                <h2 id="solution-heading">The Solution</h2>
+                <p>A three-stage wizard: design selection, recipient upload and preview, then send. Recipients are loaded from a CSV or JSON file. The application reads each row, injects the recipient name into the card template and generates a personalised mailto link for dispatch. Animations are pure CSS with JavaScript controlling timing and sequencing.</p>
+                <figure>
+                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Easter Card Creator step one: design selection">
+                        Design Selection — screenshot coming soon
+                    </div>
+                    <figcaption>Step one: choosing a card design</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="process-heading">
+                <h2 id="process-heading">Development Process</h2>
+                <p>The animation layer was built first as a standalone proof of concept, using CSS keyframes for the hatching egg sequence and a bouncing chick. Once the animation was stable, the multi-step form logic was layered on top: step tracking, validation between stages and a reset mechanism.</p>
+                <p>The file parsing component uses the FileReader API to read CSV and JSON uploads client-side, avoiding any server requirement. Error handling covers missing columns, empty files and malformed data.</p>
+                <figure>
+                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Easter Card Creator recipient upload step">
+                        Recipient Upload — screenshot coming soon
+                    </div>
+                    <figcaption>Step two: uploading a recipient list</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="outcome-heading">
+                <h2 id="outcome-heading">Outcome and Reflection</h2>
+                <p>The finished application handles the full workflow in a single HTML file with no dependencies. The main learning was around CSS animation sequencing: keyframe timing is not forgiving, and a single percentage off in a multi-stage animation reads as a bug. That is the dropped stitch problem in a different medium.</p>
+                <p>If rebuilt, the animation layer would be driven by JavaScript timing rather than CSS alone, giving finer control over sequencing and making it easier to sync with user interactions.</p>
+            </section>
+
+            <footer>
+                <a href="../index.html#projects">← Back to projects</a>
+                <a href="../index.html#contact">Get in touch</a>
+            </footer>
+        </article>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Greta Ivanovaite. Built with HTML and CSS.</p>
+        <nav aria-label="Footer navigation">
+            <a href="../index.html">Back to portfolio</a>
+            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </nav>
+        <p><small><a href="https://www.vecteezy.com/free-png/yarn-ball" target="_blank" rel="noopener noreferrer">Yarn Ball PNGs by Vecteezy</a></small></p>
+    </footer>
+</body>
+</html>
