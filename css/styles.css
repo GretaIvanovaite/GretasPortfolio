@@ -337,7 +337,7 @@ footer small a:hover {
 footer :focus-visible {outline-color: var(--color-cream);}
 
 #hero {
-    background-color: var(--color-primary);
+    background-color: #215e5f;
 }
 
 #hero h1 {
@@ -345,7 +345,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #hero > p {
-    color: rgba(247, 249, 249, 0.8);
+    color: var(--color-surface);
 }
 
 #hero > a {
@@ -735,13 +735,18 @@ footer :focus-visible {outline-color: var(--color-cream);}
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
-    opacity: 0.65;
+    opacity: 0.3;
     vector-effect: non-scaling-stroke;
 }
+
+.yarn-ball {opacity: 0.25;}
 
 .yarn-ball img {filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));}
 
 @media (min-width: 768px) {
+    .yarn-ball {opacity: 1;}
+    .yarn-path-container path {opacity: 0.65;}
+
     .accessibility-on {
         --font-size-sm: 1.25rem;
         --font-size-base: 1.5rem;
