@@ -21,11 +21,11 @@ function accessibilityMode() {
     const btn = document.querySelector('button[onclick="accessibilityMode()"]');
     if (btn) {
         if (isNowOn) {
-            btn.textContent = 'Standard Mode';
+            btn.textContent = 'Standard View';
             btn.setAttribute('aria-pressed', 'true');
             localStorage.setItem('accessibility', 'on');
         } else {
-            btn.textContent = 'Accessibility Mode';
+            btn.textContent = 'Easy Read';
             btn.setAttribute('aria-pressed', 'false');
             localStorage.setItem('accessibility', 'off');
         }
@@ -51,7 +51,7 @@ function accessibilityMode() {
         window.addEventListener('DOMContentLoaded', function() {
             const btn = document.querySelector('button[onclick="accessibilityMode()"]');
             if (btn) {
-                btn.textContent = 'Standard Mode';
+                btn.textContent = 'Standard View';
                 btn.setAttribute('aria-pressed', 'true');
             }
         });

@@ -7,7 +7,7 @@
     const desktopPath   = document.getElementById('thread-path-desktop');
     const mainElement   = document.querySelector('main');
     const headerEl      = document.querySelector('header');
-    const accessBtn     = document.querySelector('button[aria-label="Toggle accessibility mode"]');
+    const accessBtn     = document.querySelector('button[aria-label="Toggle easy read mode"]');
 
     if (!yarnBall || !mobilePath || !desktopPath || !mainElement) return;
 

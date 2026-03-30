@@ -122,13 +122,13 @@
 }
 
 .accessibility-on {
-    --font-size-sm: 1.25rem;
-    --font-size-base: 1.5rem;
-    --font-size-lg: 1.75rem;
-    --font-size-xl: 2.125rem;
-    --font-size-2xl: 2.75rem;
-    --font-size-3xl: 3.375rem;
-    --line-height-base: 2;
+    --font-size-sm: 1.125rem;
+    --font-size-base: 1.3rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 1.875rem;
+    --font-size-2xl: 2.375rem;
+    --font-size-3xl: 3rem;
+    --line-height-base: 1.8;
     --smaller-letter-spacing: 0.02rem;
 }
 
@@ -145,6 +145,39 @@
 .accessibility-on span {
     letter-spacing: 0.03em;
     word-spacing: 0.1em;
+}
+
+.accessibility-on h1 {font-size: 2.625rem;}
+.accessibility-on h2 {font-size: 2.125rem;}
+.accessibility-on h3 {font-size: 1.625rem;}
+.accessibility-on h4 {font-size: 1.25rem;}
+
+.accessibility-on header {
+    overflow: hidden;
+}
+
+.accessibility-on header nav > a {
+    font-size: 2.125rem;
+}
+
+.accessibility-on header ul li,
+.accessibility-on header nav button {
+    font-size: 18px;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+header nav > button:hover,
+header nav > button:focus-visible {
+    color: var(--color-accent);
+    outline: none;
+}
+
+header ul li a:hover,
+header ul li a:focus-visible {
+    outline: none;
+    text-decoration: underline;
+    color: var(--color-accent);
 }
 
 html {
@@ -232,15 +265,14 @@ nav > button {
 }
 
 nav > button:hover {
-    background-color: var(--color-primary);
-    color: var(--color-surface);
-    border-color: var(--color-primary);
+    color: var(--color-accent);
 }
 
 header ul li,
 header nav button {
     letter-spacing: var(--smaller-letter-spacing);
     line-height: 0.9;
+    font-size: 18px;
 }
 
 .skip-link {
@@ -710,6 +742,42 @@ footer :focus-visible {outline-color: var(--color-cream);}
 .yarn-ball img {filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));}
 
 @media (min-width: 768px) {
+    .accessibility-on {
+        --font-size-sm: 1.25rem;
+        --font-size-base: 1.5rem;
+        --font-size-lg: 1.75rem;
+        --font-size-xl: 2.125rem;
+        --font-size-2xl: 2.75rem;
+        --font-size-3xl: 3.375rem;
+        --line-height-base: 2;
+    }
+
+    .accessibility-on h1 {font-size: var(--font-size-3xl);}
+    .accessibility-on h2 {font-size: var(--font-size-2xl);}
+    .accessibility-on h3 {font-size: var(--font-size-xl);}
+    .accessibility-on h4 {font-size: var(--font-size-lg);}
+
+    .accessibility-on header {overflow: visible;}
+
+    .accessibility-on header nav > a {font-size: var(--font-size-2xl);}
+
+    .accessibility-on header ul li,
+    .accessibility-on header nav button {
+        word-spacing: 0.1em;
+    }
+
+    header nav > button:hover,
+    header nav > button:focus-visible {
+        background-color: var(--color-accent);
+        color: var(--color-surface);
+        border-color: var(--color-accent);
+        outline: revert;
+    }
+
+    header ul li a:hover {
+        text-decoration: none;
+    }
+
     header {
         border-left: none;
         border-bottom: 1px solid var(--color-border);
