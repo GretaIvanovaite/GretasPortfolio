@@ -371,6 +371,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     background-color: transparent;
     border-color: var(--color-surface);
     color: var(--color-surface);
+    font-weight: var(--font-weight-bold);
 }
 
 #hero > a:last-of-type {
@@ -383,6 +384,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     background-color: var(--color-surface);
     border-color: var(--color-surface);
     color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
 }
 
 #hero :focus-visible {outline-color: var(--color-surface);}
@@ -635,6 +637,91 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #work > details > ul li:last-child {
     border-bottom: none;
+}
+
+.timeline-rail {
+    background-color: var(--color-charcoal);
+}
+
+.timeline-year {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+}
+
+.timeline-year::before {
+    background-color: var(--color-border);
+}
+
+.timeline-work {
+    background-color: var(--color-beige);
+}
+
+.timeline-work span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-charcoal);
+}
+
+.timeline-work time {
+    font-size: 0.75rem;
+    color: var(--color-charcoal);
+    opacity: 0.7;
+}
+
+.timeline-current {
+    background-color: var(--color-sage);
+}
+
+.timeline-edu {
+    background-color: rgba(29, 94, 95, 0.08);
+    border-top: 2px solid var(--color-primary);
+}
+
+.timeline-edu span {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+}
+
+.timeline-edu time {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.timeline-cert {
+    border-left: 2px solid var(--color-primary-light);
+}
+
+.timeline-cert span {
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+.timeline-cert time {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+}
+
+.dark-mode .timeline-rail {
+    background-color: var(--color-text-muted);
+}
+
+.dark-mode .timeline-work span,
+.dark-mode .timeline-work time {
+    color: var(--color-text);
+    opacity: 1;
+}
+
+.dark-mode .timeline-current span,
+.dark-mode .timeline-current time {
+    color: var(--color-charcoal);
+    opacity: 1;
+}
+
+.dark-mode .timeline-edu {
+    background-color: rgba(135, 192, 192, 0.08);
 }
 
 #contact address {
