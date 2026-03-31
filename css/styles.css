@@ -1,5 +1,5 @@
 :root {
-    --color-primary: #236263;
+    --color-primary: #1d5e5f;
     --color-primary-light: #4A8A8A;
     --color-cream: #F7F9F9;
     --color-charcoal: #1F2A2A;
@@ -10,7 +10,7 @@
 
     --color-bg: var(--color-cream);
     --color-text: var(--color-charcoal);
-    --color-text-muted: #4A5A5A;
+    --color-text-muted: #465656;
     --color-border: #D0DADA;
     --color-surface: #FFFFFF;
 
@@ -71,14 +71,14 @@
 
 .dark-mode .yarn-path-container path {
     stroke: #e67e22;
-    opacity: 0.5;
 }
 
 .dark-mode #hero {
     background-color: #0e2e2e;
 }
 
-.dark-mode #hero h1 {
+.dark-mode #hero h1,
+.dark-mode #hero > p {
     color: var(--color-text);
 }
 
@@ -169,7 +169,7 @@
 
 header nav > button:hover,
 header nav > button:focus-visible {
-    color: var(--color-accent);
+    color: var(--color-primary-light);
     outline: none;
 }
 
@@ -177,7 +177,7 @@ header ul li a:hover,
 header ul li a:focus-visible {
     outline: none;
     text-decoration: underline;
-    color: var(--color-accent);
+    color: var(--color-primary-light);
 }
 
 html {
@@ -254,7 +254,7 @@ nav > a {
 }
 
 nav > a:hover {
-    color: var(--color-accent);
+    color: var(--color-primary-light);
 }
 
 nav > button {
@@ -265,7 +265,7 @@ nav > button {
 }
 
 nav > button:hover {
-    color: var(--color-accent);
+    color: var(--color-primary-light);
 }
 
 header ul li,
@@ -337,7 +337,7 @@ footer small a:hover {
 footer :focus-visible {outline-color: var(--color-cream);}
 
 #hero {
-    background-color: #215e5f;
+    background-color: var(--color-primary);
 }
 
 #hero h1 {
@@ -358,15 +358,15 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #hero > a:first-of-type {
-    background-color: var(--color-accent);
-    color: var(--color-surface);
-    border: 2px solid var(--color-accent);
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 2px solid var(--color-surface);
 }
 
 #hero > a:first-of-type:hover {
-    background-color: var(--color-surface);
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    background-color: transparent;
+    border-color: var(--color-surface);
+    color: var(--color-surface);
 }
 
 #hero > a:last-of-type {
@@ -409,7 +409,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #skills > ul li::before {
     content: "▸  ";
-    color: var(--color-accent);
+    color: var(--color-primary);
     font-size: 0.85em;
 }
 
@@ -773,9 +773,9 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
     header nav > button:hover,
     header nav > button:focus-visible {
-        background-color: var(--color-accent);
+        background-color: var(--color-primary);
         color: var(--color-surface);
-        border-color: var(--color-accent);
+        border-color: var(--color-primary);
         outline: revert;
     }
 
@@ -816,14 +816,14 @@ footer :focus-visible {outline-color: var(--color-cream);}
     }
 
     nav > button {
-        border: 1px solid var(--color-accent);
-        color: var(--color-accent);
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
     }
 
     nav > button:hover {
-        background-color: var(--color-accent);
+        background-color: var(--color-primary);
         color: var(--color-surface);
-        border-color: var(--color-accent);
+        border-color: var(--color-primary);
     }
 }
 

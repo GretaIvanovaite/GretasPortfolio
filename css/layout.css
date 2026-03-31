@@ -344,6 +344,10 @@ footer nav a {
     padding: var(--space-xs) var(--space-md) 0;
 }
 
+#work > details > span:last-child {
+    padding-bottom: var(--space-lg);
+}
+
 #work > details > ul {
     padding: var(--space-sm) var(--space-md) var(--space-lg);
 }
