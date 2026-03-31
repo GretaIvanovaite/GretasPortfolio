@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <script src="js/track_yarn.js" defer></script>
     <script src="js/toggles.js"></script>
+    <script src="js/timeline.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -331,7 +332,56 @@
 
         <section id="timeline" aria-labelledby="timeline-heading">
             <h2 id="timeline-heading">My Journey</h2>
-            <p>Ten years of work and study, row by row. Work experience above the line, education and certifications below.</p>
+            <p>Ten years of work and study, row by row. Work above the line, education and certifications below.</p>
+            <details id="timeline-details">
+                <summary>View timeline</summary>
+                <ol class="timeline-entries" aria-label="Career and education timeline">
+                    <li class="timeline-work" style="--tl-left:317px;--tl-width:116px">
+                        <span>Grange Packaging Solutions</span>
+                        <time datetime="2014-08/2015-03">Aug 2014&ndash;Mar 2015</time>
+                    </li>
+                    <li class="timeline-work" style="--tl-left:433px;--tl-width:950px">
+                        <span>Hermes (now Evri)</span>
+                        <time datetime="2015-03/2019-12">Mar 2015&ndash;Dec 2019</time>
+                    </li>
+                    <li class="timeline-work" style="--tl-left:1383px;--tl-width:334px">
+                        <span>NHS Warrington &amp; Halton</span>
+                        <time datetime="2019-12/2021-08">Dec 2019&ndash;Aug 2021</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:83px">
+                        <span>Klaip&#279;da Tourism School</span>
+                        <time datetime="2013-06">Jun 2013</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:1400px">
+                        <span>Access to Higher Education</span>
+                        <time datetime="2020">2020</time>
+                    </li>
+                    <li class="timeline-edu" style="--tl-left:1933px;--tl-width:750px">
+                        <span>BSc Web Design, Dev &amp; Analytics</span>
+                        <time datetime="2022-09/2026-06">Sep 2022&ndash;Jun 2026</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:2200px">
+                        <span>SC-900</span>
+                        <time datetime="2024-01">Jan 2024</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:2283px">
+                        <span>MO-200</span>
+                        <time datetime="2024-06">Jun 2024</time>
+                    </li>
+                    <li class="timeline-work timeline-current" style="--tl-left:1717px;--tl-width:916px">
+                        <span>One Advanced Ltd</span>
+                        <time datetime="2021-08">Aug 2021&ndash;present</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:2483px">
+                        <span>AZ-900</span>
+                        <time datetime="2025-06">Jun 2025</time>
+                    </li>
+                    <li class="timeline-cert" style="--tl-left:2533px">
+                        <span>DP-900</span>
+                        <time datetime="2025-06">Jun 2025</time>
+                    </li>
+                </ol>
+            </details>
         </section>
 
         <section id="contact" aria-labelledby="contact-heading">
