@@ -639,18 +639,54 @@ footer :focus-visible {outline-color: var(--color-cream);}
     border-bottom: none;
 }
 
-.timeline-rail {
-    background-color: var(--color-charcoal);
+#timeline details > summary {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.timeline-year {
+#timeline details > summary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+#timeline details > summary::before {
+    content: "+ ";
+}
+
+#timeline details[open] > summary::before {
+    content: "− ";
+}
+
+.timeline-entries::before {
+    background-color: var(--color-border);
+}
+
+.timeline-entries li {
+    font-size: var(--font-size-sm);
+}
+
+.timeline-entries li::before {
+    background-color: var(--color-border);
+}
+
+.timeline-entries span {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+.timeline-entries span + span {
+    font-weight: var(--font-weight-normal);
+    font-size: 0.8em;
+    color: var(--color-text-muted);
+}
+
+.timeline-entries time {
     font-size: 0.8rem;
     color: var(--color-text-muted);
-    font-weight: var(--font-weight-medium);
-}
-
-.timeline-year::before {
-    background-color: var(--color-border);
 }
 
 .timeline-work {
@@ -658,15 +694,11 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 .timeline-work span {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
     color: var(--color-charcoal);
 }
 
-.timeline-work time {
-    font-size: 0.75rem;
-    color: var(--color-charcoal);
-    opacity: 0.7;
+.timeline-work::before {
+    background-color: var(--color-charcoal);
 }
 
 .timeline-current {
@@ -675,53 +707,111 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 .timeline-edu {
     background-color: rgba(29, 94, 95, 0.08);
-    border-top: 2px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
 
 .timeline-edu span {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
     color: var(--color-primary);
 }
 
-.timeline-edu time {
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-}
-
 .timeline-cert {
+    background-color: transparent;
     border-left: 2px solid var(--color-primary-light);
 }
 
 .timeline-cert span {
-    font-size: 0.75rem;
-    font-weight: var(--font-weight-bold);
     color: var(--color-primary);
 }
 
-.timeline-cert time {
-    font-size: 0.65rem;
-    color: var(--color-text-muted);
+.dark-mode #timeline details > summary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
-.dark-mode .timeline-rail {
-    background-color: var(--color-text-muted);
+.dark-mode .timeline-entries::before {
+    background-color: var(--color-border);
 }
 
-.dark-mode .timeline-work span,
-.dark-mode .timeline-work time {
+.dark-mode .timeline-work span {
     color: var(--color-text);
-    opacity: 1;
 }
 
-.dark-mode .timeline-current span,
-.dark-mode .timeline-current time {
+.dark-mode .timeline-current span {
     color: var(--color-charcoal);
-    opacity: 1;
 }
 
 .dark-mode .timeline-edu {
     background-color: rgba(135, 192, 192, 0.08);
+    border-color: var(--color-primary);
+}
+
+@media (min-width: 900px) {
+    .timeline-entries::before {
+        background-color: var(--color-charcoal);
+    }
+
+    .timeline-entries li::before {
+        font-size: 0.75rem;
+        font-weight: var(--font-weight-normal);
+        color: var(--color-text-muted);
+        white-space: nowrap;
+    }
+
+    .timeline-entries li::after {
+        background-color: var(--color-primary);
+        border: 2px solid var(--color-bg);
+        box-shadow: 0 0 0 1px var(--color-primary);
+    }
+
+    .timeline-work {
+        border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+        border: none;
+        border-left: 3px solid rgba(0, 0, 0, 0.18);
+    }
+
+    .timeline-current {
+        border-left: 3px solid var(--color-primary);
+    }
+
+    .timeline-edu {
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        border: none;
+        border-top: 2px solid var(--color-primary);
+        border-left: 3px solid var(--color-primary);
+        background-color: rgba(29, 94, 95, 0.08);
+    }
+
+    .timeline-cert {
+        border-left: 3px solid var(--color-primary-light);
+        border-top: none;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .timeline-cert span {
+        font-style: italic;
+        font-weight: var(--font-weight-normal);
+    }
+
+    .dark-mode .timeline-entries::before {
+        background-color: var(--color-text-muted);
+    }
+}
+
+@media (min-width: 900px) and (prefers-reduced-motion: reduce) {
+    .timeline-entries::before {
+        background-color: var(--color-border);
+    }
+
+    .timeline-work {
+        border-radius: var(--border-radius-sm);
+        border: none;
+    }
+
+    .timeline-edu {
+        border-radius: var(--border-radius-sm);
+        border: 1px solid var(--color-primary);
+    }
 }
 
 #contact address {
@@ -933,5 +1023,9 @@ footer :focus-visible {outline-color: var(--color-cream);}
 @media (min-width: 900px) {
     main > section {
         background-color: var(--color-surface);
+    }
+
+    #timeline {
+        background-color: transparent;
     }
 }

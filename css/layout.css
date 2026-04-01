@@ -372,6 +372,14 @@ footer nav a {
     display: none;
 }
 
+.timeline-track {
+    display: none;
+}
+
+#timeline-details[open] + .timeline-track {
+    display: block;
+}
+
 .timeline-entries {
     position: relative;
     list-style: none;
@@ -431,16 +439,15 @@ footer nav a {
         width: 2px;
     }
 
-    .timeline-work,
-    .timeline-current {
+    .timeline-work {
         grid-column: 1;
         text-align: right;
     }
 
-    .timeline-work li::before,
-    .timeline-current li::before {
+    .timeline-work::before {
         left: auto;
         right: calc(-1 * var(--space-lg));
+        width: var(--space-lg);
     }
 
     .timeline-edu,
@@ -449,33 +456,48 @@ footer nav a {
         text-align: left;
     }
 
-    .timeline-entries li::before {
-        width: var(--space-md);
-        height: 2px;
-        top: 50%;
-        transform: translateY(-50%);
+    .timeline-edu::before,
+    .timeline-cert::before {
+        left: calc(-1 * var(--space-lg));
+        width: var(--space-lg);
     }
 }
 
 @media (min-width: 900px) {
     #timeline {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: var(--space-xl);
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+
+    #timeline > h2,
+    #timeline > p {
+        margin-left: calc(15vw + var(--space-2xl));
+    }
+
+    #timeline-details {
+        display: none;
+    }
+
+    .timeline-track {
         position: relative;
-        overflow: hidden;
+        overflow-x: clip;
+        overflow-y: visible;
+        display: block;
     }
 
     #timeline details {
         margin-top: 0;
     }
 
-    #timeline details > summary {
-        display: none;
-    }
-
     .timeline-entries {
         display: block;
         position: relative;
-        width: 3200px;
-        height: 480px;
+        width: 2900px;
+        height: calc(100vh - 56px);
         padding: 0;
         margin: 0;
         will-change: transform;
@@ -492,16 +514,49 @@ footer nav a {
     .timeline-entries li {
         position: absolute;
         margin-bottom: 0;
-        padding: var(--space-xs) var(--space-sm);
-        height: 70px;
+        padding: var(--space-sm) var(--space-md);
         display: flex;
         flex-direction: column;
-        overflow: hidden;
-        border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+        overflow: visible;
     }
 
     .timeline-entries li::before {
         display: none;
+    }
+
+    .timeline-entries .timeline-work::before,
+    .timeline-entries .timeline-current::before {
+        content: attr(data-year);
+        display: block;
+        position: absolute;
+        left: 0;
+        top: calc(100% + 6px);
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        transform: none;
+    }
+
+
+    .timeline-entries li::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .timeline-work::after,
+    .timeline-current::after {
+        left: -5px;
+        top: calc(100% - 5px);
+    }
+
+    .timeline-edu::after,
+    .timeline-cert::after {
+        left: -5px;
+        top: -5px;
     }
 
     .timeline-work,
@@ -509,47 +564,73 @@ footer nav a {
         grid-column: unset;
         text-align: unset;
         bottom: 48%;
+        height: calc(42% - 2px);
         left: var(--tl-left);
         width: var(--tl-width);
         justify-content: flex-end;
+        border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
     }
 
     .timeline-edu {
         grid-column: unset;
         text-align: unset;
         top: calc(52% + 2px);
+        height: calc(38% - 2px);
         left: var(--tl-left);
         width: var(--tl-width);
         border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
         justify-content: flex-start;
+        overflow: hidden;
     }
 
     .timeline-cert {
         grid-column: unset;
         text-align: unset;
         top: calc(52% + 2px);
+        height: 120px;
         left: var(--tl-left);
-        width: 60px;
+        width: 120px;
         border-radius: 0;
         justify-content: flex-start;
     }
 
     .timeline-entries span {
-        white-space: nowrap;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
     }
 
     .timeline-entries time {
-        white-space: nowrap;
+        white-space: normal;
+    }
+
+    .timeline-entries::after {
+        content: "";
+        position: absolute;
+        top: calc(52% - 8px);
+        left: 0;
+        width: 100%;
+        height: 16px;
+        background-image: repeating-linear-gradient(
+            to right,
+            transparent 0px,
+            transparent 199px,
+            var(--color-border) 199px,
+            var(--color-border) 200px
+        );
+        background-size: 200px 100%;
+        pointer-events: none;
     }
 }
 
 @media (min-width: 900px) and (prefers-reduced-motion: reduce) {
-    #timeline {
-        overflow: visible;
+    #timeline-details {
+        display: inline-block;
     }
 
-    #timeline details > summary {
-        display: inline-block;
+    .timeline-track {
+        display: none;
+        overflow: visible;
     }
 
     .timeline-entries {
@@ -570,6 +651,11 @@ footer nav a {
         top: 0;
     }
 
+    .timeline-entries li::before,
+    .timeline-entries li::after {
+        display: none;
+    }
+
     .timeline-entries li {
         position: static;
         bottom: auto;
@@ -582,16 +668,32 @@ footer nav a {
         margin-bottom: var(--space-md);
     }
 
+    .timeline-entries li::before {
+        display: block;
+    }
+
     .timeline-work,
     .timeline-current {
         grid-column: 1;
         text-align: right;
     }
 
+    .timeline-work::before {
+        left: auto;
+        right: calc(-1 * var(--space-lg));
+        width: var(--space-lg);
+    }
+
     .timeline-edu,
     .timeline-cert {
         grid-column: 2;
         text-align: left;
+    }
+
+    .timeline-edu::before,
+    .timeline-cert::before {
+        left: calc(-1 * var(--space-lg));
+        width: var(--space-lg);
     }
 }
 
@@ -767,6 +869,10 @@ footer nav a {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: var(--space-xl);
+    }
+
+    #contact {
+        margin-top: 0;
     }
 
     #contact > p {
