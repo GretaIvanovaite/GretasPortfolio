@@ -71,7 +71,7 @@ header nav button {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 3;
     pointer-events: none;
     overflow: hidden;
 }
@@ -590,8 +590,8 @@ footer nav a {
     }
 
     .yarn-path-container {
-        left: -12vw;
-        width: 100vw;
+        left: 0;
+        width: 100%;
         z-index: 4;
     }
 
