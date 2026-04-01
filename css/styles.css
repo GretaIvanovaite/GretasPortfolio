@@ -24,7 +24,7 @@
     --font-size-2xl: 2.125rem;
     --font-size-3xl: 2.625rem;
     --font-size-4xl: 3.375rem;
-    --line-height-base: 1.6;
+    --line-height-base: 1.4;
     --line-height-heading: 1.2;
     --font-weight-normal: 400;
     --font-weight-medium: 600;
@@ -162,7 +162,7 @@
 
 .accessibility-on header ul li,
 .accessibility-on header nav button {
-    font-size: 18px;
+    font-size: var(--font-size-sm);
     letter-spacing: normal;
     word-spacing: normal;
 }
@@ -272,7 +272,7 @@ header ul li,
 header nav button {
     letter-spacing: var(--smaller-letter-spacing);
     line-height: 0.9;
-    font-size: 18px;
+    font-size: var(--font-size-base);
 }
 
 .skip-link {
@@ -745,7 +745,112 @@ footer :focus-visible {outline-color: var(--color-cream);}
     border-color: var(--color-primary);
 }
 
+@media (min-width: 768px) {
+    .yarn-ball {opacity: 1;}
+    .yarn-path-container path {opacity: 0.65;}
+
+    .accessibility-on {
+        --font-size-sm: 1.25rem;
+        --font-size-base: 1.5rem;
+        --font-size-lg: 1.75rem;
+        --font-size-xl: 2.125rem;
+        --font-size-2xl: 2.75rem;
+        --font-size-3xl: 3.375rem;
+        --line-height-base: 2;
+    }
+
+    .accessibility-on h1 {font-size: var(--font-size-3xl);}
+    .accessibility-on h2 {font-size: var(--font-size-2xl);}
+    .accessibility-on h3 {font-size: var(--font-size-xl);}
+    .accessibility-on h4 {font-size: var(--font-size-lg);}
+
+    .accessibility-on header {overflow: visible;}
+
+    .accessibility-on header nav > a {font-size: var(--font-size-2xl);}
+
+    .accessibility-on header ul li,
+    .accessibility-on header nav button {
+        word-spacing: 0.1em;
+    }
+
+    header nav > button:hover,
+    header nav > button:focus-visible {
+        background-color: var(--color-primary);
+        color: var(--color-surface);
+        border-color: var(--color-primary);
+        outline: revert;
+    }
+
+    header ul li a:hover {
+        text-decoration: none;
+    }
+
+    header {
+        border-left: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    header ul li a {
+        display: block;
+        border-radius: var(--border-radius-md);
+        letter-spacing: normal;
+        font-size: var(--font-size-sm);
+        line-height: var(--line-height-base);
+        text-align: center;
+        transition: background-color var(--transition-fast),
+                    color var(--transition-fast);
+    }
+
+    header nav button {
+        border-radius: var(--border-radius-md);
+        letter-spacing: normal;
+        line-height: 1.2;
+        font-size: var(--font-size-sm);
+    }
+
+    header ul li a:hover {
+        background-color: var(--color-primary);
+        color: var(--color-surface);
+    }
+
+    nav > button:hover {
+        background-color: var(--color-primary);
+        color: var(--color-surface);
+        border-color: var(--color-primary);
+    }
+
+    nav > button {
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+    }
+
+    nav > button:hover {
+        background-color: var(--color-primary);
+        color: var(--color-surface);
+        border-color: var(--color-primary);
+    }
+}
+
+
 @media (min-width: 900px) {
+    h1 {
+        font-size: var(--font-size-4xl);
+    }
+
+    #skills > h3 {
+        font-size: var(--font-size-base);
+        color: var(--color-primary);
+        border-bottom: none;
+    }
+
+    main > section {
+        background-color: var(--color-surface);
+    }
+
+    #timeline {
+        background-color: transparent;
+    }
+
     .timeline-entries::before {
         background-color: var(--color-charcoal);
     }
@@ -924,108 +1029,3 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 .yarn-ball img {filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));}
 
-@media (min-width: 768px) {
-    .yarn-ball {opacity: 1;}
-    .yarn-path-container path {opacity: 0.65;}
-
-    .accessibility-on {
-        --font-size-sm: 1.25rem;
-        --font-size-base: 1.5rem;
-        --font-size-lg: 1.75rem;
-        --font-size-xl: 2.125rem;
-        --font-size-2xl: 2.75rem;
-        --font-size-3xl: 3.375rem;
-        --line-height-base: 2;
-    }
-
-    .accessibility-on h1 {font-size: var(--font-size-3xl);}
-    .accessibility-on h2 {font-size: var(--font-size-2xl);}
-    .accessibility-on h3 {font-size: var(--font-size-xl);}
-    .accessibility-on h4 {font-size: var(--font-size-lg);}
-
-    .accessibility-on header {overflow: visible;}
-
-    .accessibility-on header nav > a {font-size: var(--font-size-2xl);}
-
-    .accessibility-on header ul li,
-    .accessibility-on header nav button {
-        word-spacing: 0.1em;
-    }
-
-    header nav > button:hover,
-    header nav > button:focus-visible {
-        background-color: var(--color-primary);
-        color: var(--color-surface);
-        border-color: var(--color-primary);
-        outline: revert;
-    }
-
-    header ul li a:hover {
-        text-decoration: none;
-    }
-
-    header {
-        border-left: none;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    header ul li a {
-        display: block;
-        border-radius: var(--border-radius-md);
-        letter-spacing: normal;
-        line-height: var(--line-height-base);
-        text-align: center;
-        transition: background-color var(--transition-fast),
-                    color var(--transition-fast);
-    }
-
-    header nav button {
-        border-radius: var(--border-radius-md);
-        letter-spacing: normal;
-        line-height: var(--line-height-base);
-    }
-
-    header ul li a:hover {
-        background-color: var(--color-primary);
-        color: var(--color-surface);
-    }
-
-    nav > button:hover {
-        background-color: var(--color-primary);
-        color: var(--color-surface);
-        border-color: var(--color-primary);
-    }
-
-    nav > button {
-        border: 1px solid var(--color-primary);
-        color: var(--color-primary);
-    }
-
-    nav > button:hover {
-        background-color: var(--color-primary);
-        color: var(--color-surface);
-        border-color: var(--color-primary);
-    }
-}
-
-@media (min-width: 900px) {
-    h1 {
-        font-size: var(--font-size-4xl);
-    }
-
-    #skills > h3 {
-        font-size: var(--font-size-base);
-        color: var(--color-primary);
-        border-bottom: none;
-    }
-}
-
-@media (min-width: 900px) {
-    main > section {
-        background-color: var(--color-surface);
-    }
-
-    #timeline {
-        background-color: transparent;
-    }
-}
