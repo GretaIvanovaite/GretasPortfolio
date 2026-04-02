@@ -29,7 +29,7 @@
             <button
                 aria-pressed="false"
                 aria-label="Toggle dark mode"
-                onclick=darkMode()>
+                onclick="darkMode()">
                 Dark Mode
             </button>
 
@@ -42,7 +42,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
         <div id="yarn-announcer" class="sr-only" aria-live="polite"></div>
         <svg class="yarn-path-container yarn-path-mobile" aria-hidden="true">
             <path id="thread-path-mobile" fill="none" />
@@ -294,7 +294,7 @@
             </details>
 
             <details>
-                <summary>
+                <summary tabindex="-1">
                     <span>Warehouse Operative</span>
                     <span>Grange Packaging Solutions</span>
                     <span>Aug 2014–Mar 2015</span>
@@ -387,8 +387,8 @@
         <p>&copy; 2026 Greta Ivanovaite. Built with HTML and CSS.</p>
         <nav aria-label="Footer navigation">
             <a href="#hero">Back to top</a>
-            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's GitHub profile (opens in new tab)">GitHub</a>
+            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's LinkedIn profile (opens in new tab)">LinkedIn</a>
         </nav>
         <p><small><a href="https://www.vecteezy.com/free-png/yarn-ball" target="_blank" rel="noopener noreferrer">Yarn Ball PNGs by Vecteezy</a></small></p>
     </footer>

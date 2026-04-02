@@ -92,17 +92,27 @@ function accessibilityMode() {
             var emailField = document.getElementById('contact-email');
             var messageField = document.getElementById('contact-message');
 
+            nameField.removeAttribute('aria-invalid');
+            emailField.removeAttribute('aria-invalid');
+            messageField.removeAttribute('aria-invalid');
+
             var name = nameField.value.trim();
             var email = emailField.value.trim();
             var message = messageField.value.trim();
 
-            if (!name || !email || !message) {
-                showFormStatus(statusEl, 'error', 'Please fill in all fields before sending.');
+            var missing = [];
+            if (!name) { nameField.setAttribute('aria-invalid', 'true'); missing.push('name'); }
+            if (!email) { emailField.setAttribute('aria-invalid', 'true'); missing.push('email address'); }
+            if (!message) { messageField.setAttribute('aria-invalid', 'true'); missing.push('message'); }
+
+            if (missing.length > 0) {
+                showFormStatus(statusEl, 'error', 'Please fill in your ' + missing.join(', ') + '.');
                 return;
             }
 
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
+                emailField.setAttribute('aria-invalid', 'true');
                 showFormStatus(statusEl, 'error', 'Please enter a valid email address.');
                 return;
             }
