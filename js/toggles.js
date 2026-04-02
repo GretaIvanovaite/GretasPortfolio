@@ -60,6 +60,22 @@ function accessibilityMode() {
 
 (function() {
     window.addEventListener('DOMContentLoaded', function() {
+        var headerEl = document.querySelector('header');
+        var mainEl   = document.querySelector('main');
+        if (headerEl && mainEl && window.ResizeObserver) {
+            new ResizeObserver(function() {
+                if (window.innerWidth >= 768) {
+                    mainEl.style.paddingTop = headerEl.offsetHeight + 'px';
+                } else {
+                    mainEl.style.paddingTop = '';
+                }
+            }).observe(headerEl);
+        }
+    });
+})();
+
+(function() {
+    window.addEventListener('DOMContentLoaded', function() {
         var form = document.querySelector('#contact form');
         if (!form) return;
 

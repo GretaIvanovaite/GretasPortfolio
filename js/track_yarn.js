@@ -20,12 +20,13 @@
     }
 
     const SECTION_SIDES = [
-        { id: 'hero',       desktop: 'right', mobile: 'right' },
-        { id: 'about',      desktop: 'right', mobile: 'left'  },
-        { id: 'skills',     desktop: 'left',  mobile: 'right' },
-        { id: 'projects',   desktop: 'right', mobile: 'left'  },
-        { id: 'education',  desktop: 'left',  mobile: 'right' },
-        { id: 'work',       desktop: 'right', mobile: 'left'  },
+        { id: 'hero',       desktop: 'right', mobile: 'right', desktopSkip: false },
+        { id: 'about',      desktop: 'right', mobile: 'left',  desktopSkip: false },
+        { id: 'skills',     desktop: 'left',  mobile: 'right', desktopSkip: false },
+        { id: 'projects',   desktop: 'right', mobile: 'left',  desktopSkip: false },
+        { id: 'education',  desktop: 'left',  mobile: 'right', desktopSkip: false },
+        { id: 'work',       desktop: 'right', mobile: 'left',  desktopSkip: false },
+        { id: 'timeline',   desktop: 'right', mobile: 'right', desktopSkip: true  },
     ];
 
     let isAccessModeActive = false;
@@ -52,23 +53,40 @@
 
     function buildPath(desktopMode) {
         const mainW   = mainEl.offsetWidth;
-        const sideKey = desktopMode ? 'desktop' : 'mobile';
+        const navW    = headerEl ? headerEl.offsetWidth : 72;
+        const rCenter = desktopMode ? mainW * 0.92 : mainW - navW - ballOffset - 20;
+        const lCenter = desktopMode ? mainW * 0.08 : mainW * 0.15;
 
-        const rCenter = desktopMode ? mainW * 0.92 : mainW * 0.82;
-        const lCenter = desktopMode ? mainW * 0.08 : mainW * 0.18;
-        const pull    = (rCenter - lCenter) * (desktopMode ? 0.38 : 0.55);
+        if (!desktopMode) {
+            let d    = '';
+            let curX = rCenter;
+            for (const cfg of SECTION_SIDES) {
+                const el = document.getElementById(cfg.id);
+                if (!el) continue;
+                const sTop  = topInMain(el);
+                const sBot  = sTop + el.offsetHeight;
+                const nextX = curX === rCenter ? lCenter : rCenter;
+                const vPull = (sBot - sTop) * 0.4;
+                if (d === '') d = `M ${curX} ${sTop}`;
+                d += ` C ${curX} ${sTop + vPull},${nextX} ${sBot - vPull},${nextX} ${sBot}`;
+                curX = nextX;
+            }
+            return d;
+        }
 
-        let d     = '';
-        let prevX = -1;
-        let prevY = -1;
+        const pull    = (rCenter - lCenter) * 0.38;
+        let d         = '';
+        let prevX     = -1;
+        let prevY     = -1;
 
         for (const cfg of SECTION_SIDES) {
+            if (cfg.desktopSkip) continue;
             const el = document.getElementById(cfg.id);
             if (!el) continue;
 
             const sTop = topInMain(el);
             const sBot = sTop + el.offsetHeight;
-            const x    = cfg[sideKey] === 'right' ? rCenter : lCenter;
+            const x    = cfg.desktop === 'right' ? rCenter : lCenter;
 
             if (d === '') {
                 d = `M ${x} ${sTop} L ${x} ${sBot}`;
@@ -82,7 +100,7 @@
             prevY = sBot;
         }
 
-        if (desktopMode && timelineTrack) {
+        if (timelineTrack) {
             const trackTopInMain = topInMain(timelineTrack);
             const railY          = trackTopInMain + (window.innerHeight - headerH) * 0.52;
             d += ` C ${prevX} ${prevY + pull},${lCenter} ${railY - pull},${lCenter} ${railY}`;
@@ -108,9 +126,10 @@
             trackAbsTop = docY(timelineTrack);
         }
 
-        const workEl = document.getElementById('work');
-        if (workEl) {
-            pathScrollEnd = mainAbsTop + topInMain(workEl) + workEl.offsetHeight - window.innerHeight;
+        const lastSectionId = isDesktop ? 'work' : 'timeline';
+        const lastEl = document.getElementById(lastSectionId);
+        if (lastEl) {
+            pathScrollEnd = mainAbsTop + topInMain(lastEl) + lastEl.offsetHeight - window.innerHeight;
         }
     }
 

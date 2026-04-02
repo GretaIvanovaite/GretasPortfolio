@@ -134,7 +134,6 @@
 
 .accessibility-on .yarn-path-container path {
     stroke-width: 2px;
-    opacity: 0.7;
 }
 
 .accessibility-on .yarn-ball {filter: grayscale(100%);}
@@ -685,7 +684,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 .timeline-entries time {
-    font-size: 0.8rem;
+    font-size: 0.8em;
     color: var(--color-text-muted);
 }
 
@@ -797,6 +796,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
         font-size: var(--font-size-sm);
         line-height: var(--line-height-base);
         text-align: center;
+        white-space: nowrap;
         transition: background-color var(--transition-fast),
                     color var(--transition-fast);
     }
@@ -806,6 +806,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
         letter-spacing: normal;
         line-height: 1.2;
         font-size: var(--font-size-sm);
+        white-space: nowrap;
     }
 
     header ul li a:hover {
@@ -856,7 +857,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     }
 
     .timeline-entries li::before {
-        font-size: 0.75rem;
+        font-size: 0.75em;
         font-weight: var(--font-weight-normal);
         color: var(--color-text-muted);
         white-space: nowrap;
@@ -1021,7 +1022,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
-    opacity: 0.3;
+    opacity: 0.15;
     vector-effect: non-scaling-stroke;
 }
 
