@@ -701,9 +701,17 @@ footer :focus-visible {outline-color: var(--color-cream);}
     color: var(--color-charcoal);
 }
 
+.timeline-work span + span {
+    color: var(--color-charcoal);
+}
+
 .timeline-work time,
 .timeline-current time {
     color: var(--color-charcoal);
+}
+
+.dark-mode .timeline-work time {
+    color: var(--color-text);
 }
 
 .timeline-work::before {
@@ -977,6 +985,11 @@ footer :focus-visible {outline-color: var(--color-cream);}
     border-color: #b91c1c;
 }
 
+.dark-mode #contact input[aria-invalid="true"],
+.dark-mode #contact textarea[aria-invalid="true"] {
+    border-color: #fca5a5;
+}
+
 #contact textarea {
     resize: vertical;
 }
@@ -999,7 +1012,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     border-color: var(--color-primary);
 }
 
-#contact button[type="submit"]:focus-visible {outline-color: var(--color-surface);}
+#contact button[type="submit"]:focus-visible {outline-color: var(--color-charcoal);}
 
 #contact .form-status {
     font-size: var(--font-size-sm);
