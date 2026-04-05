@@ -239,6 +239,68 @@ footer nav a {
     object-fit: cover;
 }
 
+#projects article img + img {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    #projects article img + img {
+        display: block;
+    }
+
+    #projects article:has(img + img) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xs);
+        padding: var(--space-sm);
+    }
+
+    #projects article:has(img + img) h3,
+    #projects article:has(img + img) > p,
+    #projects article:has(img + img) ul,
+    #projects article:has(img + img) > a {
+        grid-column: 1 / -1;
+    }
+
+    #projects article:has(img + img) img {
+        aspect-ratio: auto;
+        object-fit: contain;
+        height: auto;
+        background-color: var(--color-surface);
+        border-radius: var(--border-radius-sm);
+    }
+
+    /* Default: side layout — main image left spanning full height (Gym App) */
+    #projects article:has(img + img + img) img:first-of-type {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        height: 100%;
+        align-self: stretch;
+    }
+
+    #projects article:has(img + img + img) img + img {
+        max-height: 200px;
+    }
+
+    /* Gym App: wider main column, taller small images to let portrait main fill the width */
+    #projects article[aria-labelledby="project-gym-heading"]:has(img + img + img) {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    #projects article[aria-labelledby="project-gym-heading"]:has(img + img + img) img + img {
+        max-height: 300px;
+    }
+
+    /* Stack layout — main image full width on top (Easter Card, Collections & Archives) */
+    #projects article[aria-labelledby="project-easter-heading"]:has(img + img + img) img:first-of-type,
+    #projects article[aria-labelledby="project-ca-heading"]:has(img + img + img) img:first-of-type {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        height: auto;
+        align-self: auto;
+    }
+}
+
 #projects article > p {
     padding: var(--space-xs) var(--space-md) 0;
     max-width: none;
