@@ -71,6 +71,16 @@ main > article > section h2 {
     border-bottom: 2px solid var(--color-border);
 }
 
+main > article > section h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+}
+
 main > article > section p {
     margin-bottom: var(--space-md);
     max-width: 75ch;
@@ -78,6 +88,93 @@ main > article > section p {
 
 main > article > section p:last-child {
     margin-bottom: 0;
+}
+
+main > article > section ul[role="list"],
+main > article > section ol[role="list"] {
+    padding-left: var(--space-xl);
+    margin-bottom: var(--space-md);
+}
+
+main > article > section ul[role="list"] li {
+    position: relative;
+    padding-left: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    max-width: 70ch;
+}
+
+main > article > section ul[role="list"] li::before {
+    content: "▸";
+    color: var(--color-primary);
+    position: absolute;
+    left: calc(-1 * var(--space-md));
+    font-size: 0.8em;
+    top: 0.25em;
+}
+
+main > article > section ol[role="list"] {
+    counter-reset: ol-counter;
+    list-style: none;
+}
+
+main > article > section ol[role="list"] li {
+    counter-increment: ol-counter;
+    position: relative;
+    padding-left: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    max-width: 70ch;
+}
+
+main > article > section ol[role="list"] li::before {
+    content: counter(ol-counter) ".";
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: calc(-1 * var(--space-xl));
+    width: var(--space-xl);
+    text-align: right;
+}
+
+main > article > section table {
+    display: block;
+    width: 100%;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-md);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+main > article > section th {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    font-weight: var(--font-weight-medium);
+}
+
+main > article > section td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+}
+
+main > article > section tbody tr:nth-child(even) td {
+    background-color: var(--color-bg);
+}
+
+main > article > section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+main > article code {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 0.1em 0.35em;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+    font-size: 0.85em;
 }
 
 figure {
@@ -186,6 +283,15 @@ main > article > footer a:last-child:hover {
     color: var(--color-text);
 }
 
+.dark-mode main > article code {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: var(--color-border);
+}
+
+.dark-mode main > article > section table {
+    border: 1px solid var(--color-border);
+}
+
 @media (min-width: 768px) {
     main > article {
         padding: var(--space-2xl) var(--space-2xl) var(--space-4xl);
@@ -204,6 +310,30 @@ main > article > footer a:last-child:hover {
 
 @media (min-width: 900px) {
     main > article {
+        max-width: 1100px;
         padding: var(--space-3xl) var(--space-2xl) var(--space-4xl);
+    }
+
+    main > article > section:has(figure) {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        column-gap: var(--space-2xl);
+        align-items: start;
+    }
+
+    main > article > section:has(figure) > h2 {
+        grid-column: 1 / -1;
+    }
+
+    main > article > section:has(figure) > :not(h2):not(figure) {
+        grid-column: 1;
+    }
+
+    main > article > section:has(figure) > figure {
+        grid-column: 2;
+        grid-row: 2 / span 20;
+        position: sticky;
+        top: calc(var(--space-xl) + 3.5rem);
+        margin: 0;
     }
 }
