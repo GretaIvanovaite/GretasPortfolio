@@ -80,15 +80,18 @@
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
                 <h3>Storage: IndexedDB over localStorage</h3>
-                <table>
-                    <thead>
-                        <tr><th>localStorage</th><th>IndexedDB</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Requires JSON serialise/deserialise on every read and write</td><td>Stores structured objects directly — no serialisation overhead</td></tr>
-                        <tr><td>Capped at ~5MB per origin</td><td>No practical size limit for personal workout volumes</td></tr>
-                    </tbody>
-                </table>
+                <dl>
+                    <div>
+                        <dt>Data storage</dt>
+                        <dd><strong>localStorage</strong> — Requires JSON serialise/deserialise on every read and write</dd>
+                        <dd><strong>IndexedDB</strong> — Stores structured objects directly, no serialisation overhead</dd>
+                    </div>
+                    <div>
+                        <dt>Size limit</dt>
+                        <dd><strong>localStorage</strong> — Capped at ~5MB per origin</dd>
+                        <dd><strong>IndexedDB</strong> — No practical size limit for personal workout volumes</dd>
+                    </div>
+                </dl>
                 <p>The database exposes a clean Promise-based API (<code>get</code>, <code>getAll</code>, <code>add</code>, <code>update</code>, <code>delete</code>) — the UI never touches IndexedDB directly.</p>
                 <h3>Input validation and sanitisation</h3>
                 <ul role="list">

@@ -83,19 +83,38 @@
                 <h3>Desktop-first (not mobile-first)</h3>
                 <p>Initial mockups were mobile-first, but the generous interface literature made it clear this was the wrong starting point. Generous interfaces depend on showing a large amount of visual content simultaneously — that is fundamentally harder on a small screen. The prototype targets 1280px and above as its primary experience.</p>
                 <h3>Browsing pathways — chosen via API analysis</h3>
-                <table>
-                    <thead>
-                        <tr><th>Pathway</th><th>Object count</th><th>Included</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Collections</td><td>309,000</td><td>Yes</td></tr>
-                        <tr><td>Categories</td><td>104,000</td><td>Yes</td></tr>
-                        <tr><td>Materials</td><td>106,000</td><td>Yes</td></tr>
-                        <tr><td>Origins</td><td>69,000</td><td>Yes</td></tr>
-                        <tr><td>Period / Date</td><td>—</td><td>No — date formatting inconsistent across objects</td></tr>
-                        <tr><td>Creator</td><td>—</td><td>No — high proportion of unknown makers</td></tr>
-                    </tbody>
-                </table>
+                <dl>
+                    <div>
+                        <dt>Collections</dt>
+                        <dd><span>Objects</span> 309,000</dd>
+                        <dd><span>Included</span> Yes</dd>
+                    </div>
+                    <div>
+                        <dt>Categories</dt>
+                        <dd><span>Objects</span> 104,000</dd>
+                        <dd><span>Included</span> Yes</dd>
+                    </div>
+                    <div>
+                        <dt>Materials</dt>
+                        <dd><span>Objects</span> 106,000</dd>
+                        <dd><span>Included</span> Yes</dd>
+                    </div>
+                    <div>
+                        <dt>Origins</dt>
+                        <dd><span>Objects</span> 69,000</dd>
+                        <dd><span>Included</span> Yes</dd>
+                    </div>
+                    <div>
+                        <dt>Period / Date</dt>
+                        <dd><span>Objects</span> —</dd>
+                        <dd><span>Included</span> No — date formatting inconsistent across objects</dd>
+                    </div>
+                    <div>
+                        <dt>Creator</dt>
+                        <dd><span>Objects</span> —</dd>
+                        <dd><span>Included</span> No — high proportion of unknown makers</dd>
+                    </div>
+                </dl>
                 <h3>Search deliberately removed</h3>
                 <p>Originally planned but descoped to keep the interface focused on visual discovery. A user who does not know the name of what they are looking for should still be able to find something interesting.</p>
             </section>
@@ -107,17 +126,28 @@
                     <li>Two-endpoint approach: lightweight list endpoint for browse grid (IDs and thumbnails only); full detail endpoint called only when a user opens an object page</li>
                     <li>Defensive field handling based on API availability analysis — fields with full coverage always shown; partial-coverage fields handled individually</li>
                 </ul>
-                <table>
-                    <thead>
-                        <tr><th>Field</th><th>Coverage</th><th>Handling</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Primary image, collection, object type, date, description</td><td>Full</td><td>Always displayed</td></tr>
-                        <tr><td>Artist / maker</td><td>3 of 6 sampled</td><td>"Maker unknown" fallback</td></tr>
-                        <tr><td>Place of origin</td><td>Partial</td><td>Shown when present, hidden when absent</td></tr>
-                        <tr><td>Historical context</td><td>1 of 6 sampled</td><td>Expandable section — not a fixed layout element</td></tr>
-                    </tbody>
-                </table>
+                <dl>
+                    <div>
+                        <dt>Primary image, collection, object type, date, description</dt>
+                        <dd><span>Coverage</span> Full</dd>
+                        <dd><span>Handling</span> Always displayed</dd>
+                    </div>
+                    <div>
+                        <dt>Artist / maker</dt>
+                        <dd><span>Coverage</span> 3 of 6 sampled</dd>
+                        <dd><span>Handling</span> "Maker unknown" fallback</dd>
+                    </div>
+                    <div>
+                        <dt>Place of origin</dt>
+                        <dd><span>Coverage</span> Partial</dd>
+                        <dd><span>Handling</span> Shown when present, hidden when absent</dd>
+                    </div>
+                    <div>
+                        <dt>Historical context</dt>
+                        <dd><span>Coverage</span> 1 of 6 sampled</dd>
+                        <dd><span>Handling</span> Expandable section — not a fixed layout element</dd>
+                    </div>
+                </dl>
                 <h3>AI assistant</h3>
                 <ul role="list">
                     <li>Model: Qwen2.5-7B-Instruct via Hugging Face Inference API</li>

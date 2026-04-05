@@ -1,3 +1,7 @@
+article[aria-labelledby="case-study-heading"] {
+    padding: 0 var(--space-md) var(--space-xl);
+}
+
 main > article {
     max-width: 800px;
     margin: 0 auto;
@@ -135,37 +139,49 @@ main > article > section ol[role="list"] li::before {
     text-align: right;
 }
 
-main > article > section table {
-    display: block;
-    width: 100%;
+main > article > section dl {
     font-size: var(--font-size-sm);
     margin-bottom: var(--space-md);
     border-radius: var(--border-radius-md);
     overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--color-border);
 }
 
-main > article > section th {
-    background-color: var(--color-primary);
-    color: var(--color-surface);
-    text-align: left;
-    padding: var(--space-sm) var(--space-md);
-    font-weight: var(--font-weight-medium);
-}
-
-main > article > section td {
+main > article > section dl > div {
     padding: var(--space-sm) var(--space-md);
     border-bottom: 1px solid var(--color-border);
-    vertical-align: top;
 }
 
-main > article > section tbody tr:nth-child(even) td {
+main > article > section dl > div:last-child {
+    border-bottom: none;
+}
+
+main > article > section dl > div:nth-child(odd) {
+    background-color: var(--color-surface);
+}
+
+main > article > section dl > div:nth-child(even) {
     background-color: var(--color-bg);
 }
 
-main > article > section tbody tr:last-child td {
-    border-bottom: none;
+main > article > section dl dt {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+}
+
+main > article > section dl dd {
+    margin-left: 0;
+}
+
+main > article > section dl dd + dd {
+    margin-top: var(--space-xs);
+}
+
+main > article > section dl dd > span {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    margin-right: var(--space-xs);
 }
 
 main > article code {
@@ -288,9 +304,6 @@ main > article > footer a:last-child:hover {
     border-color: var(--color-border);
 }
 
-.dark-mode main > article > section table {
-    border: 1px solid var(--color-border);
-}
 
 @media (min-width: 768px) {
     main > article {
@@ -305,6 +318,21 @@ main > article > footer a:last-child:hover {
 
     main > article > header ul {
         gap: var(--space-sm);
+    }
+
+    main > article > section dl > div {
+        display: grid;
+        grid-template-columns: 11rem 1fr;
+        column-gap: var(--space-lg);
+    }
+
+    main > article > section dl dt {
+        align-self: start;
+        margin-bottom: 0;
+    }
+
+    main > article > section dl dd {
+        grid-column: 2;
     }
 }
 
