@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case study: V&amp;A Museum Collections Explorer — a final year project browsing 2.2 million objects from the Victoria and Albert Museum API, with an AI-powered museum helper. Built by Greta Ivanovaite.">
-    <title>V&amp;A Museum Collections Explorer — Greta Ivanovaite</title>
+    <meta name="description" content="Case study: Collections &amp; Archives — an interactive browser for the V&amp;A Collections API with an AI-powered museum helper. Built by Greta Ivanovaite.">
+    <title>Collections &amp; Archives — Greta Ivanovaite</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/case-study.css">
@@ -44,8 +44,8 @@
         <article aria-labelledby="case-study-heading">
             <header>
                 <a href="../index.html">← Back to home</a>
-                <h1 id="case-study-heading">V&amp;A Museum Collections Explorer</h1>
-                <p>Final year project: an interactive browser for 2.2 million objects from the Victoria and Albert Museum Collections API, with an AI-powered museum helper chatbot. Deployed on Netlify.</p>
+                <h1 id="case-study-heading">Collections &amp; Archives</h1>
+                <p>Final year project: an interactive browser for 2.2 million objects from the V&amp;A Collections API, with an AI-powered museum helper chatbot. Deployed on Netlify.</p>
                 <ul role="list" aria-label="Technologies used">
                     <li>HTML5</li>
                     <li>CSS3</li>
@@ -58,7 +58,7 @@
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>The V&amp;A Museum Collections Explorer is my final year project for CIS3425 at Edge Hill University. It provides a way to explore over 2.2 million objects from the V&amp;A Collections API through category and material browsing, detailed object views and a conversational AI helper that answers questions about the museum and its collection.</p>
+                <p>Collections &amp; Archives is my final year project for CIS3425 at Edge Hill University. It provides a way to explore over 2.2 million objects from the Victoria and Albert Museum Collections API through category and material browsing, detailed object views and a conversational AI helper that answers questions about the museum and its collection. The project name reflects what it is — a personal interface for a public archive — without claiming an official connection with the V&amp;A.</p>
                 <p>A museum collection is a pattern on a vast scale: objects grouped by type, origin, material and era, each one a data point in a larger shape. Building an interface for that collection required the same discipline as reading a dense pattern: find the structure first, then follow it consistently.</p>
             </section>
 
@@ -71,24 +71,20 @@
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
                 <p>The application is structured around three main views: a category browser, a search results grid and a detailed object page. All views are rendered dynamically from API responses, with loading states and error handling for network failures and empty result sets.</p>
-                <p>The AI chatbot uses a large language model API to answer natural language questions. It has access to the currently displayed object data and general museum knowledge, allowing it to discuss provenance, materials and historical context without storing any data server-side. The deployed version runs on Netlify with a serverless function handling the API key securely.</p>
+                <p>The AI chatbot uses a large language model API to answer natural language questions. It has access to the currently displayed object data and general museum knowledge, allowing it to discuss provenance, materials and historical context without storing any data server-side. The deployed version runs on Netlify with a serverless function handling the API key securely — the key is never exposed to the client.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — V&amp;A Collections Explorer category browsing view">
-                        Category Browser — screenshot coming soon
-                    </div>
-                    <figcaption>The category browsing view with material filters</figcaption>
+                    <img src="../images/CA_desktop_homepage_browse.png" alt="Collections &amp; Archives category browsing view with material filters">
+                    <figcaption>The category browsing view with material and origin filters</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="process-heading">
                 <h2 id="process-heading">Development Process</h2>
-                <p>The first challenge was the API response format. V&amp;A object records are deeply nested and inconsistently structured: some objects have images, some do not; some have materials listed, some have related objects, some have neither. The data layer needed defensive handling throughout rather than assuming field presence.</p>
+                <p>The first challenge was the API response format. V&amp;A object records are deeply nested and inconsistently structured: some objects have images, some do not; some have materials listed, some have related objects, some have neither. The data layer needed defensive handling throughout — every field access checks for presence before use rather than assuming the expected shape.</p>
                 <p>The AI integration required careful prompt design to keep responses useful and scoped. Without constraining the prompt, the model would answer any question regardless of relevance. The final prompt structure scopes responses to museum and collection topics, surfaces the current object's metadata as context and maintains a conversational history limited to the last four exchanges to stay within token limits.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — V&amp;A Collections Explorer object detail view with AI chatbot">
-                        Object Detail with AI Helper — screenshot coming soon
-                    </div>
-                    <figcaption>Object detail view with the AI museum helper panel open</figcaption>
+                    <img src="../images/CA_desktop_browse_property(with_menu_dropdown).png" alt="Collections &amp; Archives object detail view with navigation menu open">
+                    <figcaption>Object detail view with the navigation menu open</figcaption>
                 </figure>
             </section>
 

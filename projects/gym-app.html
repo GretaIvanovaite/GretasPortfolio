@@ -19,6 +19,7 @@
                 <li><a href="../index.html">← Home</a></li>
                 <li><a href="#overview-heading">Overview</a></li>
                 <li><a href="#problem-heading">Problem</a></li>
+                <li><a href="#design-heading">Design</a></li>
                 <li><a href="#solution-heading">Solution</a></li>
                 <li><a href="#process-heading">Process</a></li>
                 <li><a href="#outcome-heading">Outcome</a></li>
@@ -57,8 +58,8 @@
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>The Gym Workout Planner lets users create, manage and track exercises across six categories, with all data stored persistently in the browser using IndexedDB. Accessibility was the primary design constraint from the start, not an afterthought. The interface works fully with keyboard navigation, uses ARIA live regions for dynamic feedback and passes WCAG 2.1 AA colour contrast requirements throughout.</p>
-                <p>If a crochet pattern needs to be written down to be repeatable, a workout plan needs the same thing. This project is the digital equivalent of writing your sets into a notebook, except the notebook never gets lost and it tells you when something goes wrong.</p>
+                <p>The Gym Workout Planner lets users create, manage and track exercises across six categories, with all data stored persistently in the browser using IndexedDB. Accessibility was the primary design constraint from the start, not an afterthought. The interface works fully with keyboard navigation, uses ARIA live regions for dynamic feedback and meets WCAG 2.1 AA colour contrast requirements throughout.</p>
+                <p>If a crochet pattern needs to be written down to be repeatable, a workout plan needs the same thing. This project is the digital equivalent of writing your sets into a notebook — except the notebook never gets lost and it tells you when something goes wrong.</p>
             </section>
 
             <section aria-labelledby="problem-heading">
@@ -66,34 +67,47 @@
                 <p>Most gym tracking apps require a subscription, an account or a native install. For users who want a simple, private, offline-capable tool, the browser is the right answer. The specific challenge was building something that persists data meaningfully without a server, while remaining fully accessible to users relying on assistive technology.</p>
             </section>
 
+            <section aria-labelledby="design-heading">
+                <h2 id="design-heading">Design</h2>
+                <p>Accessibility shaped the design before any visual decisions were made. The brief required WCAG 2.1 AA compliance at minimum; I targeted AAA contrast (7:1) across all text. This meant ruling out interaction patterns that are straightforward with a mouse but awkward with a keyboard: no drag-and-drop reordering, no hover-only controls, no custom dropdown components that would require reimplementing native <code>&lt;select&gt;</code> behaviour from scratch. If an interaction cannot be performed with only a keyboard, it was replaced with one that can.</p>
+                <p>The data model was sketched before the interface. Exercises and routines are separate entities: an exercise record stores a name, category, sets, reps and an optional weight, while a routine is an ordered list of exercise IDs. This separation means a single exercise can appear in multiple routines without duplicating its data. Defining the schema up front forced the UI to reflect the real data structure rather than growing ad hoc in ways that would be hard to refactor.</p>
+                <p>Colour choices were driven by contrast headroom rather than aesthetics first. The teal primary sits comfortably above 7:1 against both white and the off-white surface backgrounds, leaving room to use it on interactive elements without additional overrides. Typography uses <code>em</code> units throughout so that the easy read mode base font-size increase scales the entire interface without breaking any fixed-pixel measurements.</p>
+            </section>
+
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
-                <p>IndexedDB was chosen over localStorage because it handles structured data and larger datasets without the size limits of a string-based key-value store. The database schema separates exercises from routines, allowing users to build reusable exercise libraries and compose them into workout plans.</p>
-                <p>Accessibility was implemented systematically. Skip links navigate past the category filter. ARIA live regions announce exercise additions, deletions and errors without interrupting the current focus position. Form fields have explicit labels and required attributes enforced with visible error messages, not just browser-native tooltips which assistive technologies handle inconsistently.</p>
+                <p>IndexedDB was chosen over localStorage for two concrete reasons. First, it stores structured JavaScript objects directly without requiring the entire dataset to be JSON-serialised and deserialised on every read or write. Second, it has no practical size limit for the volumes a personal workout planner would generate, whereas localStorage is capped at around 5MB per origin. Exercises and routines live in separate object stores, each with a unique auto-generated key. The database layer exposes a clean API of <code>get</code>, <code>getAll</code>, <code>add</code>, <code>update</code> and <code>delete</code> functions returning Promises, so the UI never interacts with IndexedDB directly.</p>
+                <p>All user input is sanitised before any write to the database. Text fields are processed with <code>String.trim()</code> to remove accidental leading and trailing whitespace. Numeric fields — sets, reps and weight — are validated with <code>Number.isFinite()</code> and confirmed to be positive before being accepted. Entries that fail validation are rejected with an inline error message; they are never silently coerced to a default value. This keeps stored data clean and means the application never has to handle corrupted entries at read time.</p>
+                <p>Form validation uses standard HTML attributes alongside JavaScript. Each field has an explicit <code>&lt;label for=""&gt;</code> association, a <code>required</code> attribute and an <code>aria-describedby</code> pointing to a dedicated error <code>&lt;span&gt;</code>. On failed submission, <code>aria-invalid="true"</code> is set on each failing field and its error span becomes visible. This pattern works across all assistive technologies, not just screen readers, because it uses the same mechanisms that native browser validation uses.</p>
+                <p>A <code>role="status"</code> live region sits at the bottom of the DOM and is updated whenever an exercise is added, edited or deleted. Announcements like "Bench Press added to Chest exercises" or "Squat deleted" are read by screen readers without moving focus, so the user stays in their current position while still receiving confirmation that the action completed.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Gym Workout Planner main exercise list view">
-                        Exercise List — screenshot coming soon
-                    </div>
-                    <figcaption>The main exercise management view across six categories</figcaption>
+                    <img src="../images/GymApp_mob.png" alt="Gym Workout Planner on mobile showing the exercise list across categories">
+                    <figcaption>The main exercise management view on mobile — six categories with full keyboard and screen reader support</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="process-heading">
                 <h2 id="process-heading">Development Process</h2>
-                <p>The project started with the data layer. Writing the IndexedDB wrapper first, before any UI, forced clean separation between the storage logic and the interface. The UI was built against a stable API of get, add, update and delete functions rather than directly interacting with the database throughout.</p>
-                <p>Keyboard navigation was tested manually at each stage rather than added at the end. Focus management, particularly after adding or deleting an exercise, required explicit work: programmatically moving focus to the newly created item, or to the preceding item after a deletion, so the user always has a logical next point.</p>
+                <p>The project was built in three phases. Phase one was the data layer: writing and testing the IndexedDB wrapper in complete isolation, with no UI attached. This approach mirrors building the foundation of a pattern swatch before starting the main piece — it made the storage logic independently testable and gave the interface a stable API to build against rather than coupling UI components directly to database calls.</p>
+                <p>Phase two was the exercise management interface, with keyboard navigation tested at every milestone rather than added at the end. After each new component was built, Tab order was verified manually. Focus management required explicit work throughout: after adding an exercise, focus moves programmatically to the new list item via <code>.focus()</code>; after deleting one, focus moves to the preceding item, or to the add button if the list is now empty. Without this, a screen reader user would lose their position on every action and have to re-navigate from the top of the list.</p>
+                <p>The specific WCAG success criteria targeted were:</p>
+                <ul role="list">
+                    <li><strong>1.3.1 Info and Relationships</strong> — all form fields use explicit <code>&lt;label for=""&gt;</code> associations; the exercise list uses semantic <code>&lt;ul&gt;</code> with <code>role="list"</code>; heading levels reflect content hierarchy</li>
+                    <li><strong>2.1.1 Keyboard</strong> — every action available by mouse is available by keyboard; no keyboard traps at any point in the interface</li>
+                    <li><strong>4.1.3 Status Messages</strong> — the <code>role="status"</code> live region announces add, edit and delete confirmations without requiring focus movement</li>
+                    <li><strong>1.4.6 Contrast Enhanced</strong> — all text elements verified at 7:1 or above against their background colours</li>
+                </ul>
+                <p>Testing used three methods in combination: axe DevTools for automated scanning to catch structural issues, missing labels and contrast failures; manual keyboard testing covering Tab, Shift+Tab, Enter and Escape through all flows; and NVDA with Chrome for screen reader testing to confirm that live region announcements were delivered correctly and that focus management felt natural rather than disorienting.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Gym Workout Planner add exercise form with validation">
-                        Add Exercise Form — screenshot coming soon
-                    </div>
-                    <figcaption>Exercise creation form with inline validation feedback</figcaption>
+                    <img src="../images/GymApp_add_exer_mob.png" alt="Add exercise form on mobile showing field labels, required indicators and inline validation error messages">
+                    <figcaption>The add exercise form on mobile — each field has an explicit label and inline error feedback linked via aria-describedby</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>The finished application handles all six exercise categories with full CRUD operations, persists data across sessions and passes keyboard and screen reader testing. The accessibility groundwork added significant development time upfront but removed a much larger retrofit effort later.</p>
-                <p>The main thing I would change is the IndexedDB abstraction layer. It works, but it grew incrementally rather than being designed up front, and there is repeated logic that a proper class-based wrapper would eliminate. That is a refactor I would do before extending the application further.</p>
+                <p>The finished application handles all six exercise categories with full CRUD operations, persists data across sessions and passes keyboard and screen reader testing. The accessibility groundwork added significant development time in the early phases but removed what would have been a much larger retrofit effort later, and produced an application that works reliably with assistive technology rather than merely tolerating it.</p>
+                <p>The main thing I would change is the IndexedDB abstraction layer. It works, but it grew function by function rather than being designed as a class up front. There is repeated error-handling logic across the <code>get</code>, <code>add</code> and <code>update</code> paths that a class-based wrapper with a shared error handler would consolidate. That refactor would also make adding new object stores straightforward, whereas extending the current implementation requires repeating the same boilerplate in each new function.</p>
             </section>
 
             <footer>

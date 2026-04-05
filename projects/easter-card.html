@@ -19,6 +19,7 @@
                 <li><a href="../index.html">← Home</a></li>
                 <li><a href="#overview-heading">Overview</a></li>
                 <li><a href="#problem-heading">Problem</a></li>
+                <li><a href="#design-heading">Design</a></li>
                 <li><a href="#solution-heading">Solution</a></li>
                 <li><a href="#process-heading">Process</a></li>
                 <li><a href="#outcome-heading">Outcome</a></li>
@@ -45,7 +46,7 @@
             <header>
                 <a href="../index.html">← Back to home</a>
                 <h1 id="case-study-heading">Animated Easter Card Creator</h1>
-                <p>A multi-step web application for creating and sending personalised animated Easter cards in bulk.</p>
+                <p>A multi-step web application for creating and sending personalised animated Easter cards in bulk, built as a single HTML file with no external dependencies.</p>
                 <ul role="list" aria-label="Technologies used">
                     <li>HTML5</li>
                     <li>CSS3</li>
@@ -57,42 +58,53 @@
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>The Easter Card Creator is a browser-based tool that lets users build, personalise and send animated Easter cards to multiple recipients in a single workflow. The project began as an exploration of CSS animation combined with a practical sending mechanism, and grew into a multi-step application with file upload, live preview and bulk dispatch via email.</p>
-                <p>Like following a crochet pattern, the application guides users through a fixed sequence of steps: choose a design, upload a recipient list, preview the result and send. Each step builds on the last, and skipping one would unravel the whole thing.</p>
+                <p>The Easter Card Creator is a browser-based tool that lets users build, personalise and send animated Easter cards to multiple recipients in a single workflow. The application guides users through three stages: choose a card design, upload a recipient list, then preview and dispatch personalised emails. All processing is client-side; no data leaves the browser and no server is required.</p>
+                <p>Like following a crochet pattern, the application enforces a fixed sequence of steps. Each stage validates before unlocking the next, and skipping one would unravel the whole thing.</p>
             </section>
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
-                <p>Sending personalised seasonal cards at scale is time-consuming. Most tools require a paid subscription, a design account or are locked to specific platforms. The goal was to build a self-contained, browser-only solution that any user could run locally without accounts or services.</p>
+                <p>Sending personalised seasonal cards at scale is time-consuming. Most tools require a paid subscription, a design account or a specific platform. The brief called for a self-contained, browser-only solution that any user could run locally without accounts, installs or a network connection.</p>
+                <p>The secondary constraint was technical: the entire application had to be delivered as a single HTML file. No separate stylesheets, no external scripts, no build process. This ruled out component libraries and forced every architectural decision to be deliberate.</p>
+            </section>
+
+            <section aria-labelledby="design-heading">
+                <h2 id="design-heading">Design</h2>
+                <p>Before writing any code, I sketched the user journey as a three-step linear wizard. The key design decision was enforcing a strict sequence: you cannot preview a card without having selected a design, and you cannot send without having uploaded a valid recipient list. This prevents invalid application state rather than handling it after the fact. A reset button returns to step one at any point.</p>
+                <p>The animation concept was planned on paper before any CSS was written. The brief called for a hatching egg sequence, so I mapped out the keyframe beats: a crack appears in the shell (0–30% of the timeline), the shell splits apart (30–55%), a chick emerges (55–75%), and the chick loops a small bounce to show it is alive (75–100%). Having this progression written down meant the CSS keyframes mapped directly to intentional beats rather than being adjusted by trial and error once rendering had started.</p>
+                <p>Visual design used a spring palette — yellows, soft greens — to match the Easter context. Typography used the system sans-serif stack to avoid external font loads, which would break the single-file constraint. The step progress indicator was built using a CSS counter on an ordered list, so completed and upcoming steps are visually distinct without JavaScript class toggling.</p>
+                <p>File format support was a design decision. The brief required CSV as a minimum. JSON was added as a second format because it costs almost nothing — the same FileReader call, a different parse path — and covers users who export data from a database or API rather than a spreadsheet.</p>
             </section>
 
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
-                <p>A three-stage wizard: design selection, recipient upload and preview, then send. Recipients are loaded from a CSV or JSON file. The application reads each row, injects the recipient name into the card template and generates a personalised mailto link for dispatch. Animations are pure CSS with JavaScript controlling timing and sequencing.</p>
+                <p>The application renders all three wizard stages as sections within a single page. JavaScript shows the active stage and hides the others. Moving forward requires passing validation for the current step; moving back is always permitted without re-validating.</p>
+                <p>File upload uses the FileReader API to read CSV or JSON files entirely client-side. The parser handles two common issues from spreadsheet exports: UTF-8 BOM characters at the start of the file are stripped before parsing begins, and empty rows are filtered out so they do not generate blank recipient entries.</p>
+                <p>All user-supplied data is sanitised before use. Recipient names are processed with <code>String.trim()</code> to remove leading and trailing whitespace, then passed through <code>encodeURIComponent()</code> before being injected into mailto URLs. Without encoding, a name containing an ampersand, equals sign or hash character would produce a malformed mailto link that the email client would either reject or misparse. The email addresses themselves are validated against a basic regex before the send step is unlocked.</p>
+                <p>Each recipient generates one personalised mailto link composed as <code>mailto:address?subject=...&amp;body=...</code>, where the message body includes the recipient's name from the uploaded file. Dispatch is sequential: the send button iterates through the recipient list and opens each link in turn, triggering the user's default email client. A known limitation is that most browsers and email clients cap the number of sequential mailto opens before requiring explicit user confirmation; this approach is practical up to roughly 20 recipients before the browser starts blocking the additional tabs.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Easter Card Creator step one: design selection">
-                        Design Selection — screenshot coming soon
-                    </div>
-                    <figcaption>Step one: choosing a card design</figcaption>
+                    <img src="../images/EasterCard_preview.png" alt="Easter Card Creator showing the animated card preview with the hatching egg and chick animation">
+                    <figcaption>The animated card preview — a CSS keyframe sequence showing the hatching egg and bouncing chick</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="process-heading">
                 <h2 id="process-heading">Development Process</h2>
-                <p>The animation layer was built first as a standalone proof of concept, using CSS keyframes for the hatching egg sequence and a bouncing chick. Once the animation was stable, the multi-step form logic was layered on top: step tracking, validation between stages and a reset mechanism.</p>
-                <p>The file parsing component uses the FileReader API to read CSV and JSON uploads client-side, avoiding any server requirement. Error handling covers missing columns, empty files and malformed data.</p>
+                <p>The animation layer was built first as a standalone proof of concept, isolated from any wizard logic. This approach mirrors how a new stitch technique gets worked in a test swatch before it goes into the main pattern. Once the keyframe sequence was stable and the timing felt right, the multi-step form logic was layered on top without disturbing the animation CSS.</p>
+                <p>Wizard step transitions required explicit focus management. When the user advances to a new step, JavaScript sets <code>tabindex="-1"</code> on the incoming step's heading and calls <code>.focus()</code> on it. This moves keyboard and screen reader focus to the start of the new content so the user does not have to Tab through the entire document to reach it. Without this, a screen reader would announce nothing had changed when the step transition occurred.</p>
+                <p>ARIA error handling was applied to the file upload input. If the uploaded file has no recognisable name column, is structurally invalid or is entirely empty, <code>aria-invalid="true"</code> is set on the file input and a descriptive error message — linked to the input via <code>aria-describedby</code> — becomes visible. The error text names the specific problem: missing column header, empty file or unrecognised format. Vague error messages such as "invalid file" were rejected during development because they give the user no actionable path to fix the problem.</p>
+                <p>The single-file constraint was managed by dividing the <code>&lt;script&gt;</code> block into clearly labelled sections: animation control, wizard step management, file parsing and mailto dispatch. Each section is self-contained with its own variables and functions. The structure that works across multiple files still works inside a single file; it just requires more discipline around naming and scope.</p>
                 <figure>
-                    <div class="placeholder-img" role="img" aria-label="Screenshot placeholder — Easter Card Creator recipient upload step">
-                        Recipient Upload — screenshot coming soon
-                    </div>
-                    <figcaption>Step two: uploading a recipient list</figcaption>
+                    <img src="../images/EasterCard_input.png" alt="Easter Card Creator recipient upload step showing the file input field and parsed recipient list">
+                    <figcaption>Step two: uploading a recipient list — the parser handles CSV and JSON with live validation feedback</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>The finished application handles the full workflow in a single HTML file with no dependencies. The main learning was around CSS animation sequencing: keyframe timing is not forgiving, and a single percentage off in a multi-stage animation reads as a bug. That is the dropped stitch problem in a different medium.</p>
-                <p>If rebuilt, the animation layer would be driven by JavaScript timing rather than CSS alone, giving finer control over sequencing and making it easier to sync with user interactions.</p>
+                <p>The finished application handles the complete workflow in a single HTML file with no external dependencies. It supports both CSV and JSON recipient formats, validates and sanitises all data before use, and dispatches personalised mailto links for each recipient in sequence.</p>
+                <p>The main technical learning was around the limits of CSS animation sequencing. CSS <code>@keyframes</code> animations run on the browser's compositor thread and cannot be paused, stepped back or made conditional on user interaction mid-sequence without removing and re-adding the animated element to the DOM. When a user selects a different card design after previewing one, the animation resets by cloning and replacing the container element. A JavaScript timer approach using <code>setTimeout</code> and <code>clearTimeout</code> would allow finer control: pausing at a specific frame on user interaction, delaying the loop until the user is ready, or synchronising the animation start to a button click with sub-frame precision. That would be the first refactor.</p>
+                <p>The mailto dispatch mechanism works within its constraints but has a real ceiling. If rebuilt for production use, I would replace it with a proper email API such as EmailJS, removing the volume limit and allowing the card animation to be embedded or attached rather than requiring the recipient to open a browser version.</p>
             </section>
 
             <footer>

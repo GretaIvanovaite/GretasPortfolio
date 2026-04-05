@@ -84,6 +84,13 @@ figure {
     margin: var(--space-xl) 0;
 }
 
+figure img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    display: block;
+}
+
 .placeholder-img {
     background-color: var(--color-surface);
     border: 2px dashed var(--color-border);
