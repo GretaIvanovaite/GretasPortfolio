@@ -10,7 +10,7 @@
     const mainEl         = document.querySelector('main');
     const headerEl       = document.querySelector('header');
     const timelineTrack  = document.querySelector('.timeline-track');
-    const accessBtn      = document.querySelector('button[aria-label="Toggle easy read mode"]');
+    const accessBtn      = document.getElementById('btn-easy-read');
 
     if (!yarnBall || !mobileSVGPath || !desktopSVGPath || !mainEl) return;
 
@@ -29,7 +29,7 @@
         { id: 'timeline',   desktop: 'right', mobile: 'right', desktopSkip: true  },
     ];
 
-    let isAccessModeActive = false;
+    let isAccessModeActive = document.documentElement.classList.contains('accessibility-on');
     let ballOffset         = 50;
     let headerH            = 0;
     let mainAbsTop         = 0;
@@ -188,15 +188,10 @@
     updateBall();
 
     window.addEventListener('scroll', updateBall, { passive: true });
-    window.addEventListener('resize', () => {
-        cacheMetrics();
-        updateBall();
-    });
 
     if (accessBtn) {
         accessBtn.addEventListener('click', () => {
             isAccessModeActive = !isAccessModeActive;
-            accessBtn.setAttribute('aria-pressed', String(isAccessModeActive));
             if (isAccessModeActive) {
                 yarnBall.style.display = 'none';
                 if (yarnAnnouncer) yarnAnnouncer.textContent = 'Motion animations paused.';

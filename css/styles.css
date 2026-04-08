@@ -66,6 +66,7 @@
     --color-border: #2d3d3d;
     --color-rose: #c88a8a;
     --color-beige: #343d33;
+    --color-sage: #2a3d2a;
 }
 
 .dark-mode .yarn-path-container path {
@@ -150,10 +151,6 @@
 .accessibility-on h3 {font-size: 1.625rem;}
 .accessibility-on h4 {font-size: 1.25rem;}
 
-.accessibility-on header {
-    overflow: hidden;
-}
-
 .accessibility-on header nav > a {
     font-size: 2.125rem;
 }
@@ -203,7 +200,7 @@ input, button, textarea, select {
     font: inherit;
 }
 
-ul[role='list'], ol[role='list'] {
+ol[role='list'] {
     list-style: none;
 }
 
@@ -418,7 +415,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #skills > ul li::before {
-    content: "▸  ";
+    content: "▸  " / "";
     color: var(--color-primary);
     font-size: 0.85em;
 }
@@ -532,12 +529,12 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #education details summary::before {
-    content: "▸  ";
+    content: "▸  " / "";
     font-size: 0.75em;
 }
 
 #education details[open] summary::before {
-    content: "▾  ";
+    content: "▾  " / "";
 }
 
 #education details summary:hover {
@@ -549,7 +546,8 @@ footer :focus-visible {outline-color: var(--color-cream);}
     color: var(--color-text-muted);
 }
 
-#work > details {
+#work > details,
+#work > .work-static {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-lg);
@@ -566,7 +564,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #work > details > summary::before {
-    content: "+";
+    content: "+" / "";
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
@@ -574,38 +572,28 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #work > details[open] > summary::before {
-    content: "−";
+    content: "−" / "";
 }
 
-#work > details > summary span:first-of-type {
+#work > details > summary span:first-of-type,
+#work > .work-static span:first-of-type {
     font-weight: var(--font-weight-bold);
 }
 
-#work > details > summary span:nth-of-type(2) {
+#work > details > summary span:nth-of-type(2),
+#work > .work-static span:nth-of-type(2) {
     color: var(--color-primary);
     font-size: var(--font-size-sm);
 }
 
-#work > details > summary span:last-of-type {
+#work > details > summary span:last-of-type,
+#work > .work-static span:last-of-type {
     color: var(--color-text-muted);
     font-size: var(--font-size-sm);
 }
 
 #work > details > summary + * {
     border-top: 1px solid var(--color-border);
-}
-
-#work > details:has(> summary:only-child) > summary {
-    cursor: default;
-    pointer-events: none;
-}
-
-#work > details:has(> summary:only-child) > summary:hover {
-    background-color: transparent;
-}
-
-#work > details:has(> summary:only-child) > summary::before {
-    display: none;
 }
 
 #work > details > p {
@@ -658,11 +646,11 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #timeline details > summary::before {
-    content: "+ ";
+    content: "+ " / "";
 }
 
 #timeline details[open] > summary::before {
-    content: "− ";
+    content: "− " / "";
 }
 
 .timeline-entries::before {
@@ -754,7 +742,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 .dark-mode .timeline-current span {
-    color: var(--color-charcoal);
+    color: var(--color-text);
 }
 
 .dark-mode .timeline-edu {
@@ -783,6 +771,11 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
     .accessibility-on header {overflow: visible;}
 
+    #projects article:has(img + img) img {
+        background-color: var(--color-surface);
+        border-radius: var(--border-radius-sm);
+    }
+
     .accessibility-on header nav > a {font-size: var(--font-size-2xl);}
 
     .accessibility-on header ul li,
@@ -798,17 +791,12 @@ footer :focus-visible {outline-color: var(--color-cream);}
         outline: revert;
     }
 
-    header ul li a:hover {
-        text-decoration: none;
-    }
-
     header {
         border-left: none;
         border-bottom: 1px solid var(--color-border);
     }
 
     header ul li a {
-        display: block;
         border-radius: var(--border-radius-md);
         letter-spacing: normal;
         font-size: var(--font-size-sm);
@@ -830,12 +818,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     header ul li a:hover {
         background-color: var(--color-primary);
         color: var(--color-surface);
-    }
-
-    nav > button:hover {
-        background-color: var(--color-primary);
-        color: var(--color-surface);
-        border-color: var(--color-primary);
+        text-decoration: none;
     }
 
     nav > button {
@@ -851,7 +834,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 
-@media (min-width: 900px) {
+@media (min-width: 1100px) {
     h1 {
         font-size: var(--font-size-4xl);
     }
@@ -910,6 +893,22 @@ footer :focus-visible {outline-color: var(--color-cream);}
         border-top: none;
         border-right: none;
         border-bottom: none;
+        border-radius: 0;
+    }
+
+    .timeline-entries li::after {
+        border-radius: 50%;
+    }
+
+    .timeline-entries::after {
+        background-image: repeating-linear-gradient(
+            to right,
+            transparent 0px,
+            transparent 199px,
+            var(--color-border) 199px,
+            var(--color-border) 200px
+        );
+        background-size: 200px 100%;
     }
 
     .timeline-cert span {
@@ -922,7 +921,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
     }
 }
 
-@media (min-width: 900px) and (prefers-reduced-motion: reduce) {
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
     .timeline-entries::before {
         background-color: var(--color-border);
     }

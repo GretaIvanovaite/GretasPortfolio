@@ -1,34 +1,22 @@
 function darkMode() {
     const html = document.documentElement;
     const isNowDark = html.classList.toggle('dark-mode');
-    const btn = document.querySelector('button[onclick="darkMode()"]');
+    localStorage.setItem('theme', isNowDark ? 'dark' : 'light');
+    const btn = document.getElementById('btn-dark-mode');
     if (btn) {
-        if (isNowDark) {
-            btn.textContent = 'Light Mode';
-            btn.setAttribute('aria-pressed', 'true');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            btn.textContent = 'Dark Mode';
-            btn.setAttribute('aria-pressed', 'false');
-            localStorage.setItem('theme', 'light');
-        }
+        btn.textContent = isNowDark ? 'Light Mode' : 'Dark Mode';
+        btn.setAttribute('aria-pressed', String(isNowDark));
     }
 }
 
 function accessibilityMode() {
     const html = document.documentElement;
     const isNowOn = html.classList.toggle('accessibility-on');
-    const btn = document.querySelector('button[onclick="accessibilityMode()"]');
+    const btn = document.getElementById('btn-easy-read');
     if (btn) {
-        if (isNowOn) {
-            btn.textContent = 'Standard View';
-            btn.setAttribute('aria-pressed', 'true');
-            localStorage.setItem('accessibility', 'on');
-        } else {
-            btn.textContent = 'Easy Read';
-            btn.setAttribute('aria-pressed', 'false');
-            localStorage.setItem('accessibility', 'off');
-        }
+        btn.textContent = isNowOn ? 'Standard View' : 'Easy Read';
+        btn.setAttribute('aria-pressed', String(isNowOn));
+        localStorage.setItem('accessibility', isNowOn ? 'on' : 'off');
     }
 }
 
@@ -37,7 +25,7 @@ function accessibilityMode() {
     if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark-mode');
         window.addEventListener('DOMContentLoaded', function() {
-            const btn = document.querySelector('button[onclick="darkMode()"]');
+            const btn = document.getElementById('btn-dark-mode');
             if (btn) {
                 btn.textContent = 'Light Mode';
                 btn.setAttribute('aria-pressed', 'true');
@@ -49,7 +37,7 @@ function accessibilityMode() {
     if (savedA11y === 'on') {
         document.documentElement.classList.add('accessibility-on');
         window.addEventListener('DOMContentLoaded', function() {
-            const btn = document.querySelector('button[onclick="accessibilityMode()"]');
+            const btn = document.getElementById('btn-easy-read');
             if (btn) {
                 btn.textContent = 'Standard View';
                 btn.setAttribute('aria-pressed', 'true');
