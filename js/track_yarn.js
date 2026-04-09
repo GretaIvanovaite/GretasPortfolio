@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    const TIMELINE_WIDTH = 2900;
+    const TIMELINE_WIDTH = 4350;
 
     const yarnBall       = document.getElementById('yarn-ball');
     const yarnAnnouncer  = document.getElementById('yarn-announcer');
@@ -110,7 +110,7 @@
     }
 
     function cacheMetrics() {
-        isDesktop  = window.innerWidth >= 900;
+        isDesktop  = window.innerWidth >= 1100;
         headerH    = headerEl ? headerEl.offsetHeight : 0;
         ballOffset = yarnBall.offsetWidth / 2 || 50;
         mainAbsTop = docY(mainEl);

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case study: Collections &amp; Archives — a generous interface for the V&amp;A Collections API with an AI-powered museum helper. Final year project by Greta Ivanovaite.">
-    <title>Collections &amp; Archives — Greta Ivanovaite</title>
+    <meta name="description" content="Case study: Collections &amp; Archives, a generous interface for the V&amp;A Collections API with an AI-powered museum helper. Final year project by Greta Ivanovaite.">
+    <title>Collections &amp; Archives, Greta Ivanovaite</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/case-study.css">
@@ -14,7 +14,7 @@
     <a class="skip-link" href="#main">Skip to main content</a>
     <header>
         <nav aria-label="Main navigation">
-            <a href="../index.html" aria-label="Greta Ivanovaite — back to portfolio">GI</a>
+            <a href="../index.html" aria-label="Greta Ivanovaite, back to portfolio">GI</a>
             <ul role="list">
                 <li><a href="../index.html">← Home</a></li>
                 <li><a href="#overview-heading">Overview</a></li>
@@ -61,15 +61,15 @@
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>Final year project for CIS3425 at Edge Hill University, supervised by David Walsh. Investigates how generous interface design combined with AI features influences user engagement and casual exploration in digital museum collections — evaluated through comparative user testing against the existing V&amp;A website.</p>
-                <p>A generous interface shows a large amount of content immediately, supporting open browsing and serendipitous discovery. The term comes from academic research on digital cultural heritage — it describes the opposite of a blank search box.</p>
+                <p>Final year project for CIS3425 at Edge Hill University, supervised by David Walsh. Investigates how generous interface design combined with AI features influences user engagement and casual exploration in digital museum collections, evaluated through comparative user testing against the existing V&amp;A website.</p>
+                <p>A generous interface shows a large amount of content immediately, supporting open browsing and serendipitous discovery. The term comes from academic research on digital cultural heritage, describing the opposite of a blank search box.</p>
             </section>
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
                 <ul role="list">
                     <li>The V&amp;A Collections API exposes 2.2 million objects with rich metadata, but the official website leads with a search box</li>
-                    <li>Search requires users to already know what they want — academic research shows casual visitors prefer browsing over searching (Morse et al., 2021; Speakman et al., 2018)</li>
+                    <li>Search requires users to already know what they want, academic research shows casual visitors prefer browsing over searching (Morse et al., 2021; Speakman et al., 2018)</li>
                     <li>A small user study confirmed this: participants reported feeling uncertain where to start without a specific object in mind</li>
                 </ul>
             </section>
@@ -78,13 +78,13 @@
                 <h2 id="design-heading">Design</h2>
                 <h3>Research-led process</h3>
                 <ul role="list">
-                    <li>Literature review of 15+ academic sources — museum engagement, browsing behaviour, generous interface principles</li>
+                    <li>Literature review of 15+ academic sources covering museum engagement, browsing behaviour and generous interface principles</li>
                     <li>10 functional requirements, 7 non-functional requirements, 9 user stories derived from research and user study</li>
                     <li>High-fidelity Figma designs for all main views before any code was written</li>
                 </ul>
                 <h3>Desktop-first (not mobile-first)</h3>
-                <p>Initial mockups were mobile-first, but the generous interface literature made it clear this was the wrong starting point. Generous interfaces depend on showing a large amount of visual content simultaneously — that is fundamentally harder on a small screen. The prototype targets 1280px and above as its primary experience.</p>
-                <h3>Browsing pathways — chosen via API analysis</h3>
+                <p>Initial mockups were mobile-first, but the generous interface literature made it clear this was the wrong starting point. Generous interfaces depend on showing a large amount of visual content simultaneously, which is fundamentally harder on a small screen. The prototype targets 1280px and above as its primary experience.</p>
+                <h3>Browsing pathways, chosen via API analysis</h3>
                 <dl>
                     <div>
                         <dt>Collections</dt>
@@ -108,13 +108,13 @@
                     </div>
                     <div>
                         <dt>Period / Date</dt>
-                        <dd><span>Objects</span> —</dd>
-                        <dd><span>Included</span> No — date formatting inconsistent across objects</dd>
+                        <dd><span>Objects</span> varies</dd>
+                        <dd><span>Included</span> No, date formatting inconsistent across objects</dd>
                     </div>
                     <div>
                         <dt>Creator</dt>
-                        <dd><span>Objects</span> —</dd>
-                        <dd><span>Included</span> No — high proportion of unknown makers</dd>
+                        <dd><span>Objects</span> varies</dd>
+                        <dd><span>Included</span> No, high proportion of unknown makers</dd>
                     </div>
                 </dl>
                 <h3>Search deliberately removed</h3>
@@ -126,7 +126,7 @@
                 <h3>API strategy</h3>
                 <ul role="list">
                     <li>Two-endpoint approach: lightweight list endpoint for browse grid (IDs and thumbnails only); full detail endpoint called only when a user opens an object page</li>
-                    <li>Defensive field handling based on API availability analysis — fields with full coverage always shown; partial-coverage fields handled individually</li>
+                    <li>Defensive field handling based on API availability analysis, fields with full coverage always shown and partial-coverage fields handled individually</li>
                 </ul>
                 <dl>
                     <div>
@@ -147,41 +147,41 @@
                     <div>
                         <dt>Historical context</dt>
                         <dd><span>Coverage</span> 1 of 6 sampled</dd>
-                        <dd><span>Handling</span> Expandable section — not a fixed layout element</dd>
+                        <dd><span>Handling</span> Expandable section, not a fixed layout element</dd>
                     </div>
                 </dl>
                 <h3>AI assistant</h3>
                 <ul role="list">
                     <li>Model: Qwen2.5-7B-Instruct via Hugging Face Inference API</li>
-                    <li>Open-source model chosen deliberately — no per-token cost at portfolio usage levels; sufficient capability for scoped museum Q&amp;A without a frontier model</li>
-                    <li>Netlify serverless function proxies the Hugging Face API call — API key never exposed to the client</li>
+                    <li>Open-source model chosen deliberately, no per-token cost at portfolio usage levels; sufficient capability for scoped museum Q&amp;A without a frontier model</li>
+                    <li>Netlify serverless function proxies the Hugging Face API call, API key never exposed to the client</li>
                     <li>Has access to the current object's metadata; conversation history limited to last four exchanges to stay within token limits while preserving follow-up context</li>
-                    <li>Labelled as AI throughout — users are never uncertain whether they are talking to a person or a model</li>
+                    <li>Labelled as AI throughout, users are never uncertain whether they are talking to a person or a model</li>
                 </ul>
                 <figure>
                     <img src="../images/CA_desktop_homepage_browse.png" alt="Collections &amp; Archives browse page showing the four browsing pathways: Collections, Categories, Materials and Origins">
-                    <figcaption>The browse landing page — four pathways into the collection, each selected based on API data coverage</figcaption>
+                    <figcaption>The browse landing page, four pathways into the collection each selected based on API data coverage.</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="process-heading">
                 <h2 id="process-heading">Development Process</h2>
                 <ul role="list">
-                    <li><strong>Design before code</strong> — high-fidelity Figma for all pages (homepage, browse landing, browse pages, object detail, AI chat) before implementation began; development had clear targets rather than evolving structure</li>
-                    <li><strong>API field analysis during design</strong> — sampled real objects and recorded which fields were populated; made defensive handling targeted rather than guesswork, and prevented significant rework during development</li>
-                    <li><strong>AI prompt design</strong> — system prompt scopes responses to museum and cultural heritage topics; explicitly instructs the model to say when it does not have enough information rather than speculating</li>
-                    <li><strong>Comparative user testing</strong> — 10+ participants planned; same exploration tasks on Collections &amp; Archives and the V&amp;A website; quantitative interaction data plus qualitative interview feedback</li>
+                    <li><strong>Design before code</strong>: high-fidelity Figma for all pages (homepage, browse landing, browse pages, object detail, AI chat) before implementation began; development had clear targets rather than evolving structure</li>
+                    <li><strong>API field analysis during design</strong>: sampled real objects and recorded which fields were populated; made defensive handling targeted rather than guesswork, and prevented significant rework during development</li>
+                    <li><strong>AI prompt design</strong>: system prompt scopes responses to museum and cultural heritage topics; explicitly instructs the model to say when it does not have enough information rather than speculating</li>
+                    <li><strong>Comparative user testing</strong>: 10+ participants planned; same exploration tasks on Collections &amp; Archives and the V&amp;A website; quantitative interaction data plus qualitative interview feedback</li>
                 </ul>
                 <figure>
                     <img src="../images/CA_desktop_details(with_chatbot).png" alt="Collections &amp; Archives object detail page with the AI chatbot panel open, showing a conversation about a Gaganendranath Tagore postcard from 1920 to 1925">
-                    <figcaption>The AI assistant in use — contextual Q&amp;A scoped to the currently displayed object's metadata</figcaption>
+                    <figcaption>The AI assistant in use, contextual Q&amp;A scoped to the currently displayed object's metadata.</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>Live at <a href="https://collectionsarchives.netlify.app/" target="_blank" rel="noopener noreferrer">collectionsarchives.netlify.app</a> — browsing, object detail viewing and AI conversation without a user account or local setup.</p>
-                <p>The research-led process (literature review → user study → requirements → Figma → build) produced a more considered interface than building to instinct would have, and the API analysis during design prevented rework during implementation.</p>
+                <p>Live at <a href="https://collectionsarchives.netlify.app/" target="_blank" rel="noopener noreferrer">collectionsarchives.netlify.app</a>, browsing, object detail viewing and AI conversation without a user account or local setup.</p>
+                <p>The research-led process (literature review, user study, requirements, Figma, build) produced a more considered interface than building to instinct would have, and the API analysis during design prevented rework during implementation.</p>
                 <p>The main thing I would revisit is the pagination strategy. The current batch-loading approach disrupts scroll position when navigating between batches and leaves keyboard users without a clear focus target. An infinite scroll or "load more" pattern with focus moving to the first newly loaded item would better serve the generous interface goal of frictionless exploration.</p>
                 <p><a href="https://github.com/GretaIvanovaite/V-A_Museum_Collections_API_build" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
             </section>

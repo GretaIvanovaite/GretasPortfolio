@@ -415,7 +415,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #skills > ul li::before {
-    content: "▸  " / "";
+    content: "•  " / "";
     color: var(--color-primary);
     font-size: 0.85em;
 }
@@ -435,6 +435,10 @@ footer :focus-visible {outline-color: var(--color-cream);}
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-lg);
+}
+
+#projects article figure {
+    background-color: var(--color-bg);
 }
 
 #projects article > p {
@@ -529,12 +533,12 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #education details summary::before {
-    content: "▸  " / "";
+    content: "+  " / "";
     font-size: 0.75em;
 }
 
 #education details[open] summary::before {
-    content: "▾  " / "";
+    content: "-  " / "";
 }
 
 #education details summary:hover {
@@ -571,6 +575,14 @@ footer :focus-visible {outline-color: var(--color-cream);}
     line-height: 1;
 }
 
+#work > .work-static::before {
+    content: "+";
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    visibility: hidden;
+    line-height: 1;
+}
+
 #work > details[open] > summary::before {
     content: "−" / "";
 }
@@ -593,6 +605,10 @@ footer :focus-visible {outline-color: var(--color-cream);}
 }
 
 #work > details > summary + * {
+    border-top: 1px solid var(--color-border);
+}
+
+#work > details > ul {
     border-top: 1px solid var(--color-border);
 }
 
@@ -771,8 +787,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
     .accessibility-on header {overflow: visible;}
 
-    #projects article:has(img + img) img {
-        background-color: var(--color-surface);
+    #projects article figure:has(img + img) img {
         border-radius: var(--border-radius-sm);
     }
 
@@ -904,11 +919,11 @@ footer :focus-visible {outline-color: var(--color-cream);}
         background-image: repeating-linear-gradient(
             to right,
             transparent 0px,
-            transparent 199px,
-            var(--color-border) 199px,
-            var(--color-border) 200px
+            transparent 299px,
+            var(--color-border) 299px,
+            var(--color-border) 300px
         );
-        background-size: 200px 100%;
+        background-size: 300px 100%;
     }
 
     .timeline-cert span {
@@ -918,6 +933,20 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
     .dark-mode .timeline-entries::before {
         background-color: var(--color-text-muted);
+    }
+
+    .accessibility-on .timeline-entries {
+        top: 56px !important;
+    }
+
+    .accessibility-on .timeline-cert {
+        height: auto;
+        justify-content: flex-start;
+    }
+
+    .accessibility-on .timeline-work,
+    .accessibility-on .timeline-current {
+        justify-content: flex-start;
     }
 }
 

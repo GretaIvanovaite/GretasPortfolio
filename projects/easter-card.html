@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case study: Animated Easter Card Creator — a multi-step web application for personalised animated card sending. Built by Greta Ivanovaite.">
-    <title>Animated Easter Card Creator — Greta Ivanovaite</title>
+    <meta name="description" content="Case study: Animated Easter Card Creator, a multi-step web application for personalised animated card sending. Built by Greta Ivanovaite.">
+    <title>Animated Easter Card Creator, Greta Ivanovaite</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/case-study.css">
@@ -14,7 +14,7 @@
     <a class="skip-link" href="#main">Skip to main content</a>
     <header>
         <nav aria-label="Main navigation">
-            <a href="../index.html" aria-label="Greta Ivanovaite — back to portfolio">GI</a>
+            <a href="../index.html" aria-label="Greta Ivanovaite, back to portfolio">GI</a>
             <ul role="list">
                 <li><a href="../index.html">← Home</a></li>
                 <li><a href="#overview-heading">Overview</a></li>
@@ -67,8 +67,8 @@
                 <h2 id="problem-heading">The Problem</h2>
                 <ul role="list">
                     <li>Personalised seasonal card tools require paid subscriptions, design accounts or specific platforms</li>
-                    <li>Brief requirement: self-contained, browser-only — no accounts, no installs, no network connection needed</li>
-                    <li>Hard technical constraint: the entire creator had to be a single HTML file — no separate stylesheets, no external scripts</li>
+                    <li>Brief requirement: self-contained, browser-only, no accounts, no installs, no network connection needed</li>
+                    <li>Hard technical constraint: the entire creator had to be a single HTML file, no separate stylesheets, no external scripts</li>
                 </ul>
             </section>
 
@@ -76,12 +76,12 @@
                 <h2 id="design-heading">Design</h2>
                 <h3>Two-file architecture</h3>
                 <ul role="list">
-                    <li><strong>index.html</strong> — the creator tool the company uses</li>
-                    <li><strong>card.html</strong> — the recipient-facing card, receives URL parameters</li>
+                    <li><strong>index.html</strong>: the creator tool the company uses</li>
+                    <li><strong>card.html</strong>: the recipient-facing card, receives URL parameters</li>
                 </ul>
                 <p>Keeping them separate meant the animation could be built and polished independently from the sending logic, and kept the recipient file clean and fast to load.</p>
                 <h3>Creator flow</h3>
-                <p>Strict forward-only sequence until preview — prevents invalid state rather than handling it reactively.</p>
+                <p>Strict forward-only sequence until preview, which prevents invalid state rather than handling it reactively.</p>
                 <ol role="list">
                     <li>Landing page</li>
                     <li>Company details input (name, website URL, CSV/JSON upload)</li>
@@ -90,20 +90,20 @@
                     <li>Sending</li>
                 </ol>
                 <h3>Animation sequence</h3>
-                <p>Planned on paper before any CSS was written — each beat mapped to a keyframe percentage before touching code.</p>
+                <p>Planned on paper before any CSS was written, each beat mapped to a keyframe percentage before touching code.</p>
                 <ol role="list">
                     <li>Egg rolls in from a distance toward the viewer</li>
                     <li>Egg cracks apart with a burst of confetti</li>
                     <li>Easter bunny climbs out</li>
-                    <li>Bunny retrieves items from inside the broken egg — basket, flowers, smaller eggs</li>
+                    <li>Bunny retrieves items from inside the broken egg: basket, flowers, smaller eggs</li>
                     <li>Bunny pulls out a scroll; scroll unravels and zooms toward the viewer showing the personalised message and optional company link</li>
                 </ol>
                 <h3>Other design decisions</h3>
                 <ul role="list">
-                    <li>Spring palette (yellows, soft greens, warm pinks) — matches the Easter context</li>
-                    <li>System sans-serif font stack — external fonts would violate the single-file constraint on card.html</li>
-                    <li>Step progress indicator via CSS counter on an ordered list — no JavaScript class toggling needed</li>
-                    <li>JSON support added alongside CSV — same FileReader call, different parse path; covers CRM exports as well as spreadsheets</li>
+                    <li>Spring palette (yellows, soft greens, warm pinks), matching the Easter context</li>
+                    <li>System sans-serif font stack, as external fonts would violate the single-file constraint on card.html</li>
+                    <li>Step progress indicator via CSS counter on an ordered list, no JavaScript class toggling needed</li>
+                    <li>JSON support added alongside CSV, same FileReader call, different parse path; covers CRM exports as well as spreadsheets</li>
                 </ul>
             </section>
 
@@ -111,55 +111,55 @@
                 <h2 id="solution-heading">The Solution</h2>
                 <h3>File parsing (input step)</h3>
                 <ul role="list">
-                    <li>FileReader API reads the file entirely client-side — data never leaves the browser</li>
-                    <li>UTF-8 BOM characters stripped before parsing — prevents Excel-exported files from producing a corrupt first column header</li>
-                    <li>Empty rows filtered out — prevents blank recipient entries</li>
+                    <li>FileReader API reads the file entirely client-side, data never leaves the browser</li>
+                    <li>UTF-8 BOM characters stripped before parsing, prevents Excel-exported files from producing a corrupt first column header</li>
+                    <li>Empty rows filtered out, prevents blank recipient entries</li>
                 </ul>
                 <h3>Customisation (selections step)</h3>
                 <ul role="list">
-                    <li>Email column: company chooses which column contains addresses; application validates the column actually contains valid email format — prevents silent misconfiguration producing undeliverable emails</li>
+                    <li>Email column: company chooses which column contains addresses; application validates the column actually contains valid email format, preventing silent misconfiguration that would produce undeliverable emails</li>
                     <li>Name column: optional; enables the card to address each recipient individually</li>
-                    <li>Phrase: chosen from preset templates with <code>{company}</code> and <code>{name}</code> placeholders — substituted at send time per recipient</li>
+                    <li>Phrase: chosen from preset templates with <code>{company}</code> and <code>{name}</code> placeholders, substituted at send time per recipient</li>
                 </ul>
                 <h3>Data sanitisation before dispatch</h3>
                 <ul role="list">
-                    <li><code>String.trim()</code> on names and phrase values — removes whitespace</li>
-                    <li><code>encodeURIComponent()</code> on all URL parameters — without encoding, a name containing <code>&amp;</code>, <code>=</code> or <code>#</code> would corrupt the URL structure and pass the wrong value to card.html</li>
+                    <li><code>String.trim()</code> on names and phrase values, removing whitespace</li>
+                    <li><code>encodeURIComponent()</code> on all URL parameters; without encoding, a name containing <code>&amp;</code>, <code>=</code> or <code>#</code> would corrupt the URL structure and pass the wrong value to card.html</li>
                 </ul>
                 <h3>Per-recipient personalisation</h3>
-                <p>Each recipient gets one mailto link. The email body contains a link to card.html with their name, the substituted phrase and the company's details as URL parameters. card.html reads those parameters on load and injects them into the animation — no server, no database.</p>
+                <p>Each recipient gets one mailto link. The email body contains a link to card.html with their name, the substituted phrase and the company's details as URL parameters. card.html reads those parameters on load and injects them into the animation, no server, no database.</p>
                 <figure>
                     <img src="../images/EasterCard_sending.png" alt="Easter Card Creator sending step showing a progress indicator reading Sending, 1 out of total, with completed recipient emails listed below">
-                    <figcaption>The sending step — each recipient's mailto opens in sequence; completed addresses are listed as they dispatch</figcaption>
+                    <figcaption>The sending step, each recipient's mailto opens in sequence and completed addresses are listed as they dispatch.</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="process-heading">
                 <h2 id="process-heading">Development Process</h2>
                 <ul role="list">
-                    <li><strong>Animation built first</strong> — standalone proof of concept on card.html, isolated from creator logic; once the full sequence was stable and timing felt right, the creator was built on top</li>
-                    <li><strong>Scroll reveal timing</strong> — most complex challenge: the text must be readable before the zoom keyframe begins; small changes to earlier phases shifted every percentage that followed. Solution: treat each beat as a fixed anchor point and calculate percentages backward from the end</li>
-                    <li><strong>Wizard focus management</strong> — on each step advance, JavaScript sets <code>tabindex="-1"</code> on the incoming step's heading and calls <code>.focus()</code>; without this, screen reader users advance through the form with no indication the page has changed</li>
-                    <li><strong>ARIA error handling</strong> — <code>aria-invalid="true"</code> + <code>aria-describedby</code> on the file upload input; if the file has no recognisable columns, is structurally invalid or is empty, a descriptive error message names the specific problem</li>
-                    <li><strong>Single-file organisation</strong> — script block divided into clearly labelled sections: step navigation, file parsing, URL parameter construction, mailto dispatch</li>
+                    <li><strong>Animation built first</strong>: standalone proof of concept on card.html, isolated from creator logic; once the full sequence was stable and timing felt right, the creator was built on top</li>
+                    <li><strong>Scroll reveal timing</strong>: most complex challenge, the text must be readable before the zoom keyframe begins; small changes to earlier phases shifted every percentage that followed. Solution: treat each beat as a fixed anchor point and calculate percentages backward from the end</li>
+                    <li><strong>Wizard focus management</strong>: on each step advance, JavaScript sets <code>tabindex="-1"</code> on the incoming step's heading and calls <code>.focus()</code>; without this, screen reader users advance through the form with no indication the page has changed</li>
+                    <li><strong>ARIA error handling</strong>: <code>aria-invalid="true"</code> + <code>aria-describedby</code> on the file upload input; if the file has no recognisable columns, is structurally invalid or is empty, a descriptive error message names the specific problem</li>
+                    <li><strong>Single-file organisation</strong>: script block divided into clearly labelled sections: step navigation, file parsing, URL parameter construction, mailto dispatch</li>
                 </ul>
                 <figure>
                     <img src="../images/EasterCard_selection_dropdown2.png" alt="Easter Card Creator selections step showing the phrase template dropdown with placeholder options including company name and recipient name substitutions">
-                    <figcaption>The phrase selector — templates with {company} and {name} placeholders substituted per recipient at send time</figcaption>
+                    <figcaption>The phrase selector, templates with {company} and {name} placeholders substituted per recipient at send time.</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>Complete workflow across two files with no external dependencies — company details, customisation, preview and bulk dispatch on the creator side; personalised animated sequence on the card side.</p>
+                <p>Complete workflow across two files with no external dependencies, company details, customisation, preview and bulk dispatch on the creator side, personalised animated sequence on the card side.</p>
                 <p>Two things I would revisit:</p>
                 <ul role="list">
-                    <li><strong>Animation control</strong> — CSS <code>@keyframes</code> run on the compositor thread and cannot be paused or reset mid-sequence without cloning and replacing the animated element. A <code>setTimeout</code>/<code>clearTimeout</code> approach would give finer control: pausing at a specific beat, scrubbing, or synchronising the zoom to a user click</li>
-                    <li><strong>Dispatch scale</strong> — most browsers cap sequential mailto opens before requiring explicit user permission, making the tool practical for roughly 20 recipients. Replacing mailto with an email API such as EmailJS would remove that ceiling and allow a formatted HTML email rather than plain text</li>
+                    <li><strong>Animation control</strong>: CSS <code>@keyframes</code> run on the compositor thread and cannot be paused or reset mid-sequence without cloning and replacing the animated element. A <code>setTimeout</code>/<code>clearTimeout</code> approach would give finer control: pausing at a specific beat, scrubbing, or synchronising the zoom to a user click</li>
+                    <li><strong>Dispatch scale</strong>: most browsers cap sequential mailto opens before requiring explicit user permission, making the tool practical for roughly 20 recipients. Replacing mailto with an email API such as EmailJS would remove that ceiling and allow a formatted HTML email rather than plain text</li>
                 </ul>
                 <figure>
                     <img src="../images/EasterCard_preview.png" alt="Easter Card Creator preview step showing the animated card with the Easter bunny sequence and personalised scroll message">
-                    <figcaption>The finished card — full animated sequence with the company's personalised message revealed on the scroll</figcaption>
+                    <figcaption>The finished card, full animated sequence with the company's personalised message revealed on the scroll.</figcaption>
                 </figure>
                 <p><a href="https://github.com/GretaIvanovaite/AnimatedEasterCard" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
             </section>

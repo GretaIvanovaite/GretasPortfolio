@@ -111,7 +111,7 @@ main > article > section ul[role="list"] li {
 }
 
 main > article > section ul[role="list"] li::before {
-    content: "▸" / "";
+    content: "•" / "";
     color: var(--color-primary);
     position: absolute;
     left: calc(-1 * var(--space-md));

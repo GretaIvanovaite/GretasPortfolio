@@ -1,6 +1,6 @@
 (function () {
-    var DESKTOP_BP = 900;
-    var TIMELINE_WIDTH = 2900;
+    var DESKTOP_BP = 1100;
+    var TIMELINE_WIDTH = 4350;
 
     var section, track, entries;
     var active = false;
