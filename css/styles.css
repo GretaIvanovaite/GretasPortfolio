@@ -677,9 +677,17 @@ footer :focus-visible {outline-color: var(--color-cream);}
     font-size: var(--font-size-sm);
 }
 
-.timeline-year {
+.timeline-entries li.timeline-year {
     color: var(--color-text-muted);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+}
+
+.timeline-entries li.timeline-year::after {
+    background-color: var(--color-border);
+    opacity: 0.4;
+    z-index: -1;
+    border-radius: 0;
 }
 
 .timeline-entries li::before {
@@ -1020,17 +1028,20 @@ footer :focus-visible {outline-color: var(--color-cream);}
     .timeline-work {
         border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
         border: none;
-        border-left: 3px solid rgba(0, 0, 0, 0.18);
+        border-right: 3px solid rgba(0, 0, 0, 0.18);
+        border-left: 3px solid var(--color-primary);
     }
 
     .timeline-current {
+        border-right: 3px solid var(--color-primary);
         border-left: 3px solid var(--color-primary);
     }
 
     .timeline-edu {
         border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
         border: none;
-        border-top: 2px solid var(--color-primary);
+        border-top: none;
+        border-right: 3px solid var(--color-primary);
         border-left: 3px solid var(--color-primary);
         background-color: rgba(29, 94, 95, 0.08);
     }
@@ -1045,17 +1056,6 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
     .timeline-entries li::after {
         border-radius: 50%;
-    }
-
-    .timeline-entries::after {
-        background-image: repeating-linear-gradient(
-            to right,
-            transparent 0px,
-            transparent 299px,
-            var(--color-border) 299px,
-            var(--color-border) 300px
-        );
-        background-size: 300px 100%;
     }
 
     .timeline-cert span {

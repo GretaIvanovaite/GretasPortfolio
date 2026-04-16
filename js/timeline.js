@@ -1,6 +1,6 @@
 (function () {
-    var DESKTOP_BP = 1100;
-    var TIMELINE_WIDTH = 6100;
+    var desktopBreakpoint = 1100;
+    var timelineWidth = 6600;
 
     var section, track, entries;
     var active = false;
@@ -10,7 +10,7 @@
     }
 
     function isDesktop() {
-        return window.innerWidth >= DESKTOP_BP;
+        return window.innerWidth >= desktopBreakpoint;
     }
 
     function setup() {
@@ -25,7 +25,7 @@
         if (active) return;
         active = true;
 
-        track.style.height = (TIMELINE_WIDTH + window.innerHeight) + 'px';
+        track.style.height = (timelineWidth + window.innerHeight) + 'px';
         entries.style.position = 'sticky';
         entries.style.top = '0';
         entries.style.transform = 'translateX(0)';
@@ -61,7 +61,7 @@
         if (scrolled > scrollRange) scrolled = scrollRange;
 
         var progress = scrolled / scrollRange;
-        var maxTranslate = TIMELINE_WIDTH - window.innerWidth;
+        var maxTranslate = timelineWidth - window.innerWidth;
         if (maxTranslate < 0) maxTranslate = 0;
 
         entries.style.transform = 'translateX(' + -(progress * maxTranslate) + 'px)';
@@ -70,7 +70,7 @@
     function onResize() {
         if (isDesktop() && !prefersReducedMotion()) {
             if (active) {
-                track.style.height = (TIMELINE_WIDTH + window.innerHeight) + 'px';
+                track.style.height = (timelineWidth + window.innerHeight) + 'px';
                 onScroll();
             } else {
                 enable();
