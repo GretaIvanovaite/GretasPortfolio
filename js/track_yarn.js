@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    const TIMELINE_WIDTH = 4350;
+    const TIMELINE_WIDTH = 6100;
 
     const yarnBall       = document.getElementById('yarn-ball');
     const yarnAnnouncer  = document.getElementById('yarn-announcer');
@@ -54,8 +54,11 @@
     function buildPath(desktopMode) {
         const mainW   = mainEl.offsetWidth;
         const navW    = headerEl ? headerEl.offsetWidth : 72;
-        const rCenter = desktopMode ? mainW * 0.92 : mainW - navW - ballOffset - 20;
-        const lCenter = desktopMode ? mainW * 0.08 : mainW * 0.15;
+        const isTablet = !desktopMode && window.innerWidth >= 768;
+        const rCenter  = desktopMode ? mainW * 0.92 :
+                         isTablet    ? mainW * 0.85 :
+                                       mainW - navW - ballOffset - 20;
+        const lCenter  = desktopMode ? mainW * 0.08 : mainW * 0.15;
 
         if (!desktopMode) {
             let d    = '';
