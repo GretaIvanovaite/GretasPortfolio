@@ -734,7 +734,7 @@ footer nav a {
     .timeline-entries {
         display: block;
         position: relative;
-        width: 6600px;
+        width: 7400px;
         height: calc(100vh - 56px);
         padding: 0;
         margin: 0;
@@ -773,7 +773,8 @@ footer nav a {
 
     .timeline-work::after,
     .timeline-current::after {
-        right: auto;
+        left: auto;
+        right: -5px;
         top: calc(100% - 5px);
     }
 
@@ -790,7 +791,7 @@ footer nav a {
 
     .timeline-year {
         display: block;
-        position: absolute; /* Ensure this is here */
+        position: absolute;
         left: var(--tl-left);
         top: calc(52% + 0.1rem);
         height: auto;
@@ -799,7 +800,6 @@ footer nav a {
         background: none;
         padding: 0;
         pointer-events: none;
-        /* Center the year text and the line on the exact pixel */
         transform: translateX(-50%); 
         z-index: 1;
     }
@@ -808,7 +808,7 @@ footer nav a {
         display: block;
         content: "";
         position: absolute;
-        top: -5px; 
+        top: -5px;
         left: 50%;
         width: 0.5px;
         height: 10px;

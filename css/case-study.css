@@ -5,7 +5,7 @@ article[aria-labelledby="case-study-heading"] {
 main > article {
     max-width: 800px;
     margin: 0 auto;
-    padding: var(--space-sm) var(--space-md) var(--space-4xl);
+    padding: var(--space-xl) var(--space-md) var(--space-4xl);
 }
 
 main > article > header {
@@ -31,6 +31,7 @@ main > article > header a {
 
 main > article > header a:hover {
     color: var(--color-surface);
+    text-decoration: underline;
 }
 
 main > article > header h1 {
@@ -95,6 +96,16 @@ main > article > section h2 + h3 {
 
 main > article > section p:last-child {
     margin-bottom: 0;
+}
+
+main > article > section a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+}
+
+main > article > section a:hover {
+    color: var(--color-primary-light);
 }
 
 main > article > section ul[role="list"],

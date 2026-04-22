@@ -1,6 +1,6 @@
 (function () {
     var desktopBreakpoint = 1100;
-    var timelineWidth = 6600;
+    var timelineWidth = 7400;
 
     var section, track, entries;
     var active = false;

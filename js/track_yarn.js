@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    const TIMELINE_WIDTH = 6100;
+    const TIMELINE_WIDTH = 7400;
 
     const yarnBall       = document.getElementById('yarn-ball');
     const yarnAnnouncer  = document.getElementById('yarn-announcer');
@@ -77,10 +77,10 @@
             return d;
         }
 
-        const pull    = (rCenter - lCenter) * 0.38;
-        let d         = '';
-        let prevX     = -1;
-        let prevY     = -1;
+        const pull = (rCenter - lCenter) * 0.38;
+        let d      = '';
+        let prevX  = -1;
+        let prevY  = -1;
 
         for (const cfg of SECTION_SIDES) {
             if (cfg.desktopSkip) continue;
@@ -157,7 +157,9 @@
                 const ballTX   = lCenter - ballOffset + progress * (rCenter - lCenter);
                 const railVY   = 0.52 * (window.innerHeight - headerH);
                 const ballTY   = scrollY - mainAbsTop + railVY - ballOffset;
-                yarnBall.style.transform = `translate3d(${ballTX}px,${ballTY}px,0) rotate(${scrollY * 0.3}deg)`;
+                const rotRate  = (rCenter - lCenter) / TIMELINE_WIDTH / (Math.PI * 2 * ballOffset);
+                const rotDeg   = trackAbsTop * 0.3 + scrolled * rotRate * 360;
+                yarnBall.style.transform = `translate3d(${ballTX}px,${ballTY}px,0) rotate(${rotDeg}deg)`;
                 return;
             }
         }

@@ -17,6 +17,7 @@
     --font-family: system-ui, -apple-system, BlinkMacSystemFont,
                    'Segoe UI', Roboto, Oxygen, Ubuntu,
                    Cantarell, sans-serif;
+    --font-size-xs: 0.75rem;
     --font-size-sm: 1rem;
     --font-size-base: 1.125rem;
     --font-size-lg: 1.25rem;
@@ -118,10 +119,10 @@
 .dark-mode #contact textarea {
     background: #162020;
     color: var(--color-text);
-    border-color: var(--color-primary-light);
 }
 
 .accessibility-on {
+    --font-size-xs: 0.875rem;
     --font-size-sm: 1.125rem;
     --font-size-base: 1.3rem;
     --font-size-lg: 1.5rem;
@@ -179,6 +180,14 @@ header ul li a:hover {
 header ul li a:focus-visible {
     text-decoration: underline;
     color: var(--color-primary);
+}
+
+footer nav a {
+    transition: color var(--transition-fast);
+}
+
+footer nav a:hover {
+    color: var(--color-primary-light);
 }
 
 html {
@@ -679,7 +688,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 .timeline-entries li.timeline-year {
     color: var(--color-text-muted);
-    font-size: var(--font-size-sm);
+    font-size: 0.75rem;
     font-weight: var(--font-weight-normal);
 }
 
@@ -807,7 +816,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #contact input,
 #contact textarea {
-    border: 2px solid var(--color-primary-light);
+    border: 2px solid var(--color-border);
     border-radius: var(--border-radius-md);
     background: var(--color-surface);
     color: var(--color-text);
@@ -817,7 +826,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 #contact input:focus,
 #contact textarea:focus {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary-light);
     outline: none;
 }
 
