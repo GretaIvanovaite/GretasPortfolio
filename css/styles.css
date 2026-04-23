@@ -1044,11 +1044,16 @@ footer :focus-visible {outline-color: var(--color-cream);}
         border-right: 3px solid var(--color-primary);
     }
 
+        /* --- THE BRACKET (BSc/Education Only) --- */
     .timeline-edu {
-        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
-        border: none;
-        border-right: 3px solid var(--color-primary);
         background-color: rgba(29, 94, 95, 0.08);
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        /* Connects start and end points via bottom bar */
+        border-left: 3px solid var(--color-primary);
+        border-right: 3px solid var(--color-primary);
+        border-bottom: 3px solid var(--color-primary);
+        border-top: none;
+        text-align: center;
     }
 
     .timeline-cert {
@@ -1077,7 +1082,6 @@ footer :focus-visible {outline-color: var(--color-cream);}
     }
 
     .accessibility-on .timeline-cert {
-        height: auto;
         justify-content: flex-start;
     }
 
