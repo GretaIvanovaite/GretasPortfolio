@@ -77,6 +77,29 @@
                 </ul>
             </section>
 
+            <section aria-labelledby="requirements-heading">
+                <h2 id="requirements-heading">Requirements Gathering</h2>
+                <p>Requirements were derived directly from the brief specification and the constraints it imposed. The brief stipulated a single self-contained HTML file with no external dependencies, which immediately ruled out frameworks, separate stylesheets and any server-side logic. The personalisation requirement raised a further question: how do you pass recipient-specific data to a static card file with no server? This led to the URL parameter architecture, which became a functional requirement rather than an implementation detail. The forward-only flow requirement emerged from analysing the failure modes of multi-step forms: allowing users to jump between steps or navigate backward before completing each stage introduces invalid state that is difficult to recover from cleanly.</p>
+                <h3>Functional</h3>
+                <ul role="list">
+                    <li>Accept a CSV or JSON file upload from the user's own device</li>
+                    <li>Parse the uploaded file and extract column headers for user selection</li>
+                    <li>User selects which column contains email addresses; the column is validated to confirm it contains email-format values</li>
+                    <li>User optionally selects a name column for personalisation</li>
+                    <li>User selects a phrase from preset templates containing <code>{company}</code> and <code>{name}</code> placeholders, substituted per recipient at send time</li>
+                    <li>Preview a sample personalised card before any dispatch takes place</li>
+                    <li>Generate one personalised mailto link per recipient with the card URL and recipient data encoded as parameters</li>
+                    <li>The recipient card renders the personalised animation from URL parameters alone, independently of the creator tool</li>
+                </ul>
+                <h3>Non-functional</h3>
+                <ul role="list">
+                    <li>The creator tool must be a single self-contained HTML file with no separate stylesheets or external scripts (brief hard constraint)</li>
+                    <li>No server or backend required at any point in the flow</li>
+                    <li>Forward-only step navigation: users cannot skip ahead or navigate backward before the preview step</li>
+                    <li>The recipient card must be independently accessible by URL without the creator tool</li>
+                </ul>
+            </section>
+
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
                 <h3>Two-file architecture</h3>

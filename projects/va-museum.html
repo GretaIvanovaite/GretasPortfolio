@@ -79,6 +79,36 @@
                 </ul>
             </section>
 
+            <section aria-labelledby="requirements-heading">
+                <h2 id="requirements-heading">Requirements Gathering</h2>
+                <p>Requirements were extracted from four sequential evidence-gathering stages before any design or development work began. A structured literature review of 15+ academic sources on museum engagement and generous interface principles ran alongside desk research that analysed 20 digital museum platforms, establishing the theoretical foundation and identifying the gap between academic recommendations and current industry practice. This was followed by an online questionnaire completed by 23 respondents, which confirmed a preference for visual exploration and found that specific AI features such as contextual explanations and related item recommendations were rated positively even among respondents who expressed general scepticism about AI assistants. The third stage was a small-scale exploratory user study on the existing V&A Collections website, where participants completed three tasks: locating a specific object by name, finding an object matching particular criteria and freely exploring for up to three minutes. Scrolling activity during free exploration was more than 300% higher than during directed search and post-task semi-structured interviews surfaced recurring themes of wanting more visual content on arrival, clearer return pathways after viewing an object and richer item detail. These four stages produced 10 functional requirements, 7 non-functional requirements and 9 user stories.</p>
+
+                <h3>Functional</h3>
+                <ul role="list">
+                    <li><strong>FR1 Visual Homepage (Must):</strong> Display artefacts visually on arrival, requiring no search query to begin browsing.</li>
+                    <li><strong>FR2 Rich Artefact Pages (Must):</strong> Detailed pages featuring contextual metadata and related item recommendations.</li>
+                    <li><strong>FR3 Clear Navigation Hierarchy (Must):</strong> A structured navigation system providing multiple distinct pathways into the collection.</li>
+                    <li><strong>FR4 AI Chat Assistant (Must):</strong> Conversational assistant for contextual Q&amp;A scoped to the currently viewed object.</li>
+                    <li><strong>FR5 V&amp;A API Integration (Must):</strong> Live integration with the V&amp;A Collections API for all collection data.</li>
+                    <li><strong>FR6 Random Discovery (Should):</strong> Features to surface unexpected objects and support serendipitous browsing.</li>
+                    <li><strong>FR7 Visual Similarity Browsing (Could):</strong> Ability to browse the collection based on aesthetic and visual characteristics.</li>
+                    <li><strong>FR8 Easy Return Pathways (Should):</strong> Clear pathways to bring users back to their previous browse state after viewing an object.</li>
+                    <li><strong>FR9 AI Context Explanations (Should):</strong> AI-generated explanations to supplement sparse or technical metadata.</li>
+                    <li><strong>FR10 Search Support (Could):</strong> Standard search functionality to support targeted queries.</li>
+                </ul>
+
+                <h3>Non-functional</h3>
+                <ul role="list">
+                    <li><strong>NFR1 Mobile and Desktop Responsive Design (Must):</strong> Responsive design targeting 1280px and above, while retaining a functional mobile view.</li>
+                    <li><strong>NFR2 Fast Loading (Optimisation) (Must):</strong> Optimised API strategy to stay within rate limits and maintain fast page loads.</li>
+                    <li><strong>NFR3 Consistent Visual Design (Must):</strong> A unified visual language with a clear distinction between interactive and non-interactive elements.</li>
+                    <li><strong>NFR4 Transparent AI Behaviour (Must):</strong> Clear labelling of AI components and grounding responses in museum data.</li>
+                    <li><strong>NFR5 V&amp;A API Compliance (Must):</strong> Adherence to all V&amp;A API attribution and data usage terms.</li>
+                    <li><strong>NFR6 Accessible Design (Should):</strong> Inclusion of accessibility standards to ensure use by a diverse range of visitors.</li>
+                    <li><strong>NFR7 Privacy-First Design (Should):</strong> Ensuring no user data is stored or transmitted beyond the active session.</li>
+                </ul>
+            </section>
+
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
                 <h3>Research-led process</h3>

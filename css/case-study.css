@@ -66,6 +66,7 @@ main > article > header li {
 
 main > article > section {
     margin-bottom: var(--space-2xl);
+    scroll-margin-top: 6rem;
 }
 
 main > article > section h2 {

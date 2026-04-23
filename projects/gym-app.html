@@ -72,6 +72,27 @@
                 <p>Most gym tracking apps require a subscription, an account or a native install. The goal was a simple, private, offline-capable browser tool, one that persists data meaningfully without a server and remains fully accessible to users on assistive technology.</p>
             </section>
 
+            <section aria-labelledby="requirements-heading">
+                <h2 id="requirements-heading">Requirements Gathering</h2>
+                <p>Requirements were identified by analysing the brief specification alongside existing gym tracking tools. Most commercial alternatives require a subscription, an account or a native install, which informed the non-functional requirements around privacy and offline capability. The data model requirement emerged from thinking through real usage: a user following a programme will reuse the same exercises across different routines, so treating exercises and routines as separate entities was a functional necessity rather than a design preference.</p>
+                <h3>Functional</h3>
+                <ul role="list">
+                    <li>Create, read, update and delete exercises, each with a name, sets, reps, weight and one of six categories: calisthenics, cardio, core, weights, HIIT, mobility</li>
+                    <li>Create, read, update and delete routines</li>
+                    <li>Assign the same exercise to multiple routines without duplicating its data</li>
+                    <li>Filter the exercise list by category</li>
+                    <li>All data persists across browser sessions with no server or account required</li>
+                </ul>
+                <h3>Non-functional</h3>
+                <ul role="list">
+                    <li>WCAG 2.1 AAA contrast ratio (7:1) throughout</li>
+                    <li>Fully operable by keyboard with visible focus indicators at all times</li>
+                    <li>Compatible with screen readers, tested with NVDA</li>
+                    <li>No account, subscription or native install required</li>
+                    <li>Works offline, no network connection needed at runtime</li>
+                </ul>
+            </section>
+
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
                 <p>Accessibility shaped every decision before any visual work began, with the goal of meeting WCAG 2.1 AAA throughout rather than retrofitting compliance at the end.</p>
