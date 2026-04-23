@@ -665,6 +665,7 @@ footer nav a {
 
     main > section {
         padding: var(--space-lg) var(--space-2xl);
+        scroll-margin-top: 6rem;
     }
 
     #hero {
