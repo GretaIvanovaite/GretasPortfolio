@@ -62,15 +62,20 @@
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
                 <p>Final year project for CIS3425 at Edge Hill University, supervised by David Walsh. Investigates how generous interface design combined with AI features influences user engagement and casual exploration in digital museum collections, evaluated through comparative user testing against the existing V&amp;A website.</p>
-                <p>A generous interface shows a large amount of content immediately, supporting open browsing and serendipitous discovery. The term comes from academic research on digital cultural heritage, describing the opposite of a blank search box.</p>
+                <p>A generous interface shows a large amount of content immediately in order to support open browsing and serendipitous discovery, rather than requiring visitors to have a specific object in mind before they begin. The term comes from academic research on digital cultural heritage, describing the opposite of a blank search box.</p>
+                <figure>
+                    <img src="../images/CA_desktop_homepage.png" alt="Collections and Archives homepage showing a large grid of V&amp;A museum objects displayed immediately on arrival, with browsing pathway navigation">
+                    <figcaption>The homepage: a dense grid of objects presented on arrival so visitors can begin exploring without needing a search term.</figcaption>
+                </figure>
             </section>
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
+                <p>The research motivation emerged from a gap between what the V&amp;A Collections API makes available and how the official website surfaces it to visitors who do not already have a specific object in mind.</p>
                 <ul role="list">
-                    <li>The V&amp;A Collections API exposes 2.2 million objects with rich metadata, but the official website leads with a search box</li>
-                    <li>Search requires users to already know what they want, academic research shows casual visitors prefer browsing over searching (Morse et al., 2021; Speakman et al., 2018)</li>
-                    <li>A small user study confirmed this: participants reported feeling uncertain where to start without a specific object in mind</li>
+                    <li>The V&amp;A Collections API exposes 2.2 million objects with rich metadata, but the official website leads with a search box that requires visitors to already know what they are looking for</li>
+                    <li>Academic research shows casual visitors prefer browsing over searching (Morse et al., 2021; Speakman et al., 2018); a search-led interface excludes anyone arriving without intent</li>
+                    <li>A small user study conducted as part of the research confirmed this: participants reported feeling uncertain where to start when no search term came to mind</li>
                 </ul>
             </section>
 
@@ -83,7 +88,11 @@
                     <li>High-fidelity Figma designs for all main views before any code was written</li>
                 </ul>
                 <h3>Desktop-first (not mobile-first)</h3>
-                <p>Initial mockups were mobile-first, but the generous interface literature made it clear this was the wrong starting point. Generous interfaces depend on showing a large amount of visual content simultaneously, which is fundamentally harder on a small screen. The prototype targets 1280px and above as its primary experience.</p>
+                <p>Initial mockups were designed mobile-first; however, the generous interface literature made it clear this was not the appropriate starting point. Generous interfaces depend on showing a large quantity of visual content simultaneously in order to support open browsing and serendipitous discovery, a goal that is fundamentally harder to achieve on small screens. The prototype was reoriented to target 1280px and above as its primary experience, with a reduced but functional mobile view retained.</p>
+                <figure>
+                    <img src="../images/homepage_desktop.jpg" alt="Hand-drawn structural wireframe of the Collections and Archives desktop homepage, showing a large visual grid layout with navigation and browsing pathways">
+                    <figcaption>The refined structural wireframe produced after the pivot to desktop-first. Initial Crazy Eights sketches explored mobile layouts; the constraints they revealed drove the decision to anchor the design at 1280px.</figcaption>
+                </figure>
                 <h3>Browsing pathways, chosen via API analysis</h3>
                 <dl>
                     <div>

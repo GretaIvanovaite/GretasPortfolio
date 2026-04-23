@@ -61,6 +61,10 @@
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
                 <p>Create, manage and track exercises across six categories: calisthenics, cardio, core, weights, HIIT and mobility, with all data stored persistently in the browser via IndexedDB. Accessibility was the primary design constraint, not an afterthought: full keyboard navigation, ARIA live regions for dynamic feedback and WCAG 2.1 AAA contrast (7:1) throughout.</p>
+                <figure>
+                    <img src="../images/GymApp_mob.png" alt="Gym Workout Planner on a mobile viewport showing the exercise list with category filters and navigation controls">
+                    <figcaption>The application on mobile, with all controls accessible by touch and keyboard.</figcaption>
+                </figure>
             </section>
 
             <section aria-labelledby="problem-heading">
@@ -70,13 +74,17 @@
 
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
-                <p>Accessibility shaped every decision before any visual work began.</p>
+                <p>Accessibility shaped every decision before any visual work began, with the goal of meeting WCAG 2.1 AAA throughout rather than retrofitting compliance at the end.</p>
                 <ul role="list">
-                    <li>Targeted WCAG 2.1 AAA (7:1 contrast), ruling out patterns that work with a mouse but break with a keyboard: no drag-and-drop reordering, no hover-only controls, no custom dropdowns</li>
-                    <li>Data model sketched first: exercises and routines as separate entities, so one exercise can belong to multiple routines without duplicating data</li>
-                    <li>Colour choices driven by contrast headroom, teal primary sits above 7:1 on both white and off-white backgrounds</li>
-                    <li>Typography uses <code>em</code> units throughout so the easy read font-size increase scales the whole interface</li>
+                    <li>Targeted WCAG 2.1 AAA (7:1 contrast), which ruled out interaction patterns that work with a mouse but fail for keyboard users: no drag-and-drop reordering, no hover-only controls and no custom dropdown components</li>
+                    <li>Data model designed before any code was written, with exercises and routines as separate entities in order to allow one exercise to appear across multiple routines without data duplication</li>
+                    <li>Colour choices driven by contrast headroom: teal primary sits above 7:1 on both white and off-white backgrounds, accommodating the easy read mode which lightens the background</li>
+                    <li>Typography uses <code>em</code> units throughout so the easy read font-size increase scales the whole interface proportionally</li>
                 </ul>
+                <figure>
+                    <img src="../images/GymApp_3layouts_sketch.jpg" alt="Hand-drawn planning sketch showing three layout options considered for the Gym Workout Planner interface">
+                    <figcaption>Three layout options sketched during the planning phase. The final interface draws from elements across all three rather than following any single concept exactly.</figcaption>
+                </figure>
             </section>
 
             <section aria-labelledby="solution-heading">
@@ -116,9 +124,9 @@
                 <h2 id="process-heading">Development Process</h2>
                 <p>Built in three phases to keep the accessibility work continuous rather than retrofitted.</p>
                 <ol role="list">
-                    <li><strong>Data layer first</strong>: IndexedDB wrapper built and tested in isolation before any UI, giving a stable API to build against</li>
-                    <li><strong>UI with keyboard testing at every milestone</strong>: Tab order verified manually after each new component; focus management added as each list interaction was built</li>
-                    <li><strong>Testing</strong>: axe DevTools automated scan, manual keyboard flow, NVDA with Chrome screen reader; several focus order issues found during screen reader testing and fixed before final build</li>
+                    <li><strong>Data layer first</strong>: the IndexedDB wrapper was built and tested in isolation from any UI in order to give the interface layer a stable, predictable API to build against; this prevented UI work from being blocked by storage bugs mid-build</li>
+                    <li><strong>Keyboard testing at every milestone rather than reserved for the end</strong>: tab order verified manually after each new component, with focus management added as each list interaction was built</li>
+                    <li><strong>Testing</strong>: axe DevTools automated scan, manual keyboard flow, NVDA with Chrome screen reader; several focus order issues were identified during screen reader testing and corrected before the final build</li>
                 </ol>
                 <h3>WCAG success criteria targeted</h3>
                 <ul role="list">

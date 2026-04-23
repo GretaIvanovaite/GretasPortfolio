@@ -218,6 +218,73 @@ figure img {
     display: block;
 }
 
+main > article figure img {
+    width: auto;
+    max-width: 100%;
+    max-height: 22rem;
+    margin: 0 auto;
+    cursor: zoom-in;
+}
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    cursor: pointer;
+}
+
+#lightbox.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#lightbox img {
+    max-width: min(90vw, 1200px);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    cursor: default;
+    box-shadow: 0 var(--space-md) var(--space-2xl) rgba(0, 0, 0, 0.5);
+}
+
+#lightbox-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+#lightbox-close:hover,
+#lightbox-close:focus-visible {
+    border-color: white;
+    color: white;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
 .placeholder-img {
     background-color: var(--color-surface);
     border: 2px dashed var(--color-border);
@@ -241,6 +308,8 @@ figcaption {
 
 main > article > footer {
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     gap: var(--space-md);
     flex-wrap: wrap;
     padding: var(--space-2xl) 0 0;

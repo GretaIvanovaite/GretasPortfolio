@@ -688,7 +688,7 @@ footer :focus-visible {outline-color: var(--color-cream);}
 
 .timeline-entries li.timeline-year {
     color: var(--color-text-muted);
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-normal);
 }
 
