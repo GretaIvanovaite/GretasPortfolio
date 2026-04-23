@@ -817,7 +817,7 @@ footer nav a {
     .timeline-work,
     .timeline-current {
         grid-column: unset;
-        text-align: unset;
+        text-align: right;
         bottom: 48%;
         height: calc(42% - 2px);
         left: var(--tl-left);
@@ -828,7 +828,7 @@ footer nav a {
 
     .timeline-edu {
         grid-column: unset;
-        text-align: unset;
+        text-align: right;
         top: calc(52% + 2px);
         height: calc(38% - 2px);
         left: var(--tl-left);
@@ -844,7 +844,7 @@ footer nav a {
         top: calc(52% + 2px);
         height: 180px;
         left: var(--tl-left);
-        width: 120px;
+        width: 180px;
         justify-content: flex-end;
     }
 

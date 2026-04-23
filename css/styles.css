@@ -1037,21 +1037,17 @@ footer :focus-visible {outline-color: var(--color-cream);}
     .timeline-work {
         border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
         border: none;
-        border-right: 3px solid rgba(0, 0, 0, 0.18);
-        border-left: 3px solid var(--color-primary);
+        border-right: 3px solid var(--color-primary);
     }
 
     .timeline-current {
         border-right: 3px solid var(--color-primary);
-        border-left: 3px solid var(--color-primary);
     }
 
     .timeline-edu {
         border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
         border: none;
-        border-top: none;
         border-right: 3px solid var(--color-primary);
-        border-left: 3px solid var(--color-primary);
         background-color: rgba(29, 94, 95, 0.08);
     }
 
