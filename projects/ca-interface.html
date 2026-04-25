@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case study: Collections & Archives (C&A), a generous interface utilizing the V&A Collections API with an AI-powered museum helper. Final year research and development project by Greta Ivanovaite.">
+    <title>Collections & Archives (C&A), Greta Ivanovaite</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/case-study.css">
+    <script src="../js/toggles.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="../index.html" aria-label="Greta Ivanovaite, back to portfolio">GI</a>
+            <ul role="list">
+                <li><a href="../index.html#projects">← Home</a></li>
+                <li><a href="#overview-heading">Overview</a></li>
+                <li><a href="#problem-heading">Problem</a></li>
+                <li><a href="#design-heading">Design</a></li>
+                <li><a href="#solution-heading">Solution</a></li>
+                <li><a href="#process-heading">Process</a></li>
+                <li><a href="#outcome-heading">Outcome</a></li>
+            </ul>
+
+            <button
+                id="btn-dark-mode"
+                aria-pressed="false"
+                aria-label="Toggle dark mode"
+                onclick="darkMode()">
+                Dark Mode
+            </button>
+
+            <button
+                id="btn-easy-read"
+                aria-pressed="false"
+                aria-label="Toggle easy read mode"
+                onclick="accessibilityMode()">
+                Easy Read
+            </button>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article aria-labelledby="case-study-heading">
+            <header>
+                <a href="../index.html#projects">← Back to home</a>
+                <h1 id="case-study-heading">Collections & Archives (C&A)</h1>
+                <p>Final year research and development project: a "generous" interface for exploring over 2 million objects using a museum REST API, featuring an AI discovery assistant. Deployed on Netlify.</p>
+                <ul role="list" aria-label="Technologies used">
+                    <li>HTML5</li>
+                    <li>CSS3 (Flexbox & Grid)</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>REST API</li>
+                    <li>AI (Qwen 2.5)</li>
+                    <li>Netlify</li>
+                </ul>
+            </header>
+
+            <section aria-labelledby="overview-heading">
+                <h2 id="overview-heading">Overview</h2>
+                <p>Collections & Archives (C&A) is a final year project exploring how a "generous" interface design can help people discover museum objects more easily. Instead of starting with a blank search box, the prototype shows a large grid of items from a museum collection immediately. It also includes an AI assistant to help answer questions about the objects.</p>
+                <p>A "generous interface" is a design that shows a lot of content upfront to support browsing and accidental discovery. It is the opposite of a simple search box, which requires you to already know what you are looking for.</p>
+                <figure>
+                    <img src="../images/CA_desktop_homepage.png" alt="C&A homepage showing a large grid of museum objects displayed immediately on arrival, with browsing pathway navigation">
+                    <figcaption>The C&A homepage: a dense grid of objects from the collection shown on arrival so visitors can start exploring without needing a search term.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="problem-heading">
+                <h2 id="problem-heading">The Problem</h2>
+                <p>The project was inspired by a gap between the rich data available in a museum's open API and how the official website presents it to casual visitors.</p>
+                <ul role="list">
+                    <li>The museum API has over 2 million objects, but the website starts with a search box that can be intimidating if you do not have a specific item in mind.</li>
+                    <li>Research shows that casual visitors often prefer browsing through images rather than typing search terms.</li>
+                    <li>A small study confirmed that people often feel "stuck" when they arrive at the museum site without a clear plan.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="requirements-heading">
+                <h2 id="requirements-heading">Requirements Gathering</h2>
+                <p>Requirements were gathered through four stages: a literature review, a study of 20 other digital museum platforms, a questionnaire with 23 people, and a test of the official museum website. The questionnaire showed that people enjoy visual exploration and are interested in AI features like contextual explanations. The user study found that people scrolled 300% more when they were free to explore compared to when they were doing a specific search. These results led to a set of core functional and technical requirements.</p>
+
+                <h3>Core Features</h3>
+                <ul role="list">
+                    <li><strong>Visual Homepage:</strong> Show museum objects immediately on arrival without requiring a search.</li>
+                    <li><strong>Rich Item Pages:</strong> Detailed views with metadata and related object suggestions.</li>
+                    <li><strong>Navigation Pathways:</strong> Multiple ways to enter the collection, such as by Origin or Category.</li>
+                    <li><strong>AI Chat Assistant:</strong> A helper that can answer questions about the object you are currently viewing.</li>
+                    <li><strong>Live API Integration:</strong> Real-time connection to the museum REST API.</li>
+                </ul>
+
+                <h3>Technical Goals</h3>
+                <ul role="list">
+                    <li><strong>Performance:</strong> An optimized strategy to keep page loads fast while staying within API limits.</li>
+                    <li><strong>Clear AI Labeling:</strong> Ensuring users know they are talking to an AI model grounded in real museum data.</li>
+                    <li><strong>Privacy:</strong> No user data is stored or tracked beyond the current session.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="design-heading">
+                <h2 id="design-heading">Design</h2>
+                <p>The design is "Desktop-First" because showing a large amount of visual content is easier on a big screen. The prototype focuses on the 1280px experience while still keeping a basic, working view for mobile users. Initial sketches and wireframes helped map out a dense grid layout that supports effortless exploration.</p>
+                <figure>
+                    <img src="../images/homepage_desktop.jpg" alt="Hand-drawn structural wireframe of the Collections and Archives desktop homepage, showing a large visual grid layout with navigation and browsing pathways">
+                    <figcaption>A structural wireframe showing the large visual grid and navigation pathways planned during the design phase.</figcaption>
+                </figure>
+                <h3>Browsing Pathways</h3>
+                <p>Based on an analysis of the API data, four main ways to browse were chosen: Collections, Categories, Materials, and Origins. Other options like "Date" or "Creator" were left out because the data was too inconsistent to provide a good browsing experience.</p>
+            </section>
+
+            <section aria-labelledby="solution-heading">
+                <h2 id="solution-heading">The Solution</h2>
+                <h3>API Strategy</h3>
+                <p>The app uses a two-step approach: first, it fetches a lightweight list of thumbnails for the main grid. It only calls for the full object details when a user clicks to open an item. This keeps the initial loading time fast.</p>
+
+                <h3>AI Assistant</h3>
+                <p>The chatbot uses the <strong>Qwen 2.5</strong> model via the Hugging Face API. It is an open-source model that works well for answering specific questions about museum objects. A "Netlify function" is used as a bridge to keep the API key safe. The AI is restricted to only talk about museum topics and is told to say when it does not have enough information rather than making things up.</p>
+                <figure>
+                    <img src="../images/CA_desktop_homepage_browse.png" alt="Collections & Archives browse page showing the four browsing pathways: Collections, Categories, Materials and Origins">
+                    <figcaption>The main browse page, offering multiple ways to dive into the collection based on available metadata.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="process-heading">
+                <h2 id="process-heading">Development Process</h2>
+                <ul role="list">
+                    <li><strong>Figma to Code:</strong> High-fidelity designs were created for every page before any code was written.</li>
+                    <li><strong>Defensive Data Handling:</strong> Real objects were sampled to see which fields (like "Maker") were often missing, so fallback text like "Maker unknown" could be added.</li>
+                    <li><strong>User Testing:</strong> A plan for comparative testing with 10+ people to see how the prototype performs against the official museum website.</li>
+                </ul>
+                <figure>
+                    <img src="../images/CA_desktop_details(with_chatbot).png" alt="Collections & Archives object detail page with the AI chatbot panel open, showing a conversation about a Gaganendranath Tagore postcard from 1920 to 1925">
+                    <figcaption>The AI helper in action, providing context for the object being viewed.</figcaption>
+                </figure>
+            </section>
+
+            <section aria-labelledby="outcome-heading">
+                <h2 id="outcome-heading">Outcome and Reflection</h2>
+                <p>The project is live at <a href="https://collectionsarchives.netlify.app/" target="_blank" rel="noopener noreferrer">collectionsarchives.netlify.app</a>. It successfully demonstrates how a browse-heavy design can make a massive museum collection feel more accessible to everyone. By using data from a museum REST API, Collections & Archives provides a realistic environment for evaluating how users interact with large-scale archive data when presented visually.</p>
+                <p>One area for future improvement is the "Load More" system. While it works for adding more items to the grid, focus management could be improved to help keyboard users find the new content more easily. Transitioning to a true infinite scroll pattern could also make the exploration feel even more seamless.</p>
+                <p><a href="https://github.com/GretaIvanovaite/V-A_Museum_Collections_API_build" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
+            </section>
+
+            <footer>
+                <a href="../index.html#projects">← Back to home</a>
+                <a href="../index.html#contact">Get in touch</a>
+            </footer>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Greta Ivanovaite. Built with HTML and CSS.</p>
+        <nav aria-label="Footer navigation">
+            <a href="../index.html">Back to portfolio</a>
+            <a href="https://github.com/GretaIvanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's GitHub profile (opens in new tab)">GitHub</a>
+            <a href="https://linkedin.com/in/greta-ivanovaite" target="_blank" rel="noopener noreferrer" aria-label="Greta's LinkedIn profile (opens in new tab)">LinkedIn</a>
+        </nav>
+        <p><small><a href="https://www.vecteezy.com/free-png/yarn-ball" target="_blank" rel="noopener noreferrer">Yarn Ball PNGs by Vecteezy</a></small></p>
+    </footer>
+</body>
+</html>

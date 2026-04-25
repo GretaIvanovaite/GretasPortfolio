@@ -48,151 +48,92 @@
             <header>
                 <a href="../index.html#projects">← Back to home</a>
                 <h1 id="case-study-heading">Animated Easter Card Creator</h1>
-                <p>A multi-page tool for businesses to create and send personalised animated Easter cards in bulk, built as a single HTML file with no external dependencies.</p>
+                <p>A multi-page "Wizard" application for businesses to create and send personalised animated Easter cards in bulk, utilizing client-side file parsing and URL-based personalisation.</p>
                 <ul role="list" aria-label="Technologies used">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>CSS Animations</li>
-                    <li>CSV / JSON</li>
+                    <li>HTML5 & Semantic Markup</li>
+                    <li>CSS3 (Modular Theme Animations)</li>
+                    <li>JavaScript (ES6+, FileReader, Regex)</li>
+                    <li>EmailJS API (Automatic Bulk Sending)</li>
+                    <li>SheetJS (XLSX Parsing)</li>
                 </ul>
             </header>
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>A browser-based tool for businesses to send personalised seasonal cards to a recipient list without needing a subscription service or a developer. The project is split across two files: the creator tool the company uses to configure and dispatch cards, and a separate recipient-facing card page that receives personalised content via URL parameters. The company works through five steps; each recipient receives an email link that opens directly to their personalised animated card.</p>
+                <p>The Animated Easter Card Creator is a web tool for small businesses to send personalised animated cards to their customers. The project is split into two main parts: a "Wizard" that helps businesses upload their customer list and brand the card, and a decoupled animated card (<code>card.html</code>) that now supports multiple themes like the playful "Easter Bunny" or the elegant "Spring Garden." Personalisation works by adding customer details to the card's web address, and the tool uses the <strong>EmailJS API</strong> to send these links to hundreds of customers automatically in one go.</p>
                 <figure>
                     <img src="../images/EasterCard_preview_sketch.jpg" alt="Hand-drawn concept sketch of the animated Easter card showing the egg, bunny and scroll sequence">
-                    <figcaption>Early concept sketch of the card animation sequence, planned on paper before any CSS keyframes were written.</figcaption>
+                    <figcaption>Initial storyboard mapping the animation beats. The sequence was designed to ensure that the personalisation scroll remains the focal point of the interaction.</figcaption>
                 </figure>
             </section>
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
-                <p>The brief specified several hard constraints that ruled out conventional multi-page site structures and shaped every technical decision from the start.</p>
-                <ul role="list">
-                    <li>Personalised seasonal card tools require paid subscriptions, design accounts or specific platforms, making them inaccessible to small businesses without technical staff</li>
-                    <li>Brief requirement: fully self-contained and browser-only, with no accounts, no installs and no network connection required at runtime</li>
-                    <li>Hard technical constraint: the entire creator had to be a single HTML file with no separate stylesheets and no external scripts</li>
-                </ul>
+                <p>Small businesses often find professional marketing tools too expensive or complicated. Most services require a monthly subscription or a developer to set everything up. The challenge was to create a free, private tool that could handle large lists of customers, show a live preview of the card, and send everything out reliably - all while keeping a high-quality look and feel.</p>
             </section>
 
             <section aria-labelledby="requirements-heading">
                 <h2 id="requirements-heading">Requirements Gathering</h2>
-                <p>Requirements were derived directly from the brief specification and the constraints it imposed. The brief stipulated a single self-contained HTML file with no external dependencies, which immediately ruled out frameworks, separate stylesheets and any server-side logic. The personalisation requirement raised a further question: how do you pass recipient-specific data to a static card file with no server? This led to the URL parameter architecture, which became a functional requirement rather than an implementation detail. The forward-only flow requirement emerged from analysing the failure modes of multi-step forms: allowing users to jump between steps or navigate backward before completing each stage introduces invalid state that is difficult to recover from cleanly.</p>
-                <h3>Functional</h3>
+                <p>Requirements were based on the needs of a typical small business and the project brief. A key technical requirement was the ability to read different types of files. This led to using the <strong>SheetJS</strong> library so the tool could handle Excel files as well as standard CSV and JSON lists. The personalisation needed to work without a server, which was solved by passing details through the web address (URL parameters).</p>
+                <h3>Functional Requirements</h3>
                 <ul role="list">
-                    <li>Accept a CSV or JSON file upload from the user's own device</li>
-                    <li>Parse the uploaded file and extract column headers for user selection</li>
-                    <li>User selects which column contains email addresses; the column is validated to confirm it contains email-format values</li>
-                    <li>User optionally selects a name column for personalisation</li>
-                    <li>User selects a phrase from preset templates containing <code>{company}</code> and <code>{name}</code> placeholders, substituted per recipient at send time</li>
-                    <li>Preview a sample personalised card before any dispatch takes place</li>
-                    <li>Generate one personalised mailto link per recipient with the card URL and recipient data encoded as parameters</li>
-                    <li>The recipient card renders the personalised animation from URL parameters alone, independently of the creator tool</li>
+                    <li>Upload customer lists using CSV, JSON, or Excel files.</li>
+                    <li>Manual entry option for adding customers one by one.</li>
+                    <li>Add company branding, including a name, website, and logo.</li>
+                    <li>Match columns from the uploaded file and see live data examples.</li>
+                    <li>Write custom opening phrases or choose from preset templates.</li>
+                    <li>Reorder the message blocks (phrase, main text, company name) on the card.</li>
+                    <li>Bulk sending using the user's local email client.</li>
                 </ul>
-                <h3>Non-functional</h3>
+                <h3>Non-functional Requirements</h3>
                 <ul role="list">
-                    <li>The creator tool must be a single self-contained HTML file with no separate stylesheets or external scripts (brief hard constraint)</li>
-                    <li>No server or backend required at any point in the flow</li>
-                    <li>Forward-only step navigation: users cannot skip ahead or navigate backward before the preview step</li>
-                    <li>The recipient card must be independently accessible by URL without the creator tool</li>
+                    <li><strong>Privacy:</strong> All file reading happens on the user's computer; data is never sent to a server.</li>
+                    <li><strong>Organisation:</strong> A clear, step-by-step "Wizard" flow to keep the process simple.</li>
+                    <li><strong>Performance:</strong> Using smooth CSS animations that work well on all devices without needing heavy libraries.</li>
                 </ul>
             </section>
 
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
-                <h3>Two-file architecture</h3>
-                <ul role="list">
-                    <li><strong>index.html</strong>: the creator tool the company uses</li>
-                    <li><strong>card.html</strong>: the recipient-facing card, receives URL parameters</li>
-                </ul>
-                <p>Keeping them separate meant the animation could be built and polished independently from the sending logic, and kept the recipient file clean and fast to load.</p>
-                <h3>Creator flow</h3>
-                <p>A strict forward-only sequence was implemented up to the preview step in order to prevent invalid state from accumulating across steps, rather than attempting to validate or correct it reactively at dispatch time.</p>
+                <h3>Visual Layering & Animation</h3>
+                <p>The animation in <code>card.html</code> uses simple layering to create a 3D effect. The bunny is placed behind a "ground" layer, which hides its lower body as it "climbs" out of the earth. This makes the animation look more polished without using complex code. The egg cracking effect uses several small pieces and a bright flash to make the moment feel energetic and surprising.</p>
+
+                <h3>Wizard Workflow</h3>
+                <p>The creator tool uses a simple, linear flow to prevent mistakes:</p>
                 <ol role="list">
-                    <li>Landing page</li>
-                    <li>Company details input (name, website URL, CSV/JSON upload)</li>
-                    <li>Card customisation (email column, name column, phrase selection)</li>
-                    <li>Preview</li>
-                    <li>Sending</li>
+                    <li><strong>Details:</strong> Enter company info and upload the customer list.</li>
+                    <li><strong>Personalise:</strong> Match the data columns and pick a message.</li>
+                    <li><strong>Preview:</strong> Watch the actual card as a recipient would see it.</li>
+                    <li><strong>Send:</strong> Send out all the personalised links with progress tracking.</li>
                 </ol>
-                <h3>Animation sequence</h3>
-                <p>Planned on paper before any CSS was written, each beat mapped to a keyframe percentage before touching code.</p>
-                <ol role="list">
-                    <li>Egg rolls in from a distance toward the viewer</li>
-                    <li>Egg cracks apart with a burst of confetti</li>
-                    <li>Easter bunny climbs out</li>
-                    <li>Bunny retrieves items from inside the broken egg: basket, flowers, smaller eggs</li>
-                    <li>Bunny pulls out a scroll; scroll unravels and zooms toward the viewer showing the personalised message and optional company link</li>
-                </ol>
-                <h3>Other design decisions</h3>
-                <ul role="list">
-                    <li>Spring palette (yellows, soft greens, warm pinks), chosen to match the Easter seasonal context without the card feeling generic</li>
-                    <li>System sans-serif font stack selected in order to avoid the external font dependency that would violate the single-file constraint on card.html</li>
-                    <li>Step progress indicator implemented via CSS counter on an ordered list in order to avoid JavaScript class toggling, keeping the navigation logic minimal</li>
-                    <li>JSON support added alongside CSV using the same FileReader call with a different parse path, in order to cover CRM exports as well as standard spreadsheet outputs</li>
-                </ul>
-                <figure>
-                    <img src="../images/EasterCard_input.png" alt="Easter Card Creator input step showing fields for company name, website URL and a file upload control for recipient CSV or JSON data">
-                    <figcaption>The input step: company details and recipient file collected before any personalisation options are shown, preventing misconfiguration later in the flow.</figcaption>
-                </figure>
             </section>
 
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
-                <h3>File parsing (input step)</h3>
-                <ul role="list">
-                    <li>FileReader API reads the file entirely client-side, data never leaves the browser</li>
-                    <li>UTF-8 BOM characters stripped before parsing, prevents Excel-exported files from producing a corrupt first column header</li>
-                    <li>Empty rows filtered out, prevents blank recipient entries</li>
-                </ul>
-                <h3>Customisation (selections step)</h3>
-                <ul role="list">
-                    <li>Email column: company chooses which column contains addresses; application validates the column actually contains valid email format, preventing silent misconfiguration that would produce undeliverable emails</li>
-                    <li>Name column: optional; enables the card to address each recipient individually</li>
-                    <li>Phrase: chosen from preset templates with <code>{company}</code> and <code>{name}</code> placeholders, substituted at send time per recipient</li>
-                </ul>
-                <h3>Data sanitisation before dispatch</h3>
-                <ul role="list">
-                    <li><code>String.trim()</code> on names and phrase values, removing whitespace</li>
-                    <li><code>encodeURIComponent()</code> on all URL parameters; without encoding, a name containing <code>&amp;</code>, <code>=</code> or <code>#</code> would corrupt the URL structure and pass the wrong value to card.html</li>
-                </ul>
-                <h3>Per-recipient personalisation</h3>
-                <p>Each recipient gets one mailto link. The email body contains a link to card.html with their name, the substituted phrase and the company's details as URL parameters. card.html reads those parameters on load and injects them into the animation, no server, no database.</p>
-                <figure>
-                    <img src="../images/EasterCard_sending.png" alt="Easter Card Creator sending step showing a progress indicator reading Sending, 1 out of total, with completed recipient emails listed below">
-                    <figcaption>The sending step, each recipient's mailto opens in sequence and completed addresses are listed as they dispatch.</figcaption>
-                </figure>
+                <h3>Bulk Sending with EmailJS</h3>
+                <p>The project uses the <strong>EmailJS</strong> API, which allows the tool to send out many personalised HTML emails automatically and reliably directly from the browser. This turned the project from a simple prototype into a professional business utility that can handle large lists of customers in one go.</p>
+
+                <h3>Modular Theme Engine</h3>
+                <p>The card now supports multiple animation styles. By splitting the code into modular CSS files (like <code>card-bunny.css</code> and <code>card-garden.css</code>), the tool only loads the styles for the chosen theme. This makes the project easy to expand with even more animations in the future.</p>
+
+                <h3>Accessibility & Polish</h3>
+                <p>The tool uses "Gold Standard" accessibility features. Form errors are explained clearly to screen readers using <code>aria-invalid</code>, and a "Skip Animation" button was added so users can instantly verify their personalisation during the preview step.</p>
             </section>
 
             <section aria-labelledby="process-heading">
-                <h2 id="process-heading">Development Process</h2>
+                <h2 id="process-heading">Development Process / Testing</h2>
+                <p>The animated card was built first to ensure the recipient's experience was perfect. After that, the administrative tools were added. Testing focused on three areas:</p>
                 <ul role="list">
-                    <li><strong>Animation built first</strong>: standalone proof of concept on card.html, isolated from creator logic; once the full sequence was stable and timing felt right, the creator was built on top</li>
-                    <li><strong>Scroll reveal timing</strong>: most complex challenge, the text must be readable before the zoom keyframe begins; small changes to earlier phases shifted every percentage that followed. Solution: treat each beat as a fixed anchor point and calculate percentages backward from the end</li>
-                    <li><strong>Wizard focus management</strong>: on each step advance, JavaScript sets <code>tabindex="-1"</code> on the incoming step's heading and calls <code>.focus()</code>; without this, screen reader users advance through the form with no indication the page has changed</li>
-                    <li><strong>ARIA error handling</strong>: <code>aria-invalid="true"</code> + <code>aria-describedby</code> on the file upload input; if the file has no recognisable columns, is structurally invalid or is empty, a descriptive error message names the specific problem</li>
-                    <li><strong>Single-file organisation</strong>: script block divided into clearly labelled sections: step navigation, file parsing, URL parameter construction, mailto dispatch</li>
+                    <li><strong>Data:</strong> Implementing a robust regex-based parser to handle complex CSV files (like names with commas) and making sure all personalisation data stayed saved across the "Wizard" steps.</li>
+                    <li><strong>Timing:</strong> Creating a "Skip Animation" feature using negative CSS delays to jump to the end of the scene, making it much faster to test different personalisation settings.</li>
+                    <li><strong>Accessibility:</strong> Using tools like <strong>axe DevTools</strong> and manual <strong>NVDA</strong> testing to verify that the status updates, keyboard-friendly theme cards, and error messages worked for all users.</li>
                 </ul>
-                <figure>
-                    <img src="../images/EasterCard_selections_sketch.jpg" alt="Hand-drawn sketch of the Easter Card Creator selections step, showing the email column picker and phrase template options">
-                    <figcaption>Early sketch of the selections step, planning the column-picker and phrase template UI before implementation began.</figcaption>
-                </figure>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>Complete workflow across two files with no external dependencies, company details, customisation, preview and bulk dispatch on the creator side, personalised animated sequence on the card side.</p>
-                <p>Two things I would revisit:</p>
-                <ul role="list">
-                    <li><strong>Animation control</strong>: CSS <code>@keyframes</code> run on the compositor thread and cannot be paused or reset mid-sequence without cloning and replacing the animated element. A <code>setTimeout</code>/<code>clearTimeout</code> approach would give finer control: pausing at a specific beat, scrubbing, or synchronising the zoom to a user click</li>
-                    <li><strong>Dispatch scale</strong>: most browsers cap sequential mailto opens before requiring explicit user permission, making the tool practical for roughly 20 recipients. Replacing mailto with an email API such as EmailJS would remove that ceiling and allow a formatted HTML email rather than plain text</li>
-                </ul>
-                <figure>
-                    <img src="../images/EasterCard_preview.png" alt="Easter Card Creator preview step showing the animated card with the Easter bunny sequence and personalised scroll message">
-                    <figcaption>The finished card, full animated sequence with the company's personalised message revealed on the scroll.</figcaption>
-                </figure>
+                <p>The project successfully created a professional business tool that works entirely in the browser. Using EmailJS turned the project from a simple prototype into a reliable utility for bulk customer outreach.</p>
+                <p>Future versions could use the <strong>Web Animations API</strong> for even more control over the animation, such as letting the user pause or replay specific parts. This would make the experience even more interactive and engaging for the recipient.</p>
                 <p><a href="https://github.com/GretaIvanovaite/AnimatedEasterCard" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
             </section>
 
