@@ -54,13 +54,13 @@
                     <li>CSS3 (Custom Properties)</li>
                     <li>JavaScript (ES6+)</li>
                     <li>IndexedDB</li>
-                    <li>WCAG 2.1 AAA Accessibility</li>
+                    <li>WCAG 2.1 AAA target (WCAG 2.2 AA tested with axe DevTools)</li>
                 </ul>
             </header>
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>A tool to create and track exercises across six categories: calisthenics, cardio, core, weights, HIIT, and mobility. All data is stored directly in the browser using IndexedDB, meaning it works without a backend. Accessibility was the primary design focus from the start, featuring full keyboard support, status announcements for screen readers, and high-contrast colours that meet WCAG 2.1 AAA standards.</p>
+                <p>A tool to create and track exercises across six categories: calisthenics, cardio, core, weights, HIIT and mobility. All data is stored directly in the browser using IndexedDB, meaning it works without a backend. Accessibility was the primary design focus from the start, featuring full keyboard support, status announcements for screen readers, and high-contrast colours that meet WCAG 2.1 AAA standards.</p>
                 <figure>
                     <img src="../images/GymApp_mob.png" alt="Gym Workout Planner on a mobile viewport showing the exercise list with category filters and navigation controls">
                     <figcaption>The application on mobile, with all controls accessible by touch and keyboard.</figcaption>
@@ -69,7 +69,7 @@
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
-                <p>Gym-goers often struggle to track specific progress across different types of exercises using simple notes apps. Many fitness apps require subscriptions or accounts, or have cluttered screens that are hard to use in a busy gym. The goal was to build a simple, private, and accessible app that allows users to manage their own exercise library and group them into custom workouts.</p>
+                <p>Gym-goers often struggle to track specific progress across different types of exercises using simple notes apps. Many fitness apps require subscriptions or accounts, or have cluttered screens that are hard to use in a busy gym. The goal was to build a simple, private and accessible app that allows users to manage their own exercise library and group them into custom workouts.</p>
             </section>
 
             <section aria-labelledby="requirements-heading">
@@ -77,7 +77,7 @@
                 <p>Requirements were identified by looking at common fitness tracking habits and the project brief. A key technical requirement was to separate "Exercises" from "Workouts" in the database. This allows a user to reuse the same exercise in different routines without having to type the information in twice, keeping the data clean and organised.</p>
                 <h3>Functional</h3>
                 <ul role="list">
-                    <li>Create, read, update, and delete exercises with specific fields for each type.</li>
+                    <li>Create, read, update and delete exercises with specific fields for each type.</li>
                     <li>Combine exercises into custom "Workouts" for easier tracking.</li>
                     <li>Attach photos or videos to exercises using browser storage.</li>
                     <li>Filter the exercise library by category.</li>
@@ -93,7 +93,7 @@
 
             <section aria-labelledby="design-heading">
                 <h2 id="design-heading">Design</h2>
-                <p>The design follows a "Visual First" approach, using clear text and simple layouts. Accessibility rules helped shape the design before any visuals were created. For example, patterns that rely on mouse-hovering or dragging were avoided to ensure everything works for keyboard users. The colour scheme uses a teal palette that maintains a very high contrast ratio on all background modes, ensuring it remains readable for all users.</p>
+                <p>The design follows a "Visual First" approach, using clear text and simple layouts. Accessibility rules helped shape the design before any visuals were created. For example, patterns that rely on mouse-hovering or dragging were avoided to ensure everything works for keyboard users. The colour scheme uses a teal palette that maintains a high contrast ratio on all background modes, ensuring it remains readable for all users.</p>
                 <figure>
                     <img src="../images/GymApp_3layouts_sketch.jpg" alt="Hand-drawn planning sketch showing three layout options considered for the Gym Workout Planner interface">
                     <figcaption>Initial layout sketches. The final version focuses on a clean vertical structure that works well on mobile screens.</figcaption>
@@ -103,7 +103,7 @@
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
                 <h3>Local Storage with IndexedDB</h3>
-                <p>The app uses <strong>IndexedDB</strong> to store information. This is more powerful than standard browser storage because it can handle larger files, like videos, and doesn't slow down the interface. A custom set of instructions in <code>storage.js</code> handles the data, making sure exercises and workouts are linked correctly by their ID numbers.</p>
+                <p>The app uses <strong>IndexedDB</strong> to store information. The key reason for choosing it over localStorage was the data structure: the same exercise needs to be reusable across multiple workouts. With localStorage, you would have to copy the full exercise record into every workout that uses it, which means updating one exercise means finding every copy. IndexedDB allows exercises and workouts to live in separate object stores and be linked by a shared ID, keeping the data clean. It also handles larger files like videos without slowing down the interface. A custom set of instructions in <code>storage.js</code> manages these two stores and keeps them in sync.</p>
 
                 <h3>Code Organisation & Modular CSS</h3>
                 <p>The project maintains a clean structure by splitting the styling into two parts: <code>layout.css</code> handles the structure and positioning of elements, while <code>styles.css</code> manages the visual details like colours, fonts, and borders. This makes the code easier to maintain and update without breaking the layout.</p>
@@ -116,7 +116,7 @@
                 <h2 id="process-heading">Development Process / Testing</h2>
                 <p>Development started with the data storage layer before building the visual screens. Testing was done at every stage:</p>
                 <ul role="list">
-                    <li><strong>Accessibility:</strong> Audits using <strong>axe DevTools</strong> and manual <strong>NVDA</strong> screen reader tests to check that labels and focus were working.</li>
+                    <li><strong>Accessibility:</strong> Audits using <strong>axe DevTools</strong> (zero violations at WCAG 2.2 AA) and manual keyboard testing to check that labels and focus were working.</li>
                     <li><strong>Keyboard:</strong> Checking that every button and input can be reached and used using only the keyboard.</li>
                     <li><strong>Data:</strong> Testing to make sure that the example data loads correctly the first time and doesn't create duplicates.</li>
                 </ul>
@@ -124,7 +124,7 @@
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>The result is a fast and accessible fitness tracker that feels professional. By using modern web standards like IndexedDB and semantic HTML, the app stays lightweight and private. Future updates could include adding a "Service Worker" so the app can be installed on a phone and used entirely offline in gyms with no signal.</p>
+                <p>The result is a fast and accessible fitness tracker. By using modern web standards like IndexedDB and semantic HTML, the app stays lightweight and private. Future updates could include adding a "Service Worker" so the app can be installed on a phone and used entirely offline in gyms with no signal.</p>
                 <p><a href="https://github.com/GretaIvanovaite/GymApp" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
             </section>
 

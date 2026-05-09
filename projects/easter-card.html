@@ -48,7 +48,7 @@
             <header>
                 <a href="../index.html#projects">← Back to home</a>
                 <h1 id="case-study-heading">Animated Easter Card Creator</h1>
-                <p>A multi-page "Wizard" application for businesses to create and send personalised animated Easter cards in bulk, utilizing client-side file parsing and URL-based personalisation.</p>
+                <p>A multi-page "Wizard" application for businesses to create and send personalised animated Easter cards in bulk, using client-side file parsing and URL-based personalisation.</p>
                 <ul role="list" aria-label="Technologies used">
                     <li>HTML5 & Semantic Markup</li>
                     <li>CSS3 (Modular Theme Animations)</li>
@@ -60,7 +60,7 @@
 
             <section aria-labelledby="overview-heading">
                 <h2 id="overview-heading">Overview</h2>
-                <p>The Animated Easter Card Creator is a web tool for small businesses to send personalised animated cards to their customers. The project is split into two main parts: a "Wizard" that helps businesses upload their customer list and brand the card, and a decoupled animated card (<code>card.html</code>) that now supports multiple themes like the playful "Easter Bunny" or the elegant "Spring Garden." Personalisation works by adding customer details to the card's web address, and the tool uses the <strong>EmailJS API</strong> to send these links to hundreds of customers automatically in one go.</p>
+                <p>The Animated Easter Card Creator is a web tool for small businesses to send personalised animated cards to their customers. The project is split into two main parts: a "Wizard" that helps businesses upload their customer list and brand the card, and a decoupled animated card (<code>card.html</code>) that now supports multiple themes, including "Easter Bunny" and "Spring Garden." Personalisation works by adding customer details to the card's web address, and the tool uses the <strong>EmailJS API</strong> to send these links to hundreds of customers automatically in one go.</p>
                 <figure>
                     <img src="../images/EasterCard_preview_sketch.jpg" alt="Hand-drawn concept sketch of the animated Easter card showing the egg, bunny and scroll sequence">
                     <figcaption>Initial storyboard mapping the animation beats. The sequence was designed to ensure that the personalisation scroll remains the focal point of the interaction.</figcaption>
@@ -69,7 +69,7 @@
 
             <section aria-labelledby="problem-heading">
                 <h2 id="problem-heading">The Problem</h2>
-                <p>Small businesses often find professional marketing tools too expensive or complicated. Most services require a monthly subscription or a developer to set everything up. The challenge was to create a free, private tool that could handle large lists of customers, show a live preview of the card, and send everything out reliably - all while keeping a high-quality look and feel.</p>
+                <p>Small businesses often find professional marketing tools too expensive or complicated. Most services require a monthly subscription or a developer to set everything up. The challenge was to create a free, private tool that could handle large lists of customers, show a live preview of the card, and send everything out reliably - all while keeping a consistent look and feel.</p>
             </section>
 
             <section aria-labelledby="requirements-heading">
@@ -83,7 +83,7 @@
                     <li>Match columns from the uploaded file and see live data examples.</li>
                     <li>Write custom opening phrases or choose from preset templates.</li>
                     <li>Reorder the message blocks (phrase, main text, company name) on the card.</li>
-                    <li>Bulk sending using the user's local email client.</li>
+                    <li>Bulk sending via the EmailJS API, directly from the browser.</li>
                 </ul>
                 <h3>Non-functional Requirements</h3>
                 <ul role="list">
@@ -111,13 +111,13 @@
             <section aria-labelledby="solution-heading">
                 <h2 id="solution-heading">The Solution</h2>
                 <h3>Bulk Sending with EmailJS</h3>
-                <p>The project uses the <strong>EmailJS</strong> API, which allows the tool to send out many personalised HTML emails automatically and reliably directly from the browser. This turned the project from a simple prototype into a professional business utility that can handle large lists of customers in one go.</p>
+                <p>The project uses the <strong>EmailJS</strong> API, which allows the tool to send out many personalised HTML emails automatically and reliably directly from the browser. This turned the project from a prototype into a practical tool that can handle large customer lists in one go.</p>
 
                 <h3>Modular Theme Engine</h3>
                 <p>The card now supports multiple animation styles. By splitting the code into modular CSS files (like <code>card-bunny.css</code> and <code>card-garden.css</code>), the tool only loads the styles for the chosen theme. This makes the project easy to expand with even more animations in the future.</p>
 
                 <h3>Accessibility & Polish</h3>
-                <p>The tool uses "Gold Standard" accessibility features. Form errors are explained clearly to screen readers using <code>aria-invalid</code>, and a "Skip Animation" button was added so users can instantly verify their personalisation during the preview step.</p>
+                <p>Form errors are explained to screen readers using <code>aria-invalid</code>, and a "Skip Animation" button lets users quickly verify their personalisation during the preview step.</p>
             </section>
 
             <section aria-labelledby="process-heading">
@@ -126,14 +126,14 @@
                 <ul role="list">
                     <li><strong>Data:</strong> Implementing a robust regex-based parser to handle complex CSV files (like names with commas) and making sure all personalisation data stayed saved across the "Wizard" steps.</li>
                     <li><strong>Timing:</strong> Creating a "Skip Animation" feature using negative CSS delays to jump to the end of the scene, making it much faster to test different personalisation settings.</li>
-                    <li><strong>Accessibility:</strong> Using tools like <strong>axe DevTools</strong> and manual <strong>NVDA</strong> testing to verify that the status updates, keyboard-friendly theme cards, and error messages worked for all users.</li>
+                    <li><strong>Accessibility:</strong> Using <strong>axe DevTools</strong> to verify that status updates, keyboard-friendly theme cards, and error messages were correctly implemented.</li>
                 </ul>
             </section>
 
             <section aria-labelledby="outcome-heading">
                 <h2 id="outcome-heading">Outcome and Reflection</h2>
-                <p>The project successfully created a professional business tool that works entirely in the browser. Using EmailJS turned the project from a simple prototype into a reliable utility for bulk customer outreach.</p>
-                <p>Future versions could use the <strong>Web Animations API</strong> for even more control over the animation, such as letting the user pause or replay specific parts. This would make the experience even more interactive and engaging for the recipient.</p>
+                <p>The project produced a browser-based tool for sending personalised cards in bulk. EmailJS made large-scale sending practical without needing a server.</p>
+                <p>Future versions could use the <strong>Web Animations API</strong> for more control over the animation, such as letting the user pause or replay specific parts. This would give the recipient more control over the card.</p>
                 <p><a href="https://github.com/GretaIvanovaite/AnimatedEasterCard" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
             </section>
 
